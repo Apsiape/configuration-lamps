@@ -39,7 +39,7 @@ The software and machine-readable relation lists are additionally available unde
 the **MIT License**, at your option; see [RIGHTS.md](RIGHTS.md) for the scope.
 
 Please cite Seth Douglas and Nidhal Mghirbi, *Amenable groups with nearly exponential sofic profile, and quantum
-channels that need nearly linear memory* (2026), version 1.0.0,
+channels that need nearly linear memory* (2026), version 1.0.1,
 [doi:10.5281/zenodo.23050302](https://doi.org/10.5281/zenodo.23050302) (all versions). [CITATION.cff](CITATION.cff) provides
 machine-readable citation metadata. Tagged releases archive the corresponding manuscript and verification scripts
 together.
@@ -53,10 +53,9 @@ Requires Python 3.10+ and a TeX distribution with the packages listed in paper.t
 needed.
 
     python build.py
-    python verification/relators1d_check.py
-    python verification/relators_check.py
-    python verification/ladder_check.py
-    python verification/embedding3v_check.py
+    python verification/run_all.py
+
+The second command runs the four checks below and reports each result.
 
 Generated TeX build files stay in build/; paper.pdf is the canonical output. The bibliography is in
 sections/references.tex. Each script prints its checks and exits with status 0 when all pass.

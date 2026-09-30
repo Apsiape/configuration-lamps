@@ -1,7 +1,8 @@
 # Verification scope
 
 The scripts in this folder are finite regressions for statements of the manuscript. They use the Python standard
-library only, print each check, and exit with status 0 when every check passes. They check the finite objects on
+library only, print each check, and exit with status 0 when every check passes. `run_all.py` runs all of them and
+reports each result; `ladder_check.py` checks with assert statements and therefore refuses to run under python -O. They check the finite objects on
 which the proofs rest; they do not check the general arguments, which are given in full in the manuscript.
 
 ## What is checked by machine

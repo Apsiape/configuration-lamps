@@ -2,6 +2,8 @@
 
 Standard library only. Exits 1 on any failure. These are finite regressions; the general statements are proved in the paper.
 """
+if not __debug__:
+    raise SystemExit("This check uses assert statements; run it without python -O.")
 from fractions import Fraction as Fr
 from itertools import product
 import sys

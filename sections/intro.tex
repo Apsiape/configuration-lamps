@@ -81,7 +81,7 @@ factorizations. For causal services of $n$ uses of $\Phi$ with error at most $1/
 \item with purity at most $B$, where $\log n\le B\le c_0n$, the least memory lies between $c\,n/(B(\log n)^{25.49})$, at any exchange, and
 $K(n/B)\log n$, attained by exact services that refresh their memory every round, with exchange $(n-1)Q$; so the least memory at purity $B$,
 times $B$, is $n^{1+o(1)}$, and purity $O(\log n)$ forces memory $n^{1-o(1)}$;
-\item at the optimal exchange rate the least memory lies between $c\sqrt n/(\log n)^{12.75}$, whatever the purity, and $K\sqrt{n\log n}$; services
+\item at the optimal exchange rate, that is, with exchange $J\le\frac n2\log r_*$ over $n$ uses, the least memory lies between $c\sqrt n/(\log n)^{12.75}$, whatever the purity, and $K\sqrt{n\log n}$; services
 near the least memory spend purity $n^{1/2\pm o(1)}$, at least that much by (a) and at most $3Q+6$, so at that rate memory and purity are both
 about $\sqrt n$.
 \end{enumerate}
@@ -109,6 +109,36 @@ on at most $3r_*-2$ qubits (Proposition~\ref{prop:compositions}). Averaging the 
 limit: a bounded time-independent Hamiltonian coupled to a tracial bath produces a channel on $M_{1746}$ exactly at the times $\frac\pi2k$, and in
 the limit of long times, that trades memory and purity at the same rate as $\Phi$ (Proposition~\ref{prop:lazy}). The Hamiltonian is not local;
 whether local autonomous dynamics can produce an expensive channel is open.
+
+\paragraph{Dependencies on the companion papers.} Table~\ref{tab:dependencies} lists every result of~\cite{DouglasMghirbiA}
+and~\cite{DouglasMghirbiB} used here, with the numbering of their version 1.1.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{0.47\textwidth}p{0.2\textwidth}p{0.25\textwidth}@{}}
+\toprule
+result & source & used in\\
+\midrule
+counting criterion & \cite[Thm.~8.1]{DouglasMghirbiA} & Thm.~\ref{thm:criterion}, every lower bound\\
+transport by the powers of one element & \cite[Cor.~8.2]{DouglasMghirbiA} & Section~\ref{sec:criterion}\\
+Johnson's presentation of $H_3$ and its conventions & \cite[Section~2]{DouglasMghirbiA} & Section~\ref{sec:houghton}\\
+far-commutator area and polynomial Dehn bound for $H_3$ & \cite[Thms.~3.2, 3.3]{DouglasMghirbiA} & Prop.~\ref{prop:dehn}\\
+quadratic lower bound along a ray & \cite[Prop.~3.4]{DouglasMghirbiA} & Sections~\ref{sec:intro}, \ref{sec:ladder}\\
+bounded or at least $2r$; embeddings in finite groups & \cite[Lemma~2.1]{DouglasMghirbiA} & Thm.~\ref{thm:main-group}(d), Section~\ref{sec:ladder}\\
+superpolynomial profile of $H_3$ & \cite[Thm.~1.1]{DouglasMghirbiA} & Section~\ref{sec:thompson}\\
+projection products & \cite[Lemma~4.1]{DouglasMghirbiA} & Lemma~\ref{lem:projection-product}\\
+\midrule
+causal services, exchange, purity and error & \cite[Def.~2.3, Section~3]{DouglasMghirbiB} & Section~\ref{sec:channel}\\
+exchange--purity rate region; the rank rate & \cite[Thm.~3.4]{DouglasMghirbiB} & Thm.~B(b)\\
+sequential extraction & \cite[Thm.~5.2]{DouglasMghirbiB} & Thm.~\ref{thm:extraction}\\
+purity budget $14Q+3$ at the rank rate (sharpened here) & \cite[Thm.~5.8]{DouglasMghirbiB} & Prop.~\ref{prop:purity-budget}\\
+rolling-reservoir compiler & \cite[Appendix~A, Lemmas~A.1, A.4]{DouglasMghirbiB} & Prop.~\ref{prop:sofic-upper}\\
+channel profiles are group profiles; hyperlinear groups give channels in $\cK_d$ & \cite[Thm.~9.2]{DouglasMghirbiB} & Section~\ref{sec:channel}\\
+\bottomrule
+\end{tabular}
+\caption{Results of the companion papers used in this paper (numbering of their version 1.1).}
+\label{tab:dependencies}
+\end{table}
 
 \paragraph{Organization.} Section~\ref{sec:criterion} recalls the counting criterion. Section~\ref{sec:ladder} treats the dyadic group and the
 subgroup of Thompson's group $V$. Sections~\ref{sec:group}--\ref{sec:profile} construct the configuration lamps, show that they are finitely presented and
