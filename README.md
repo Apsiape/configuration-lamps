@@ -2,6 +2,8 @@
 
 Seth Douglas and Nidhal Mghirbi — September 2026.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23050302.svg)](https://doi.org/10.5281/zenodo.23050302)
+
 [Read the manuscript](paper.pdf) · [TeX source](paper.tex) ·
 [Verification scope](verification/README.md)
 
@@ -37,9 +39,13 @@ The software and machine-readable relation lists are additionally available unde
 the **MIT License**, at your option; see [RIGHTS.md](RIGHTS.md) for the scope.
 
 Please cite Seth Douglas and Nidhal Mghirbi, *Amenable groups with nearly exponential sofic profile, and quantum
-channels that need nearly linear memory* (2026), version 1.0.0. [CITATION.cff](CITATION.cff) provides
+channels that need nearly linear memory* (2026), version 1.0.0,
+[doi:10.5281/zenodo.23050302](https://doi.org/10.5281/zenodo.23050302) (all versions). [CITATION.cff](CITATION.cff) provides
 machine-readable citation metadata. Tagged releases archive the corresponding manuscript and verification scripts
 together.
+
+The DOI above is the all-versions DOI, which identifies the evolving work. The v1.0.0 archive is
+[doi:10.5281/zenodo.23050303](https://doi.org/10.5281/zenodo.23050303).
 
 ## Reproduce
 
