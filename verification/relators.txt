@@ -1,0 +1,80 @@
+# The 77-relation certificate for the configuration-lamp group, in the seven generators
+# p q (first coordinate), P Q (second coordinate), t, c, a. A minus sign denotes an inverse.
+# Each line: index. name [length]: word
+01. H1.1 [8]: p q -p -q p q -p -q
+02. H1.2 [22]: p q -p -q p p q -p -p -q p p q -p -p -q p p q -p -q -p
+03. H1.3 [22]: p q -p -q p p p q -p -q -p -p q p -q p q p -q -p -p -p
+04. H1.4 [12]: p p q -p -q -p q q p -q -p -q
+05. H2.1 [8]: P Q -P -Q P Q -P -Q
+06. H2.2 [22]: P Q -P -Q P P Q -P -P -Q P P Q -P -P -Q P P Q -P -Q -P
+07. H2.3 [22]: P Q -P -Q P P P Q -P -Q -P -P Q P -Q P Q P -Q -P -P -P
+08. H2.4 [12]: P P Q -P -Q -P Q Q P -Q -P -Q
+09. T.1.1 [4]: p P -p -P
+10. T.1.2 [4]: p Q -p -Q
+11. T.2.1 [4]: q P -q -P
+12. T.2.2 [4]: q Q -q -Q
+13. translation-square [2]: t t
+14. stabilizer.t.1.1 [12]: t p q -p -q p -t -p q p -q -p
+15. stabilizer.t.1.2 [8]: t p q -p -t p -q -p
+16. stabilizer.t.1.3 [14]: t p p q -p -q -p -t p q p -q -p -p
+17. stabilizer.t.2.1 [12]: t P Q -P -Q P -t -P Q P -Q -P
+18. stabilizer.t.2.2 [8]: t P Q -P -t P -Q -P
+19. stabilizer.t.2.3 [14]: t P P Q -P -Q -P -t P Q P -Q -P -P
+20. stabilizer.h.1.1 [186]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P p p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P -p q p -q -p
+21. stabilizer.h.1.2 [184]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p -q -p
+22. stabilizer.h.1.3 [190]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q p q -p -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q p -q -p -p
+23. stabilizer.h.2.1 [198]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -P -Q P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P -P Q P P -Q -P -P
+24. stabilizer.h.2.2 [190]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -Q -P -P
+25. stabilizer.h.2.3 [194]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P P Q -P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P P -Q -P -P -P
+26. stabilizer.v.1.1 [184]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -p -q p p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p -p q p p -q -p -p
+27. stabilizer.v.1.2 [174]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -q -p -p
+28. stabilizer.v.1.3 [178]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p p q -p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p p -q -p -p -p
+29. stabilizer.v.2.1 [182]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q -p P Q -P -Q P p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p -P Q P -Q -P
+30. stabilizer.v.2.2 [178]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q -p P Q -P p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p P -Q -P
+31. stabilizer.v.2.3 [184]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q -p P P Q -P -Q -P p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p P Q P -Q -P -P
+32. stabilizer.d.1.1 [20]: c c c p p q -p -p -q p -c -c -c -p q p p -q -p -p
+33. stabilizer.d.1.2 [16]: c c c p p q -p -p -c -c -c p p -q -p -p
+34. stabilizer.d.1.3 [22]: c c c p p p q -p -q -p -p -c -c -c p p q p -q -p -p -p
+35. stabilizer.d.2.1 [20]: c c c P P Q -P -P -Q P -c -c -c -P Q P P -Q -P -P
+36. stabilizer.d.2.2 [16]: c c c P P Q -P -P -c -c -c P P -Q -P -P
+37. stabilizer.d.2.3 [22]: c c c P P P Q -P -Q -P -P -c -c -c P P Q P -Q -P -P -P
+38. zero-lamp.p.a [4]: p a -p -a
+39. zero-lamp.p.b [12]: p a c c c c -p -c -c -c -c -a
+40. zero-lamp.q.a [4]: q a -q -a
+41. zero-lamp.q.b [12]: q a c c c c -q -c -c -c -c -a
+42. zero-lamp.P.a [4]: P a -P -a
+43. zero-lamp.P.b [12]: P a c c c c -P -c -c -c -c -a
+44. zero-lamp.Q.a [4]: Q a -Q -a
+45. zero-lamp.Q.b [12]: Q a c c c c -Q -c -c -c -c -a
+46. zero-lamp.d.a [8]: c c c a -c -c -c -a
+47. translation-commute.1.2 [20]: t P Q -P -Q t Q P -Q -P -t P Q -P -Q -t Q P -Q -P
+48. translation-commute.2.1 [20]: t p q -p -q t q p -q -p -t p q -p -q -t q p -q -p
+49. translation-commute.2.2 [36]: t p q -p -q P Q -P -Q t Q P -Q -P q p -q -p -t p q -p -q P Q -P -Q -t Q P -Q -P q p -q -p
+50. action.h.1.1 [186]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p t p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P -t
+51. action.h.1.2 [203]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P Q -P -Q t Q P -Q -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P -t P Q -P -Q -t Q P -Q -P
+52. action.h.1.3 [224]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P Q -P -Q P P Q -P -P -Q t Q P P -Q -P -P Q P -Q -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P Q -P -Q P P Q -P -P -Q -t Q P P -Q -P -P Q P -Q -P
+53. action.h.2.1 [186]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P t P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q -t q p -q -p
+54. action.h.2.2 [186]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P t P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q -t Q P -Q -P q p -q -p
+55. action.h.2.3 [186]: P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c t c c c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P c c c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -c -c -c Q P P -Q -P -P Q P -Q -P q p -q -p P P Q -P -Q -P -c -c -c P Q P -Q -P -P p q -p -q P Q -P -Q P P Q -P -P -Q -t Q P P -Q -P -P Q P -Q -P q p -q -p
+56. action.v.1.1 [174]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q -p t p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p -t
+57. action.v.1.2 [190]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q -p P Q -P -Q t Q P -Q -P p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p P Q -P -Q -t Q P -Q -P
+58. action.v.2.1 [175]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p t p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p -p -t p q -p -q -t q p -q -p
+59. action.v.2.2 [188]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p P Q -P -Q t Q P -Q -P p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q P Q -P -Q -t Q P -Q -P q p -q -p
+60. action.v.3.1 [172]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P t P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q -t q p p -q -p -p q p -q -p
+61. action.v.3.2 [172]: p p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c t c c c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p c c c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -c -c -c Q P -Q -P q p p -q -p -p q p -q p q -p -q -p -c -c -c p q p -q -p q -p -q p p q -p -p -q P Q -P -Q -t Q P -Q -P q p p -q -p -p q p -q -p
+62. action.d.1.1 [8]: c c c t -c -c -c -t
+63. action.d.1.2 [24]: c c c P Q -P -Q t Q P -Q -P -c -c -c P Q -P -Q -t Q P -Q -P
+64. action.d.1.3 [48]: c c c P Q -P -Q P P Q -P -P -Q t Q P P -Q -P -P Q P -Q -P -c -c -c P Q -P -Q P P Q -P -P -Q -t Q P P -Q -P -P Q P -Q -P
+65. action.d.2.1 [24]: c c c p q -p -q t q p -q -p -c -c -c p q -p -q -t q p -q -p
+66. action.d.2.2 [41]: c c c p q -p -q P Q -P -Q t Q P -Q -P q p -q -p -c -c -c -t p q -p -q P Q -P -Q -t Q P -Q -P q p -q -p
+67. action.d.2.3 [64]: c c c p q -p -q P Q -P -Q P P Q -P -P -Q t Q P P -Q -P -P Q P -Q -P q p -q -p -c -c -c p q -p -q P Q -P -Q P P Q -P -P -Q -t Q P P -Q -P -P Q P -Q -P q p -q -p
+68. action.d.3.1 [48]: c c c p q -p -q p p q -p -p -q t q p p -q -p -p q p -q -p -c -c -c p q -p -q p p q -p -p -q -t q p p -q -p -p q p -q -p
+69. action.d.3.2 [64]: c c c p q -p -q p p q -p -p -q P Q -P -Q t Q P -Q -P q p p -q -p -p q p -q -p -c -c -c p q -p -q p p q -p -p -q P Q -P -Q -t Q P -Q -P q p p -q -p -p q p -q -p
+70. action.d.3.3 [88]: c c c p q -p -q p p q -p -p -q P Q -P -Q P P Q -P -P -Q t Q P P -Q -P -P Q P -Q -P q p p -q -p -p q p -q -p -c -c -c p q -p -q p p q -p -p -q P Q -P -Q P P Q -P -P -Q -t Q P P -Q -P -P Q P -Q -P q p p -q -p -p q p -q -p
+71. lamp.a-square [2]: a a
+72. lamp.b-square [10]: a c c c c a c c c c
+73. lamp.ab-cube [18]: a a c c c c a a c c c c a a c c c c
+74. lamps-seed.a.a [8]: a t a -t -a t -a -t
+75. lamps-seed.a.b [16]: a t a c c c c -t -a t -c -c -c -c -a -t
+76. lamps-seed.b.a [16]: a c c c c t a -t -c -c -c -c -a t -a -t
+77. lamps-seed.b.b [24]: a c c c c t a c c c c -t -c -c -c -c -a t -c -c -c -c -a -t

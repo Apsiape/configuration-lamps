@@ -1,0 +1,117 @@
+%======================================================================
+\section{Introduction}\label{sec:intro}
+%======================================================================
+
+A group is sofic when its finite pieces can be modelled by permutations of finite sets, up to a small error. How large must those models be?
+For a finite piece $E$ of a group, a \emph{chunk}, Cornulier's \emph{sofic profile} $\sigma_E(r)$ is the least number of points on which $E$ can be
+modelled with multiplication correct on all but a fraction $1/r$ of the points and distinct elements separated almost everywhere~\cite{Cornulier2013}.
+Amenable groups are sofic, so their profiles are finite. Cornulier asked whether a sofic group can have profile that is unbounded and not linear
+in $r$~\cite[Problem~3.18]{Cornulier2013}. In~\cite{DouglasMghirbiA} we showed that Houghton's group $H_3$, which is finitely presented and
+elementary amenable, has a chunk whose profile is at least $\exp(\Omega(r^{c}))$, $c=1/(1+\log107)\approx0.129$. The proof rests on a counting criterion
+(Theorem~\ref{thm:criterion}): if finitely many relations force many displaced copies of $S_3$ to commute cheaply, every model must be large,
+because approximately commuting copies of $S_3$ carry entropy. That criterion can never give more than $\exp(O(r))$.
+
+This paper shows that the criterion nearly reaches its ceiling in an amenable group, and that the group then becomes a quantum channel whose
+repeated use needs nearly linear memory.
+
+\begin{theoremA}
+There is a finitely presented elementary amenable group $\Gamma$, with five generators, and a chunk $E$ of $\Gamma$ such that, for all $r\ge2$,
+\[
+\exp\Bigl(\frac{c\,r}{(\log r)^{12.75}}\Bigr)\ \le\ \sigma_E(r)\ \le\ \exp(C\,r\log r).
+\]
+So $\sigma_E(r)=\exp(r^{1+o(1)})$. The lower bound is certified by an explicit set of $25$ relations of $\Gamma$. Moreover, for every $\Delta\in(0,1]$ there are $c_\Delta,e_\Delta>0$ such that every assignment of unitaries in
+$U(D)$ to the five generators under which the $25$ relations have defect at most $e\le e_\Delta$ in the normalized Hilbert--Schmidt norm, and
+$ab$ stays at distance at least $\Delta$ from $I$, has $\log D\ge c_\Delta\,e^{-2}/(\log(1/e))^{25.49}$.
+\end{theoremA}
+
+Theorem~\ref{thm:main-group} gives the precise statement, and Proposition~\ref{prop:fp} the finite presentation, which follows from de
+Cornulier's criterion for permutational wreath products once the affine group acting on the configurations is shown to be finitely presented. The lower bound is within a polylogarithmic factor in the exponent of the most the
+criterion can give, and the upper bound shows that the truth is not much larger. The upper bound comes from models that hash configurations by
+random affine maps; they are far smaller than Følner sets, since the Følner function of $\Gamma$ is doubly exponential
+(Proposition~\ref{prop:folner-lower}). The group $\Gamma$ also embeds in Brin's higher-dimensional Thompson group $3V$
+(Proposition~\ref{prop:3V}), so $3V$, a finitely presented simple group whose soficity is open, has a chunk whose profile is finite and
+$\exp(r^{1+o(1)})$.
+
+\paragraph{Configuration lamps.} In Houghton's group the copies of $S_3$ sit on points of a ray; carrying a copy a distance $k$ takes a word of
+length $k$, and commuting two copies at distance $k$ costs at least of order $k^2$ relations~\cite[Proposition~3.4]{DouglasMghirbiA}. A family of
+$N$ copies spreads over distance $N$, and its commutators are expensive. We place the copies instead on the finitely
+supported binary configurations of the three rays of $H_3$. Houghton's group moves the points, finitely supported affine maps act on the
+configurations (a translation flips one point, a transvection adds one point into another), and one copy of $S_3$ sits on each configuration. The
+$2^N$ configurations supported on the first $N$ points of a ray are reached by words of length $O(N^2)$, and two of them differ by a configuration
+that at most $N$ transvections clear down to a single point. Each step touches at most three points, so its cost is governed by the Dehn function
+of $H_3$ at scale $N$, which is polynomial by~\cite[Theorem~3.3]{DouglasMghirbiA}. The total cost of commuting two of the $2^N$ copies is therefore
+polynomial in $N$: polylogarithmic in the number of copies. This is what the criterion needs.
+
+\paragraph{A ladder.} The construction completes a sequence of transport mechanisms, each of which the criterion turns into a profile bound.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+transport & group & $\log\sigma_E(r)\ \gtrsim$ & profile finite \\
+\midrule
+along a ray & $H_3$~\cite{DouglasMghirbiA} & $r^{0.129}$ & yes \\
+by one element & dyadic $\mathcal G$ (\S\ref{sec:dyadic}) & $r^{1/3}$ & yes \\
+exponential orbits & $\mathcal L\le V$ (\S\ref{sec:thompson}) & $r/\log^2r$ & if $F$ is amenable \\
+configurations & $\Gamma$ (\S\S\ref{sec:group}--\ref{sec:profile}) & $r/(\log r)^{12.75}$ & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Transport by the powers of one element gives exponent $1/(p+1)$ when the far commutators have area of order $k^p$; along a ray of
+$H_3$ the area is at least quadratic~\cite[Proposition~3.4]{DouglasMghirbiA}, so that transport stops at $1/3$, and $\mathcal G$ attains $1/3$ with
+seventeen relations.
+Thompson's group $F$ transports cheaply along exponentially growing orbits, which gives nearly exponential profile in a finitely presented
+subgroup $\mathcal L$ of Thompson's group $V$, provided its models exist at all: they do if $F$ is amenable, and we show that $\mathcal L$ is
+hyperlinear exactly when $F$ is, so that unitary models of this chunk exist whenever $F$ is hyperlinear
+(Proposition~\ref{prop:thompson-hyperlinear}). The configuration lamps keep the exponential transport and drop the condition. For a variant on the
+configurations of a grid (Remark~\ref{rem:grid}) a sketched argument gives a stronger lower bound, $r/(\log r)^{7.38}$, with the same upper bound.
+
+\paragraph{Quantum memory.} In~\cite{DouglasMghirbiB} we asked how much memory a device needs to apply the same quantum channel $n$ times, when
+each output must be released before the next input arrives and every retained qubit counts. The device may export qubits and import fresh ones; the \emph{exchange}
+$J$ counts the qubits exchanged, and the \emph{purity}, measured as the number of qubits minus the entropy of the initial memory and of the imports,
+is a resource. The error is the half trace distance to the ideal experiment, against adaptive observers that keep quantum references. For a
+gadget channel in the tracial closure, $\frac12\log r_*$ qubits per use, with $r_*$ the Choi rank, is the optimal exchange rate~\cite{DouglasMghirbiB}. A channel built from a finite set of relations inherits the approximation profile of the
+group: small memory would give small approximate representations. From $H_3$ we obtained an explicit channel needing memory $(n/\log n)^{0.069}$. The
+configuration lamps give nearly linear memory, and a trade-off between memory and purity that is sharp up to polylogarithmic factors.
+
+\begin{theoremB}
+The certificate of Theorem~A defines an explicit quantum channel $\Phi$ on $\mathbb C^{873}$, in the closure of channels with finite tracial
+factorizations. For causal services of $n$ uses of $\Phi$ with error at most $1/16$ and large $n$:
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item with purity at most $B$, where $\log n\le B\le c_0n$, the least memory lies between $c\,n/(B(\log n)^{25.49})$, at any exchange, and
+$K(n/B)\log n$, attained by exact services that refresh their memory every round, with exchange $(n-1)Q$; so the least memory at purity $B$,
+times $B$, is $n^{1+o(1)}$, and purity $O(\log n)$ forces memory $n^{1-o(1)}$;
+\item at the optimal exchange rate the least memory lies between $c\sqrt n/(\log n)^{12.75}$, whatever the purity, and $K\sqrt{n\log n}$; services
+near the least memory spend purity $n^{1/2\pm o(1)}$, at least that much by (a) and at most $3Q+6$, so at that rate memory and purity are both
+about $\sqrt n$.
+\end{enumerate}
+\end{theoremB}
+
+Theorem~\ref{thm:main-channel} gives the precise statement. Its engine is a one-round theorem for every gadget channel
+(Theorem~\ref{thm:weighted}): a single round of any device reveals an approximate representation of the group on the device's memory, with a
+relator defect of the order of the square root of the leakage and entropy production of that round. In~\cite{DouglasMghirbiB} this was proved for one
+gadget. The upper bounds come from sofic models, which give devices directly (Proposition~\ref{prop:sofic-upper}): at most points of a model the
+pure bath state reproduces the channel exactly, so a memory that is maximally mixed on those points serves the channel with no error at all. So
+the memory of $\Phi$ is caught between two readings of the profile of $\Gamma$ at scale $n$, and for $\Gamma$ both are $n^{1+o(1)}$. At the
+optimal exchange rate a device can spend at most $3Q+6$ bits of purity (Proposition~\ref{prop:purity-budget}), which gives the lower bound in
+part~(b). The upper bound needs a device that keeps a sofic model in memory for all $n$ rounds instead of refreshing it: a streaming theorem
+(Theorem~\ref{thm:streaming}) uses the good points of a model as an exact dilation whose bath grows slightly in every round, so that the bad points
+cost purity rather than accumulated error.
+
+\paragraph{Physics.} A local lattice system whose bath starts in its maximally mixed state, run for time $T$, produces channels that are cheap
+for fixed $T$: they need memory only polynomial in
+$T$ and $\log n$ (Proposition~\ref{prop:light-cone}). So a local process that produces $\Phi$ to accuracy $\delta$ takes time at least about
+$\delta^{-1/\nu}$ in lattice dimension $\nu$ (Corollary~\ref{cor:preparation}). Autonomous dynamics with a bath in its tracial state face a different constraint: their long-time
+limits are always self-adjoint channels, and they satisfy a further inequality between coherence and return (Propositions~\ref{prop:autonomous}
+and~\ref{prop:return}). Every channel $\Psi\Psi^*$ with $\Psi$ in the tracial closure is such a limit (Proposition~\ref{prop:nonlocal}), but for gadget channels this route gives nothing
+expensive: composing a gadget channel with its adjoint erases the multiplication of the group, and $\Phi\Phi^*$ has an exact finite factorization
+on at most $3r_*-2$ qubits (Proposition~\ref{prop:compositions}). Averaging the doubling of $\Phi$ with the identity does give an expensive
+limit: a bounded time-independent Hamiltonian coupled to a tracial bath produces a channel on $M_{1746}$ exactly at the times $\frac\pi2k$, and in
+the limit of long times, that trades memory and purity at the same rate as $\Phi$ (Proposition~\ref{prop:lazy}). The Hamiltonian is not local;
+whether local autonomous dynamics can produce an expensive channel is open.
+
+\paragraph{Organization.} Section~\ref{sec:criterion} recalls the counting criterion. Section~\ref{sec:ladder} treats the dyadic group and the
+subgroup of Thompson's group $V$. Sections~\ref{sec:group}--\ref{sec:profile} construct the configuration lamps, show that they are finitely presented and
+embed in $3V$, prove the local fillings and the pair-area theorem, and prove Theorem~A. Section~\ref{sec:channel} proves Theorem~B, with the one-round theorem proved in
+Section~\ref{sec:weighted-proof}. Section~\ref{sec:physics} treats local physics, and Section~\ref{sec:open} lists open problems. The certificate of
+$25$ relations is in the accompanying files, together with programs that check it; logarithms are to base two unless written $\ln$.
