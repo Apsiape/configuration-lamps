@@ -61,7 +61,7 @@ $\tau(\lambda(g)\lambda(h)^*)=\delta_{gh}$. So the Choi rank $r_*$ of $\Phi_G$ i
 \emph{anchor}: a diagonal slot with coefficient $1$ whose row and column contain no other slot, namely the first diagonal entry for the label $1$
 and a symbol entry otherwise, since the lower right entry of a triangle carries the label of a prefix symbol or $1$. Feeding one half of a maximally entangled
 state on the $r_*$ anchor positions gives a pure probe whose output is flat of rank $r_*$, and $\log r_*$ is the largest entropy of a complementary
-output of $\Phi_G$~\cite{DouglasMghirbiB}.
+output of $\Phi_G$~\cite[Proposition~9.1]{DouglasMghirbiB}.
 
 \paragraph{One round.} Let $U$ be a unitary on $\mathbb C^d\otimes\mathbb C^M$ and $\rho$ a state on $\mathbb C^M$, and put
 \[
@@ -243,9 +243,9 @@ P+C\ <\ 3Q+6 .
 \end{proposition}
 
 Every gadget channel has such a probe with $r=r_*$ (Section~\ref{sec:channel-setting}). The proof uses the variance of the surprisal of a
-state with small deficit~\cite{DouglasMghirbiB}; we include the short argument.
+state with small deficit, which is~\cite[Lemma~5.9]{DouglasMghirbiB}; we include the short argument.
 
-\begin{lemma}[Surprisal variance]\label{lem:surprisal}
+\begin{lemma}[{Surprisal variance~\cite[Lemma~5.9]{DouglasMghirbiB}}]\label{lem:surprisal}
 Let $\beta$ be a state on $q\ge1$ qubits with spectrum $(\beta_i)$ and deficit $D=q-S(\beta)$. The surprisal $-\log\beta_i$, drawn with probability
 $\beta_i$, has variance at most $(q+2/\ln2)\,D$.
 \end{lemma}
@@ -522,7 +522,8 @@ $1/16$ and purity $O(\log n)$ lies between two readings of the group at scale $n
 $S_3$ as Corollary~\ref{cor:amplification} fits at relator defect about $\sqrt{\log n/n}$; above, $\log\sigma_E(Cn)+O(\log n)$ by
 Proposition~\ref{prop:sofic-upper}, already at zero purity and with exchange $(n-1)Q$. For the configuration lamps both readings are
 $n^{1+o(1)}$. The upper reading is the sofic profile, not the F{\o}lner function: the latter is doubly exponential for $\Gamma$
-(Proposition~\ref{prop:folner-lower}), so models built from F{\o}lner sets would only give memory exponential in $n$, while the hash models
+(Proposition~\ref{prop:folner-lower}), so models built from F{\o}lner sets~\cite[Proposition~3.14]{Cornulier2013} would only give memory
+exponential in $n$, while the hash models
 behind Theorem~\ref{thm:main-group}(b) give $O(n\log n)$. For the grid host of Remark~\ref{rem:grid-channel}, whose proofs are only sketched, the two readings would be $n/(\log n)^{15.75}$ and
 $O(n\log n)$.
 \end{remark}
@@ -546,6 +547,12 @@ Kampen diagrams, at a price for each face and each vertex that is paid once (Lem
 exact representation on the same space, so the state and its entropy do not change (Lemma~\ref{lem:rounding}). Fourth, measuring the rounded
 three-cycles one after another on one half of a purification of the memory state produces about one bit per copy that the other half also knows
 (Theorem~\ref{thm:sector}).
+
+The section generalises the argument of~\cite[Appendix~B]{DouglasMghirbiB}, which proves the one-round theorem for the Houghton
+gadget~\cite[Theorem~5.5]{DouglasMghirbiB}, to every gadget channel that satisfies the hypotheses of Theorem~\ref{thm:weighted}. The weighted norms
+are those of~\cite[Appendix~B]{DouglasMghirbiB}; Lemmas~\ref{lem:weighted-extraction} and~\ref{lem:charged-area} extend Lemmas~B.4 and~B.2
+there from the Houghton gadget to every such gadget; Lemma~\ref{lem:rounding} is Lemma~B.3 there; and Theorem~\ref{thm:sector} is a form of
+Theorem~B.1 there, proved by sequential measurement.
 
 \subsection{Weighted norms}
 
@@ -715,7 +722,7 @@ boundaries and of the boundary cycle. So~\eqref{eq:charge} gives $E(\phi(w))\le(
 An approximate copy of $S_3$ is rounded to an exact one by functional calculus on the same space. The state is untouched, so no entropy is
 gained or lost.
 
-\begin{lemma}[Exact rounding]\label{lem:rounding}
+\begin{lemma}[{Exact rounding~\cite[Lemma~B.3]{DouglasMghirbiB}}]\label{lem:rounding}
 Let $X$ and $Y$ be unitaries on $\mathbb C^M$, and suppose that the displacements of $X^2$, $Y^2$ and $(XY)^3$ and the centrality defects of
 $X$ and $Y$ are at most $\delta$. There are unitaries $x,c$ on $\mathbb C^M$ with $x^2=c^3=I$ and $xcx=c^{-1}$, such that
 \[

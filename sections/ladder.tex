@@ -73,18 +73,21 @@ By induction $A_{\mathcal G}(k)\le5k^2$: $A_{\mathcal G}(2)\le15$, $A_{\mathcal 
 
 \emph{Profile.} The words of $R_{\mathcal G}$ have length at most $8$, so Corollary~\ref{cor:cyclic} with $C=5$, $p=2$ and $l=8$ gives the
 bounds. Since $\mathcal G$ is amenable, it is sofic and every chunk has finite profile. The profile of $E_{\mathcal G}$ is unbounded, so
-$E_{\mathcal G}$ does not embed in a finite group (\cite[Lemma~2.1]{DouglasMghirbiA}), and $\mathcal G$ is not LEF.
+$E_{\mathcal G}$ does not embed in a finite group (\cite[Fact~3.5]{Cornulier2013}; see also~\cite[Lemma~2.1]{DouglasMghirbiA}), and $\mathcal G$ is not
+LEF~\cite[Fact~3.8]{Cornulier2013}.
 \end{proof}
 
 The fillings in the proof have been generated and checked by free reduction for $k\le64$; the largest ratio of cell count to $k^2$ among
-them is $15/4$, at $k=2$. In $H_3$ the doubling endomorphism multiplies a reweighted area by $107$ at each step, which gives the exponent $\log107$; in
+them is $15/4$, at $k=2$. In $H_3$ the doubling endomorphism of~\cite[Section~3]{DouglasMghirbiA}, which differs by a conjugation from the doubling
+map of Burillo, Cleary, Martino and R\"over~\cite[Section~7]{BCMR2016}, multiplies a reweighted area by $107$ at each step, which gives the exponent $\log107$; in
 $\mathcal G$ the dilation $u$ relates distance $2m$ to distance $m$ exactly, at a cost of $O(m^2)$ cells for the two commuting shifts. The orbit of $0$ under $\mathcal B$
 grows exponentially, as the orbits of Thompson's group $F$ do, but we do not know whether $\mathcal G$ supports the transport of many
 copies used for $F$ below (Section~\ref{sec:open}).
 
 \subsection{Thompson's group \texorpdfstring{$V$}{V}}\label{sec:thompson}
 
-Genevois proved that every Houghton group embeds in Thompson's group $V$~\cite{Genevois2019}. Since $H_3$ is amenable, $V$ therefore has a
+R\"over proved that every Houghton group embeds in Thompson's group $V$~\cite[Proposition~2.6]{Rover1999}, and Genevois extended the
+embedding to generalised Houghton groups~\cite[Corollary~5.11]{Genevois2019}. Since $H_3$ is amenable, $V$ therefore has a
 chunk whose profile is finite at every $r$ and superpolynomial by~\cite[Theorem~1.1]{DouglasMghirbiA}. A different subgroup of $V$ gives a much larger bound.
 
 Let $\mathbb D$ be the set of dyadic rationals in $(0,1)$, and let Thompson's group $F$ act on $[0,1]$ by its piecewise-linear
@@ -117,8 +120,14 @@ t(x)=\begin{cases}2x,&0\le x\le\frac14,\\ x+\frac14,&\frac14\le x\le\frac12,\\ \
 so that $t(\frac12)=\frac34$, and for $m\ge1$ let $\mathbb D_m$ be the set of the $2^m-1$ points of $\mathbb D$ with denominator at most
 $2^m$.
 
+The group $\mathcal L$ is finitely presented, by Cornulier's criterion for permutational wreath products~\cite[Theorem~1.1]{Cornulier2006}
+applied to the action of $F$ on $\mathbb D$, whose hypotheses he verifies in~\cite[Example~3.4]{Cornulier2006}. Indeed, Thompson's group $F$ is
+finitely presented, and it acts transitively on increasing pairs of points of $\mathbb D$~\cite[Lemma~4.2]{CFP1996}, so it has finitely many
+orbits on $\mathbb D\times\mathbb D$; and the stabilizer $F_{1/2}$ of $\frac12$ is the product of the elements supported in $[0,\frac12]$ and in
+$[\frac12,1]$, two copies of $F$, so it is finitely generated. The bounds below do not use this.
+
 \begin{proposition}\label{prop:thompson}
-The group $\mathcal L$ is finitely presented, contains $F$, and contains no Houghton group $H_m$, so the bounds below do not come from the
+The group $\mathcal L$ contains $F$ and contains no Houghton group $H_m$, so the bounds below do not come from the
 Houghton subgroups of $V$. There are a finite set $R$ of relations of $\mathcal L$, containing $a^2,b^2,(ab)^3$, and a constant $C$ with the
 following property: for every $m\ge1$ there are words $w_p$, $p\in\mathbb D_m$, with $w_p(\frac12)=p$ and
 \[
@@ -130,11 +139,6 @@ constant and $c_\Delta>0$ depends only on $\Delta$.
 \end{proposition}
 
 \begin{proof}
-\emph{Finite presentation.} Thompson's group $F$ is finitely presented, and it acts transitively on increasing pairs of points of
-$\mathbb D$~\cite[Lemma~4.2]{CFP1996}, so it has finitely many orbits on $\mathbb D\times\mathbb D$. The stabilizer $F_{1/2}$ of $\frac12$ is the
-product of the elements supported in $[0,\frac12]$ and in $[\frac12,1]$, two copies of $F$, so it is finitely generated. By Cornulier's
-criterion for permutational wreath products, $\mathcal L$ is finitely presented; this action of $F$ is~\cite[Example~3.4]{Cornulier2006}. The bounds below do not use this.
-
 \emph{Transport.} A standard dyadic interval is one of the form $[k2^{-j},(k+1)2^{-j}]$. If two partitions of $[0,1]$ into standard dyadic
 intervals have the same number $n$ of intervals, the map sending the $i$th interval of the first affinely onto the $i$th interval of the second
 lies in $F$ and has a tree-pair diagram with $n-1$ carets, and every standard dyadic interval can be split into any given number of standard
@@ -176,11 +180,15 @@ Lemma~\ref{lem:gap-coding}.
 The subgroup $\mathcal L$ contains $F$, whose soficity is open, so we do not know whether this chunk has permutation models at all; if it
 does, they are very large. In particular, either $V$ is not sofic, or its models of this chunk need $2^{c\,r/\log^2r}$ points, close to the
 largest bound that Theorem~\ref{thm:criterion} can give. If $F$ is amenable, so is $\mathcal L$, and then this chunk has finite profile. If $F$ is
-hyperlinear, so is $\mathcal L$ (Proposition~\ref{prop:thompson-hyperlinear}), and then unitary models of the chunk exist at every defect. For
-unitary models of Slofstra's group, his bound~\cite{Slofstra2018} gives $\log D\gtrsim e^{-c}$ for every $c<\frac12$, and, as Slofstra
-notes~\cite[Corollary~1.3 and its proof]{Slofstra2018}, it gives permutation models with $\log\sigma\gtrsim r^c$ for every $c<\frac14$; the group $\mathcal L$ gives $e^{-2}$ and $r$ up to logarithms. The
-group $\mathcal L$ has the form $\bigl(\bigoplus_{\Gamma/\Gamma_0}A\bigr)\rtimes\Gamma$ of the non-sofic wreath products of Kun and Thom~\cite{KunThom2026},
-which are built from groups with property (T); here the input is instead cheap transport of non-abelian copies of $S_3$.
+hyperlinear, so is $\mathcal L$ (Proposition~\ref{prop:thompson-hyperlinear}), and then unitary models of the chunk exist at every defect.
+Slofstra's bounds are of the same kind: they bound models that may not exist, since his group is not known to be hyperlinear. Any unitary
+models of it need $\log D\gtrsim e^{-c}$ for every $c<\frac12$~\cite[Theorem~1.2 and the remark after it]{Slofstra2018}, and the proof
+of~\cite[Corollary~1.3]{Slofstra2018} shows that any permutation models of a suitable chunk need $\log\sigma\gtrsim r^c$ for every $c<\frac14$;
+these profiles may be infinite. The group $\mathcal L$ gives $e^{-2}$ and $r$ up to logarithms. Since $\mathbb D$ is the coset space
+$F/F_{1/2}$, the group $\mathcal L=\bigl(\bigoplus_{F/F_{1/2}}S_3\bigr)\rtimes F$ has the shape $\bigl(\bigoplus_{G/H}A\bigr)\rtimes G$ of the
+generalised wreath products that Kun and Thom prove non-sofic~\cite[Theorem~A]{KunThom2026}, with $A=\Z/2$, when $H<G$ is infranormal and not
+normal (the elements $g$ with $gHg^{-1}\subseteq H$ generate $G$) and both $H$ and $G$ have property (T); here the input is instead cheap
+transport of non-abelian copies of $S_3$.
 
 Soficity and hyperlinearity pass to wreath products whose acting group is sofic~\cite{HayesSale2018}, and to permutational wreath products
 whose acting group is sofic (respectively hyperlinear) and whose action is sofic~\cite[Theorems~3.6 and~3.8]{GKEP2025},~\cite{AlekseevBradford2026}.

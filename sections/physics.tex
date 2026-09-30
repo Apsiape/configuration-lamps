@@ -69,10 +69,12 @@ and the channel after $t\in\N$ steps is $\Phi_t=E\circ\alpha^t\circ\iota$; for $
 factorization $\Phi_t(X)=(\mathrm{id}\otimes\tau_m)[U^t(X\otimes I)U^{-t}]$. Let $\mathcal N$ be the fixed-point algebra of $\alpha$ and
 $E_{\mathcal N}$ the $\tau$-preserving conditional expectation onto it.
 
-The next proposition combines the mean ergodic theorem with the observation of Haagerup and Musat that compressions
-$E\circ E_{\mathcal N}\circ\iota$ of trace-preserving conditional expectations are self-adjoint and positive~\cite[Remark~5.2]{HaagerupMusat2011}.
+The next proposition combines the mean ergodic theorem with the observation of Junge, Le Merdy and Xu~\cite[Remark~10.3]{JungeLeMerdyXu2006}
+and of Haagerup and Musat~\cite[Remark~5.2]{HaagerupMusat2011} that compressions $E\circ E_{\mathcal N}\circ\iota$ of trace-preserving conditional
+expectations are self-adjoint and positive; both of its clauses are standard.
 
-\begin{proposition}[Autonomous limits are self-adjoint]\label{prop:autonomous}
+\begin{proposition}[{Autonomous limits are self-adjoint; the mean ergodic theorem and~\cite[Remark~10.3]{JungeLeMerdyXu2006},
+\cite[Remark~5.2]{HaagerupMusat2011}}]\label{prop:autonomous}
 The averages $\frac1T\sum_{t=0}^{T-1}\Phi_t$ converge in diamond norm to $\overline\Phi=E\circ E_{\mathcal N}\circ\iota$, and if $\Phi_t$ converges, its
 limit is $\overline\Phi$. The channel $\overline\Phi$ is self-adjoint and positive semidefinite for the Hilbert--Schmidt inner product on $M_d$. In
 particular, a channel $\Psi$ with $\Psi^*\ne\Psi$ is not the long-time limit of any autonomous dynamics with a tracial bath, local or not.
@@ -131,9 +133,7 @@ local; the construction adapts Kümmerer's tensor dilations with a Bernoulli shi
 Let $\mathcal N_0$ be a von Neumann algebra with a faithful normal tracial state $\tau_0$, let $U$ be a unitary in $M_d\otimes\mathcal N_0$, and put
 $\Psi(X)=(\mathrm{id}\otimes\tau_0)[U(X\otimes1)U^*]$. Let $\mathcal B=\overline\bigotimes_{k\in\Z}(\mathcal N_0,\tau_0)$, with $U$ acting on the factor
 $k=0$, and let $\beta$ be the Bernoulli shift of $\mathcal B$. Then the autonomous dynamics $\alpha=\mathrm{Ad}\,U\circ(\mathrm{id}\otimes\beta)\circ\mathrm{Ad}\,U^*$
-has $\Phi_t\to\Psi\Psi^*$, where $\Psi^*(a)=(\mathrm{id}\otimes\tau_0)[U^*(a\otimes1)U]$ is the Hilbert--Schmidt adjoint of $\Psi$. Every channel in
-$\cK_d$ has this form $\Psi$ for some $\mathcal N_0$~\cite[Theorem~3.6]{HaagerupMusat2015}, and the channel of Theorem~B has it with
-$\mathcal N_0=L(\Gamma)$.
+has $\Phi_t\to\Psi\Psi^*$, where $\Psi^*(a)=(\mathrm{id}\otimes\tau_0)[U^*(a\otimes1)U]$ is the Hilbert--Schmidt adjoint of $\Psi$.
 \end{proposition}
 
 \begin{proof}
@@ -147,6 +147,9 @@ $y=\sum_{i,j}e_{ij}\otimes y_{ij}$. For every $x=\sum_{k,l}e_{kl}\otimes x_{kl}$
 Taking $x=U^*(e_{ji}\otimes1)U$ shows that every matrix entry of $\Phi_t(a)=E[U(\mathrm{id}\otimes\beta^t)(y)U^*]$ converges to the corresponding entry
 of $E[U(E(y)\otimes1)U^*]=\Psi(\Psi^*(a))$. Convergence on a basis of $M_d$ gives convergence in diamond norm.
 \end{proof}
+
+By a theorem of Haagerup and Musat~\cite[Theorem~3.6]{HaagerupMusat2015}, every channel in $\cK_d$ has the form $\Psi$ of
+Proposition~\ref{prop:nonlocal} for some $\mathcal N_0$, and the channel of Theorem~B has it with $\mathcal N_0=L(\Gamma)$.
 
 Nothing in Proposition~\ref{prop:nonlocal} makes the dynamics local: $U$ is an arbitrary unitary of $M_d\otimes\mathcal N_0$, and we do not know
 whether a dynamics of this kind can be given by a local rule.
