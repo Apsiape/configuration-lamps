@@ -39,7 +39,7 @@ with a finite tracial factorization are exactly the noisy operations of~\cite{HH
 
 \paragraph{Causal services.} A \emph{causal service} of a channel $\Phi$ on $M_d$ for $n$ rounds specifies a \emph{device}, its physical
 realization, which serves one use of the channel in each round. The device has a memory register of $Q$ qubits, started in a fixed state
-$\beta_0$. In each round it applies a fixed unitary to the input and the memory and then releases the $d$-dimensional output. After each round
+$\beta_0$. In each round $t$ it applies a unitary $U_t$, fixed in advance, to the input and the memory and then releases the $d$-dimensional output. After each round
 but the last, a prescribed set of memory qubits is exported for good and replaced by the same number of imported qubits in a fixed state.
 That state may be correlated within one step but is independent of everything else. An observer chooses the inputs adaptively, possibly
 entangled with references of its own. The \emph{error} of the service is the largest half trace distance between the observer's final state in
@@ -73,11 +73,12 @@ d=1+(2s+\Lambda-2r_0)+2(\Lambda-r_0+s)=1+4s+3\Lambda-4r_0 .
 \end{equation}
 The \emph{gadget channel} $\Phi_G$ on $M_d$ evaluates each symbol $w$ in the left regular representation, $\lambda(w)=\lambda([w])$ with $[w]\in G$ the
 element that $w$ represents, and traces out the group von Neumann algebra $L(G)$ with its canonical trace $\tau$:
-$\Phi_G(X)=(\mathrm{id}\otimes\tau)[U_\lambda(X\otimes1)U_\lambda^*]$. Since the relations hold, the lower right entry of the block of a triangle
+$\Phi_G(X)=(\mathrm{id}\otimes\tau)[U_\lambda(X\otimes1)U_\lambda^*]$. In particular $\Phi_G$ is factorizable, through $(L(G),\tau)$. Since
+the relations hold, the lower right entry of the block of a triangle
 $(x,y,z)$ is $-\lambda([z])$.
 
 We write the gadget as $U_\lambda=\sum_{a\in\mathcal T}c_aE_a\otimes\lambda([w_a])$, where $\mathcal T$ is the set of \emph{slots}, the nonzero
-entries, $E_a$ is the matrix unit of slot $a$, and $c_a\in\{\pm1,\pm2^{-1/2}\}$. The word $w_a$ is empty, a symbol, or the concatenation $xy$ in
+entries, $E_a$ is the matrix unit of slot $a$, and $c_a\in\{1,\pm2^{-1/2}\}$. The word $w_a$ is empty, a symbol, or the concatenation $xy$ in
 the lower right corner of a triangle. The elements $[w_a]$ are the \emph{labels}. With $A_g=\sum_{[w_a]=g}c_aE_a$, the matrices $A_g$ have disjoint
 supports, $\Phi_G(X)=\sum_gA_gXA_g^*$ and $\mathcal J(\Phi_G)=\frac1d\sum_g|A_g\rangle\!\rangle\langle\!\langle A_g|$, because
 $\tau(\lambda(g)\lambda(h)^*)=\delta_{gh}$. The Choi rank $r_*$ of $\Phi_G$ is therefore the number of distinct labels. Every label is carried by an

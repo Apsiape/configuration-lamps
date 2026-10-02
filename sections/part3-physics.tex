@@ -193,8 +193,8 @@ Appendix~\ref{app:lazy} proves parts (b) and (c).
 
 Part (b) loses nothing against Theorem~\ref{thm:main-channel}(a). A service of $\Theta_+$ yields, by Theorem~\ref{thm:extraction}, one round
 $(U,\rho)$ on the bath $\mathbb C^M$, $M=2^Q$, with small leakage and entropy production. Write $U$ in $2\times2$ blocks with respect to the
-qubit factor of the doubled system. The upper right block $B$ is where $\Theta_+$ applies $\Phi$. It is nearly a round of $\Phi$ on the same
-bath, except that it is not unitary: in the norm weighted by $\rho$, $B^*B$ is close to $1\otimes R$ for an operator $0\le R\le1$ on the bath. Where $R$ is bounded away from $0$, the operator $BR^{-1/2}$ is nearly an isometry. A smooth cutoff restricts to that part of the bath,
+qubit factor of the doubled system. The upper right block $U_{01}$ is where $\Theta_+$ applies $\Phi$. It is nearly a round of $\Phi$ on the same
+bath, except that it is not unitary: in the norm weighted by $\rho$, $U_{01}^*U_{01}$ is close to $1\otimes R$ for an operator $0\le R\le1$ on the bath. Where $R$ is bounded away from $0$, the operator $U_{01}R^{-1/2}$ is nearly an isometry. A smooth cutoff restricts to that part of the bath,
 and a polar decomposition produces a unitary $U'$ on $\mathbb C^{873}\otimes\mathbb C^M$ and a state $\rho'$, the state $\rho$ reweighted by the
 cutoff (Lemma~\ref{lem:block-extraction}). The leakage of the new round and its commutator $\|[U',1\otimes\sqrt{\rho'}\,]\|_F^2$ are at most a
 constant times the leakage and the commutator $\|[U,1\otimes\sqrt\rho\,]\|_F^2$ of the old round, a linear loss. The one-round theorem accepts

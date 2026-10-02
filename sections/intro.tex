@@ -40,7 +40,7 @@ and put $\phi(b)=\phi(a)\phi(c)^4$. If $\|\phi(a)\phi(b)-I\|_2\ge\Delta$, then
 
 Theorem~\ref{thm:main-group} gives the precise statement, with the chunk $E$ and the $25$ relations of Table~\ref{tab:certificate}. The lower
 bound is within a polylogarithmic factor in the exponent of the most the criterion can give. The exponent $\kappa$ records the price of bringing
-two lamps together: about $N^2$ local moves, each paid for by the Dehn function of $H_3$, which grows at most like $n^{4+\log107}$~\cite[Theorem~3.3]{DouglasMghirbiA}. That
+two lamps together: about $N^2$ local moves, each paid for by the Dehn function of $H_3$, which grows at most like $n^{4+\log107}$~\cite[Theorems~3.2 and~3.3]{DouglasMghirbiA}. That
 polynomial bound is the one input of Theorem~A whose proof we do not reproduce; with Lee's exponential bound alone the method gives only
 $\exp(c\,r^{1/(1+B)})$ for a constant $B$ that we cannot make explicit (Remark~\ref{rem:lee}). The $107$ is
 the factor by which a doubling endomorphism of $H_3$ multiplies area in~\cite[Section~3]{DouglasMghirbiA}; it is the only constant in $\kappa$
@@ -58,7 +58,7 @@ supported binary configurations of the three rays of $H_3$. Houghton's group mov
 configurations: a translation flips one point, and a transvection adds one point into another. One copy of $S_3$, a lamp, sits on each
 configuration (Figure~\ref{fig:lamps}). The $2^N$ configurations supported on the first $N$ points of a ray are reached by words of length
 $O(N^2)$, and two of them differ by a configuration that at most $N$ transvections clear down to a single point. Each step touches at most
-three points, so its cost is governed by the Dehn function of $H_3$ at scale $N$, which is polynomial~\cite[Theorem~3.3]{DouglasMghirbiA}.
+three points, so its cost is governed by the Dehn function of $H_3$ at scale $N$, which is polynomial~\cite[Theorems~3.2 and~3.3]{DouglasMghirbiA}.
 Commuting two of the $2^N$ lamps therefore costs a polynomial in $N$, which is polylogarithmic in the number of lamps. That is exactly what the
 criterion needs.
 
@@ -161,13 +161,13 @@ certify.
 \paragraph{Physics.} A local lattice system in $\nu$ dimensions whose bath starts maximally mixed produces, in time $T$, only channels that can
 be served with memory polynomial in $T$ and $\log n$ (Proposition~\ref{prop:light-cone}). So it needs time at least about $\delta^{-1/\nu}$ to
 produce $\Phi$ to accuracy $\delta$ (Corollary~\ref{cor:preparation}). Autonomous dynamics with a bath in its tracial state have long-time
-limits that are self-adjoint~\cite[Remark~10.3]{JungeLeMerdyXu2006},~\cite[Remark~5.2]{HaagerupMusat2011}, yet such a limit can still be
+limits that are self-adjoint (Proposition~\ref{prop:autonomous};~\cite[Remark~10.3]{JungeLeMerdyXu2006},~\cite[Remark~5.2]{HaagerupMusat2011}), yet such a limit can still be
 expensive: a bounded time-independent Hamiltonian, not local, produces in the long run a channel that trades memory and purity at the same
 rate as $\Phi$ (Proposition~\ref{prop:lazy}). Whether local autonomous dynamics can produce an expensive channel is open.
 
 \paragraph{How to read this paper.} Part~I (Sections~\ref{sec:group}--\ref{sec:ladder}) proves Theorem~A. A group theorist can read
-Sections~\ref{sec:criterion}--\ref{sec:profile} and stop: Sections~\ref{sec:more} and~\ref{sec:ladder} add the finite presentation, the
-embedding in $3V$ and the ladder, and the proof of Theorem~A does not use them. Part~II (Sections~\ref{sec:channel}--\ref{sec:main-channel-proof})
+Sections~\ref{sec:criterion}--\ref{sec:profile} and stop: Sections~\ref{sec:more} and~\ref{sec:ladder} add the finite presentation, which is
+part~(d) of Theorem~A, the embedding in $3V$ and the ladder; the profile bounds, parts~(a)--(c), do not use them. Part~II (Sections~\ref{sec:channel}--\ref{sec:main-channel-proof})
 proves Theorem~B and needs from Part~I only the definitions of Section~\ref{sec:criterion}, the statement of Theorem~A and the pair-area
 theorem. Part~III treats local physics and lists open problems. Long proofs are in the appendices. Appendix~\ref{app:imported} reproduces the proofs of the two results from the companion papers on which
 the lower bounds of Theorems~A and~B stand, and Table~\ref{tab:dependencies} in Appendix~\ref{app:provenance} lists everything else we use from them. The
