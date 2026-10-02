@@ -46,7 +46,8 @@ channels that need nearly linear memory* (2026), version 1.1.1,
 machine-readable citation metadata. Tagged releases archive the corresponding manuscript and verification scripts
 together.
 
-The DOI above is the all-versions DOI, which identifies the evolving work. The v1.1.0 archive is
+The DOI above is the all-versions DOI, which identifies the evolving work. The v1.1.1 archive is
+[doi:10.5281/zenodo.23108312](https://doi.org/10.5281/zenodo.23108312), the v1.1.0 archive is
 [doi:10.5281/zenodo.23107117](https://doi.org/10.5281/zenodo.23107117), the v1.0.2 archive is
 [doi:10.5281/zenodo.23070871](https://doi.org/10.5281/zenodo.23070871), the v1.0.1 archive is
 [doi:10.5281/zenodo.23065778](https://doi.org/10.5281/zenodo.23065778), and the v1.0.0 archive is
