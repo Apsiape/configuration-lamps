@@ -8,7 +8,17 @@ $E$ of a group, a \emph{chunk}, Cornulier's \emph{sofic profile} $\sigma_E(r)$ i
 multiplication correct, and distinct elements separated, on all but a fraction $1/r$ of the points~\cite{Cornulier2013}. He asked whether a
 sofic group can have a profile that is unbounded and not linear in $r$~\cite[Problem~3.18]{Cornulier2013}.
 
-In earlier work we found such a profile in an amenable group. Houghton's group $H_3$ is elementary amenable and finitely
+Groups whose chunks all have finite profile are the sofic groups of Gromov and Weiss~\cite{Gromov1999,Weiss2000}; amenable and residually
+finite groups are sofic. Whether every group is sofic was open until 2026, when OpenAI announced a proof that the unit group of the binary
+Leavitt algebra is not sofic~\cite{OpenAI2026}. Fournier-Facio then gave a finitely presented torsion-free example~\cite{FournierFacio2026},
+and Kun and Thom showed that generalized wreath products, with lamps $\Z/2$ over the cosets of a subgroup, are not sofic for suitable pairs of
+residually finite groups with property~(T)~\cite{KunThom2026}. In a non-sofic group some chunk has infinite profile, so the question becomes how large a profile can be
+when it is finite. Our group $\Gamma$ has the shape of those of Kun and Thom, lamps over a permutation action, but it is amenable, so all its
+profiles are finite. Slofstra and Vidick tied the hyperlinear profile, its analogue for unitary matrices, to the entanglement needed to play
+linear-system non-local games near-optimally~\cite{SlofstraVidick2018}. Slofstra then gave a finitely presented group with a chunk whose
+profile is at least $\exp(r^{c})$ for some $c>0$, but his group is not known to be sofic, so this profile may be infinite~\cite{Slofstra2018}.
+
+In earlier work we found a profile of this size in an amenable group, where every profile is finite. Houghton's group $H_3$ is elementary amenable and finitely
 presented~\cite{Brown1987}, with an explicit presentation due to Johnson~\cite{Johnson1999}, and one of its chunks has profile at least
 $\exp(\Omega(r^{0.129}))$~\cite{DouglasMghirbiA}. To our knowledge it was the first amenable group shown to have superpolynomial profile. This contradicts
 Cornulier's extension theorem~\cite[Theorem~3.15]{Cornulier2013}, which would bound that profile by $O(r^2)$, and the conclusion drawn from
@@ -45,7 +55,7 @@ polynomial bound is the one input of Theorem~A whose proof we do not reproduce; 
 $\exp(c\,r^{1/(1+B)})$ for a constant $B$ that we cannot make explicit (Remark~\ref{rem:lee}). The $107$ is
 the factor by which a doubling endomorphism of $H_3$ multiplies area in~\cite[Section~3]{DouglasMghirbiA}; it is the only constant in $\kappa$
 that is not structural, and a quadratic Dehn function for $H_3$ would give $\kappa=4$. The upper bound comes from models that hash
-configurations by random affine maps. These are far smaller than the models that Følner sets give~\cite[Proposition~3.14]{Cornulier2013},
+configurations by random affine maps. These are far smaller than the models that Følner sets give~\cite[Proposition~3.14]{Cornulier2013},~\cite[Section~4.3]{ArzhantsevaCherix2024},
 because the Følner function of $\Gamma$ is doubly exponential (Proposition~\ref{prop:folner-lower}). The finite presentation
 (Proposition~\ref{prop:fp}) comes from Cornulier's criterion for permutational wreath products~\cite[Theorem~1.1]{Cornulier2006}. Finally,
 $\Gamma$ embeds in Brin's higher-dimensional Thompson group $3V$ (Proposition~\ref{prop:3V}). So $3V$, a finitely presented simple group whose
@@ -95,12 +105,23 @@ memory channels~\cite{KretschmannWerner2005}, and to Rybár and Ziman, who asked
 each of its inputs. They showed that random unitary channels can be applied this way with a fixed finite memory, while nonunital channels
 cannot~\cite{RybarZiman2008}. We let the memory grow with the number of uses and ask how fast it must grow. We set up the resource accounting in~\cite{DouglasMghirbiB}. The \emph{exchange} counts the qubits
 the device swaps out, and the \emph{purity} counts the qubits it starts with or imports, minus their entropy (an entropy deficit, not $\Tr\rho^2$). The error is
-measured against observers who choose their inputs adaptively and keep quantum references, as for quantum strategies and
-combs~\cite{GutoskiWatrous2007,Chiribella2009}. A finite set of relations of a
+measured against observers who choose their inputs adaptively and keep quantum references, as for quantum strategies, combs and
+process tensors~\cite{GutoskiWatrous2007,Chiribella2009,Pollock2018}. A finite set of relations of a
 group defines a channel, its \emph{gadget channel}, whose memory cost is governed by how well the group can be imitated: small memory would
 give small approximate representations. For a gadget channel in the closure of channels with finite tracial factorizations, the optimal
 exchange is $\frac12\log r_*$ qubits per use, where $r_*$ is the Choi rank~\cite[Propositions~3.1 and~9.1]{DouglasMghirbiB}. We call it the
 rank rate.
+
+The quantum reverse Shannon theorem simulates $n$ uses of a channel as one block, acting on all inputs at once with free shared entanglement,
+and charges classical communication~\cite{BDHSW2014,BCR2011}; our device sees one input at a time and pays in memory. Storage and retrieval
+keeps an unknown unitary in a quantum memory for later use~\cite{SBZ2019}; our channel is known, and memory is needed because it is not
+unitary. Memory costs are known for classical simulations of sequences of quantum measurements~\cite{KGPLC2011,BFK2019}
+and for quantum models of stochastic processes and of adaptive agents~\cite{GWRV2012,EGGT2022}; their targets have temporal correlations,
+while $n$ independent uses of one channel have none. Our devices have the form of collision models~\cite{CLGP2022}: the memory plays the
+system, and the inputs and imported qubits are units that each meet it once. Collision models usually fix the collisions and derive the
+dynamics of the system; we fix the channel that the inputs see and ask how large the system must be. Purity, counted as above, is the asymptotic
+measure of the resource theory of purity, or informational nonequilibrium~\cite{HHO2003,GMNSY2015}: maximally mixed qubits are free, and its free
+operations from a system to itself, the noisy operations, are the channels with a finite tracial factorization that appear in Theorem~C.
 
 One use reveals nothing: the channel below lives on $\mathbb C^{873}$, and a single round is easy. The dimension $873$ is what the gadget
 construction gives for the $29$ words that define the channel; we made no attempt to minimize it. The cost shows up only over many rounds.
@@ -166,8 +187,8 @@ expensive: a bounded time-independent Hamiltonian, not local, produces in the lo
 rate as $\Phi$ (Proposition~\ref{prop:lazy}). Whether local autonomous dynamics can produce an expensive channel is open.
 
 \paragraph{How to read this paper.} Part~I (Sections~\ref{sec:group}--\ref{sec:ladder}) proves Theorem~A. A group theorist can read
-Sections~\ref{sec:criterion}--\ref{sec:profile} and stop: Sections~\ref{sec:more} and~\ref{sec:ladder} add the finite presentation, which is
-part~(d) of Theorem~A, the embedding in $3V$ and the ladder; the profile bounds, parts~(a)--(c), do not use them. Part~II (Sections~\ref{sec:channel}--\ref{sec:main-channel-proof})
+Sections~\ref{sec:criterion}--\ref{sec:profile} and stop: Sections~\ref{sec:more} and~\ref{sec:ladder} add the finite presentation, the
+embedding in $3V$ and the ladder; the bounds in parts~(a) and~(b) of Theorem~A do not use them. Part~II (Sections~\ref{sec:channel}--\ref{sec:main-channel-proof})
 proves Theorem~B and needs from Part~I only the definitions of Section~\ref{sec:criterion}, the statement of Theorem~A and the pair-area
 theorem. Part~III treats local physics and lists open problems. Long proofs are in the appendices. Appendix~\ref{app:imported} reproduces the proofs of the two results from the companion papers on which
 the lower bounds of Theorems~A and~B stand, and Table~\ref{tab:dependencies} in Appendix~\ref{app:provenance} lists everything else we use from them. The
