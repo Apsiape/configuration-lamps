@@ -1,0 +1,267 @@
+%======================================================================
+\section{The lazy doubling in detail}\label{app:lazy}
+%======================================================================
+
+This appendix proves parts (b) and (c) of Proposition~\ref{prop:lazy}, used in Section~\ref{sec:physics-lazy}, and
+Proposition~\ref{prop:compositions}, used in Appendix~\ref{sec:physics-finer}; it also records two remarks on $\Theta_+$. Part (b) needs the
+one-round theorem in a commutator form (Lemma~\ref{lem:commutator-form}), a weighted intertwining lemma (Lemma~\ref{lem:twisted}) and a block
+extraction with a smooth cutoff (Lemma~\ref{lem:block-extraction}).
+
+Throughout, $\Phi$ is a general unital channel on $M_d$, with doubling
+$\Theta(\begin{smallmatrix}x&y\\u&w\end{smallmatrix})=\mathrm{diag}(\Phi(w),\Phi^*(x))$ and $\Theta_+=\frac12(\mathrm{id}+\Theta)$ on $M_{2d}$. Let
+$\mathcal S_\Phi\subseteq M_d$ be the span of the Kraus operators of $\Phi$, so that the Choi support of $\Phi$ is
+$\{|A\rangle\!\rangle:A\in\mathcal S_\Phi\}$, and let $\Pi_\Phi$ also denote the Hilbert--Schmidt projection of $M_d$ onto $\mathcal S_\Phi$. Since
+$\Theta(X)=\sum_g(e_{01}\otimes A_g)X(e_{01}\otimes A_g)^*+(e_{10}\otimes A_g^*)X(e_{10}\otimes A_g^*)^*$ for Kraus operators $A_g$ of $\Phi$, the Choi
+support of $\Theta_+$ corresponds to the span of the three pairwise orthogonal subspaces
+\begin{equation}\label{eq:lazy-support}
+\mathbb C\,1_{2d},\qquad e_{01}\otimes\mathcal S_\Phi,\qquad e_{10}\otimes\mathcal S_\Phi^*
+\end{equation}
+of $M_{2d}=M_2\otimes M_d$. As in Appendix~\ref{sec:weighted-proof}, $\|\cdot\|_F$ is the Hilbert--Schmidt norm and $\|\cdot\|$ the operator
+norm. An operator $X$ on the bath $\mathbb C^M$ is identified with $1\otimes X$ when it acts on $\mathbb C^d\otimes\mathbb C^M$, so that
+$\|1\otimes X\|_F=\sqrt d\,\|X\|_F$.
+
+\begin{lemma}[Commutator form of the one-round theorem]\label{lem:commutator-form}
+Lemma~\ref{lem:weighted-extraction}, Theorem~\ref{thm:weighted} and Corollary~\ref{cor:amplification} remain true if, in the definition
+$\nu=\ell+\Delta S$, the entropy production $\Delta S$ of the round $\Psi(X)=\mathrm{Tr}_M\,U(X\otimes\rho)U^*$ is replaced by any $\tilde s\ge0$ with
+$\|[U,1\otimes\sqrt\rho\,]\|_F^2\le4d\,\tilde s\ln2$, and if the hypothesis $\ddia(\Psi,\Phi_G)\le1/8$ is replaced by the weaker hypothesis
+\begin{equation}\label{eq:coherence}
+|\langle z|\Psi(|z\rangle\langle0|)|0\rangle|\le\tfrac34,
+\end{equation}
+where $0$ and $z$ are the anchor positions of the empty word and of $j$; in Lemma~\ref{lem:weighted-extraction}(iii) the bound then reads
+$E(\phi(a)\phi(b))\ge0.66-e$. Conversely, every round can be rewritten, without changing its channel or its leakage, as a round
+$(U',\rho)$ with $U'=(1\otimes W)U$ for which $\tilde s=\Delta S$ is admissible.
+\end{lemma}
+
+\begin{proof}
+The rewriting is the normalization step of the proof of Lemma~\ref{lem:weighted-extraction}, after which~\eqref{eq:block-commutators} is
+the inequality $\|[U',1\otimes\sqrt\rho\,]\|_F^2\le4d\,\Delta S\ln2$; its proof uses only that $U'$ is a unitary on $\mathbb C^d\otimes\mathbb C^M$. In
+the proof of Lemma~\ref{lem:weighted-extraction}, $\Delta S$ enters only through~\eqref{eq:block-commutators}. Afterwards only the bounds
+$\epsilon_S\le2\sqrt{\ln2}\,\eta$, $\epsilon_\ell+\epsilon_S\le\sqrt{1+4\ln2}\,\eta$ and $2\epsilon_\ell^2+2\epsilon_S^2\le8\ln2\,\eta^2$ with $\eta=\sqrt{d\nu}$ are used,
+together with the unitarity of $U$, its leakage and $\ddia(\Psi,\Phi_G)$. These bounds hold with $\epsilon_S^2\le4d\tilde s\ln2$ and $\nu=\ell+\tilde s$.
+The diamond hypothesis enters only in the displacement step, through
+$|\Tr(\rho B_\varnothing^*B_j)|=|\langle z|\Psi(|z\rangle\langle0|)|0\rangle|\le2u\le\frac14$. Under~\eqref{eq:coherence} instead,
+$E(\phi(j))^2\ge2-\frac32-4\epsilon_\ell\ge\frac12-4\eta$, so $E(\phi(a)\phi(b))\ge\sqrt{1/2-4\eta}-e\ge0.66-e$ if $\eta\le\frac1{64}$, while $e>1$ otherwise. In
+the proof of Theorem~\ref{thm:weighted} this gives $E(Z_i)\ge0.66-\delta_L$ and $\Delta_i\ge0.66-30\delta_L\ge0.66-b_*>\frac12$ in place of
+$\Delta_i\ge1-b_*$, and $\Delta_i\ge\frac12$ is all that Corollary~\ref{cor:sector} needs. Theorem~\ref{thm:weighted} and Corollary~\ref{cor:amplification} use
+the round only through Lemma~\ref{lem:weighted-extraction}.
+\end{proof}
+
+\begin{lemma}[Weighted intertwining]\label{lem:twisted}
+Let $B$ be an operator on $\mathbb C^d\otimes\mathbb C^M$ with $\|B\|\le1$, let $R,R'$ be self-adjoint operators on $\mathbb C^M$, $\xi$ an operator on $\mathbb C^M$, and
+$\Sigma=BR-R'B$.
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+\item If $h$ is Lipschitz with constant $L_h$ on an interval containing the spectrum of $R$, then $\|[h(R),\xi]\|_F\le L_h\,\|[R,\xi]\|_F$.
+\item If $g(x)=\int\hat g(t)e^{itx}dt$ with $M_1=\int|t\,\hat g(t)|\,dt$ and $M_2=\int t^2|\hat g(t)|\,dt$ finite, then
+\[
+\bigl\|\bigl(Bg(R)-g(R')B\bigr)\xi\bigr\|_F\ \le\ M_1\,\|\Sigma\xi\|_F+\tfrac12M_2\,\|\Sigma\|\,\sqrt d\,\|[R,\xi]\|_F .
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) In an eigenbasis of $R$ with eigenvalues $r_k$, the entries of $[h(R),\xi]$ and $[R,\xi]$ are $(h(r_k)-h(r_l))\xi_{kl}$ and $(r_k-r_l)\xi_{kl}$.
+(ii) Differentiating $\theta\mapsto e^{i\theta tR'}Be^{i(1-\theta)tR}$ gives
+$Be^{itR}-e^{itR'}B=it\int_0^1e^{i\theta tR'}\,\Sigma\,e^{i(1-\theta)tR}\,d\theta$. Write $e^{i(1-\theta)tR}\xi=\xi e^{i(1-\theta)tR}+[e^{i(1-\theta)tR},\xi]$ and use
+(i) with $h(x)=e^{i(1-\theta)tx}$; unitaries do not change Hilbert--Schmidt norms, so
+$\|(Be^{itR}-e^{itR'}B)\xi\|_F\le|t|\,\|\Sigma\xi\|_F+\frac{t^2}2\|\Sigma\|\sqrt d\,\|[R,\xi]\|_F$. Integrate against $|\hat g(t)|\,dt$.
+\end{proof}
+
+We fix the cutoff once and for all. Let $S:\mathbb R\to[0,1]$ be smooth with $S=0$ on $(-\infty,0]$ and $S=1$ on $[1,\infty)$, let $0<s_0\le\frac14$, and put
+\[
+g(x)=\sin\bigl(\tfrac\pi2S(2x/s_0-1)\bigr)\,S(3-2x),\qquad g_2(x)=\cos\bigl(\tfrac\pi2S(2x/s_0-1)\bigr),\qquad f(x)=\sqrt x\,g(x).
+\]
+Then $g$ is smooth with compact support, so $M_g:=\int(|t|+t^2)|\hat g(t)|\,dt<\infty$; on $[0,1]$ we have $0\le g\le1$, $g=0$ on $[0,s_0/2]$,
+$g=1$ and $g_2=0$ on $[s_0,1]$, and $g^2+g_2^2=1$. Let $L_g$ be a common Lipschitz constant of $g$ and $g_2$ on $[0,1]$, put $\sigma=\sqrt{2/s_0}$ and
+\[
+K_a=11M_g+1+1.5L_g+2\sigma(4+1.5L_g).
+\]
+These depend only on $s_0$.
+
+\begin{lemma}[Block extraction]\label{lem:block-extraction}
+Let $\Phi$ be a unital channel on $M_d$, and let $\Psi(X)=\mathrm{Tr}_M\,U(X\otimes\rho)U^*$ be a round of $\Theta_+$, with $U$ unitary on
+$\mathbb C^2\otimes\mathbb C^d\otimes\mathbb C^M$, $u=\ddia(\Psi,\Theta_+)$ and leakage $\ell$ relative to $\Theta_+$. Put
+$\epsilon_\ell=\sqrt{2d\ell}$, $\epsilon_S=\|[U,1\otimes\sqrt\rho\,]\|_F$, $\gamma=\epsilon_\ell+\epsilon_S$ and $\mathcal E=2u+s_0+4K_a\sqrt d\,\gamma$. If $\mathcal E<\frac12$,
+there are a unitary $U'$ on $\mathbb C^d\otimes\mathbb C^M$ and a state $\rho'$ on $\mathbb C^M$ such that the round
+$\Psi'(X)=\mathrm{Tr}_M\,U'(X\otimes\rho')U'^*$ of $\Phi$, with leakage $\ell_\Phi(\Psi')$ relative to $\Phi$, satisfies
+\[
+\ddia(\Psi',\Phi)\le\frac{\mathcal E}{\frac12-\mathcal E},\qquad \ell_\Phi(\Psi')\le\frac{4K_a^2\gamma^2}{d(\frac12-\mathcal E)},\qquad
+\bigl\|[U',1\otimes\sqrt{\rho'}\,]\bigr\|_F^2\le\frac{8K_a^2\gamma^2}{\frac12-\mathcal E},
+\]
+and $|\langle x|\Psi'(|x\rangle\langle y|)|y\rangle|\le \mathcal E/(\frac12-\mathcal E)$ for all unit vectors $x,y$ with $\langle x|\Phi(|x\rangle\langle y|)|y\rangle=0$.
+\end{lemma}
+
+\begin{proof}
+Put $\xi=\sqrt\rho$ and write $U=\sum_{a,b\in\{0,1\}}e_{ab}\otimes U_{ab}$ with $D_0=U_{00}$, $B=U_{01}$, $D_1=U_{11}$, operators on $\mathbb C^d\otimes\mathbb C^M$.
+
+\emph{Leakage bounds the residuals.} As in the proof of Lemma~\ref{lem:weighted-extraction}, $\mathcal J(\Psi)$ is the marginal of the unit vector
+$(2d)^{-1/2}U\xi\in M_{2d}\otimes M_M$, so $\ell=(2d)^{-1}\|(\Pi^\perp\otimes\mathrm{id})(U\xi)\|_F^2$, with $\Pi$ the projection of $M_{2d}$ onto the span
+of~\eqref{eq:lazy-support}. Put $\alpha=(2d)^{-1}(\Tr\otimes\mathrm{id})(U)$, the average of the $2d$ diagonal entries of $U$ in $M_M$, and
+$E_a=D_a-\alpha$, $F=(\Pi_\Phi^\perp\otimes\mathrm{id})(B)$. By~\eqref{eq:lazy-support}, $(\Pi^\perp\otimes\mathrm{id})(U)$ has the diagonal blocks $E_0,E_1$ and
+the upper right block $F$; since $\Pi^\perp\otimes\mathrm{id}$ commutes with right multiplication by $\xi$, the numbers $e_a=\|E_a\xi\|_F$ and
+$e_F=\|F\xi\|_F$ are at most $\epsilon_\ell$. Also $\|\alpha\|\le1$ and $\|E_a\|\le2$.
+
+\emph{The blocks nearly commute with $\xi$.} Put $k_X=\|[X,\xi]\|_F$ for $X\in\{D_0,B,D_1\}$; these are at most $\epsilon_S$. The diagonal entries of
+$U$ are entries of $D_0$ and $D_1$, so by Cauchy--Schwarz
+$k_\alpha:=\sqrt d\,\|[\alpha,\xi]\|_F\le(k_{D_0}^2+k_{D_1}^2)^{1/2}/\sqrt2\le\epsilon_S/\sqrt2$. With $R=1-\alpha^*\alpha$ and
+$R'=1-\alpha\alpha^*$, both between $0$ and $1$, $k_R:=\sqrt d\,\|[R,\xi]\|_F\le2k_\alpha\le\sqrt2\,\epsilon_S$, and likewise $k_{R'}\le\sqrt2\,\epsilon_S$.
+
+\emph{The unitarity defects are small.} Unitarity gives $B^*B=1-D_1^*D_1$ and $BB^*=1-D_0D_0^*$, hence
+\begin{gather*}
+\Delta:=R-B^*B=\alpha^*E_1+E_1^*D_1,\qquad\Delta':=R'-BB^*=\alpha E_0^*+E_0D_0^*,\\
+\Sigma:=BR-R'B=B\Delta-\Delta'B,
+\end{gather*}
+with $\|\Delta\|,\|\Delta'\|\le1$ and $\|\Sigma\|\le2$. From $\xi E_1=E_1\xi-[D_1,\xi]+[\alpha,\xi]$ and $D_1\xi=\xi D_1+[D_1,\xi]$,
+$\|\Delta\xi\|_F\le e_1+\|\xi E_1\|_F+2k_{D_1}\le2e_1+3k_{D_1}+k_\alpha\le4\gamma$. Symmetrically $\|\Delta'\xi\|_F\le2e_0+3k_{D_0}+k_\alpha\le4\gamma$,
+and $\Sigma\xi=B\Delta\xi-\Delta'\xi B-\Delta'[B,\xi]$ gives $\|\Sigma\xi\|_F\le9\gamma$.
+
+\emph{$Z_0$ factors in two ways.} Let $P$ and $P'$ be the spectral projections of $R$ and $R'$ for $(s_0/2,\infty)$. Since $g$ vanishes on $[0,s_0/2]$,
+$g(R)=R^{-1/2}Pf(R)$ with $\|R^{-1/2}P\|\le\sigma$, and likewise for $R'$. The operators $B_1=BR^{-1/2}P$ and $B_1'=R'^{-1/2}P'B$ satisfy
+\[
+B_1^*B_1=P-\tilde\Delta,\quad \tilde\Delta=PR^{-1/2}\Delta R^{-1/2}P,\qquad B_1'B_1'^*=P'-\tilde\Delta',\quad\tilde\Delta'=P'R'^{-1/2}\Delta'R'^{-1/2}P'.
+\]
+Take polar decompositions $B_1=V_1|B_1|$ and $B_1'=|B_1'^*|V_1'$ with $V_1,V_1'$ unitary. On the range of $1\otimes P$ we have
+$|B_1|=1+\varphi(\tilde\Delta)$ with $\varphi(x)=\sqrt{1-x}-1$ and $\tilde\Delta\le1$, and $\varphi(x)^2\le x^2$; so $\|(|B_1|-P)Y\|_F\le\|\tilde\Delta Y\|_F$
+for every $Y$ with range in that subspace, and similarly for $B_1'$. Put $Z_0=Bg(R)\xi=B_1f(R)\xi$. Then
+$Z_0-V_1f(R)\xi=V_1(|B_1|-P)f(R)\xi$, and $\tilde\Delta f(R)\xi=PR^{-1/2}\Delta g(R)\xi$, while
+$\|\Delta g(R)\xi\|_F\le\|\Delta\xi\|_F+\sqrt d\,\|[g(R),\xi]\|_F\le\|\Delta\xi\|_F+L_g\,k_R$ by Lemma~\ref{lem:twisted}(i). Hence
+\[
+a_1:=\|Z_0-V_1f(R)\xi\|_F\le\sigma(4+1.5L_g)\gamma .
+\]
+On the other side,
+$Z_0=(Bg(R)-g(R')B)\xi+g(R')[B,\xi]+[g(R'),\xi]B+\xi f(R')B_1'$ and $\xi f(R')B_1'=\xi f(R')V_1'+\xi f(R')(|B_1'^*|-P')V_1'$, where
+$\|\xi f(R')(|B_1'^*|-P')\|_F\le\|\tilde\Delta'f(R')\xi\|_F\le\sigma(\|\Delta'\xi\|_F+L_g\,k_{R'})$. By Lemma~\ref{lem:twisted}(ii),
+$\|(Bg(R)-g(R')B)\xi\|_F\le M_g(\|\Sigma\xi\|_F+k_R)\le11M_g\gamma$. Hence
+\[
+a_2:=\|Z_0-\xi f(R')V_1'\|_F\le11M_g\gamma+(1+1.5L_g)\gamma+\sigma(4+1.5L_g)\gamma,\qquad a_1+a_2\le K_a\gamma .
+\]
+
+\emph{The polar part of $Z_0$ nearly intertwines $\zeta_1$ and $\zeta_2$.} Put $\zeta_1=|f(R)\xi|=(\xi f(R)^2\xi)^{1/2}$ and
+$\zeta_2=|(\xi f(R'))^*|=(\xi f(R')^2\xi)^{1/2}$. Then $|V_1f(R)\xi|=\zeta_1$ and $|(\xi f(R')V_1')^*|=\zeta_2$, as operators $1\otimes\zeta_i$. By the
+Araki--Yamagami inequality $\||X|-|Y|\|_F\le\sqrt2\,\|X-Y\|_F$~\cite{ArakiYamagami1981}, applied to $Z_0$ and to $Z_0^*$,
+$\||Z_0|-\zeta_1\|_F\le\sqrt2\,a_1$ and $\||Z_0^*|-\zeta_2\|_F\le\sqrt2\,a_2$. Let $Z_0=O|Z_0|=|Z_0^*|O$ with $O$ unitary. Then
+\[
+\|O\zeta_1-\zeta_2O\|_F\le\|O(\zeta_1-|Z_0|)\|_F+\|(|Z_0^*|-\zeta_2)O\|_F\le\sqrt2(a_1+a_2)=:\delta .
+\]
+
+\emph{Build the new round.} The Hermitian operators $O(1\otimes\zeta_1)O^*$ and $1\otimes\zeta_2$ are within $\delta$ in $\|\cdot\|_F$, and their
+spectra are those of $\zeta_1$ and $\zeta_2$, each repeated $d$ times. By the Hoffman--Wielandt inequality~\cite{HoffmanWielandt1953}, the decreasing
+eigenvalue lists $(x_k)$ of $\zeta_1$ and $(y_k)$ of $\zeta_2$ satisfy $d\sum_k(x_k-y_k)^2\le\delta^2$; so the unitary $W_h$ of $\mathbb C^M$ that maps
+an eigenbasis of $\zeta_1$ to one of $\zeta_2$ in the same order has $\|1\otimes(W_h\zeta_1W_h^*-\zeta_2)\|_F\le\delta$. Put $U'=(1\otimes W_h^*)O$,
+$c_1=\Tr\zeta_1^2=\Tr\rho f(R)^2$ and $\rho'=\zeta_1^2/c_1$. Then
+$\|[U',1\otimes\zeta_1]\|_F\le\|O\zeta_1-\zeta_2O\|_F+\|(\zeta_2-W_h\zeta_1W_h^*)O\|_F\le2\delta$, which is the third bound once we know
+$c_1\ge\frac12-\mathcal E$. The channel of $(U',\rho')$ is $\Psi'=\Phi_{O\zeta_1}/c_1$, where $\Phi_X(w)=\mathrm{Tr}_M[X(w\otimes1)X^*]$. Its leakage is
+$(dc_1)^{-1}\|(\Pi_\Phi^\perp\otimes\mathrm{id})(O\zeta_1)\|_F^2$, and
+\[
+\|(\Pi_\Phi^\perp\otimes\mathrm{id})(O\zeta_1)\|_F\le\|(\Pi_\Phi^\perp\otimes\mathrm{id})(Z_0)\|_F+\sqrt2\,a_1\le e_F+L_g\,k_R+\sqrt2\,a_1\le2K_a\gamma,
+\]
+since $(\Pi_\Phi^\perp\otimes\mathrm{id})(Bg(R)\xi)=F\xi\,g(R)+(\Pi_\Phi^\perp\otimes\mathrm{id})(B[g(R),\xi])$. This is the second bound.
+
+\emph{The new round is close to $\Phi$.} For the completely positive maps $\Phi_X$ just defined, $\|\Phi_X\|_\diamond=\|\mathrm{Tr}_M(X^*X)\|$, and
+$\|\Phi_X-\Phi_Y\|_\diamond\le\|X-Y\|_F\bigl(\|\mathrm{Tr}_M X^*X\|^{1/2}+\|\mathrm{Tr}_M Y^*Y\|^{1/2}\bigr)$, where $\mathrm{Tr}_M$ traces out the input bath.
+Let $Y=B\xi$. The upper left block of $\Psi(e_{11}\otimes w)$ is $\Phi_Y(w)$ and that of $\Theta_+(e_{11}\otimes w)$ is $\frac12\Phi(w)$; compressing to
+the block, $\|\Phi_Y-\frac12\Phi\|_\diamond\le2u$. Since $g^2+g_2^2=1$ on $[0,1]$, $\Phi_Y-\Phi_{Z_0}-\Phi_{Bg_2(R)\xi}$ is
+$w\mapsto\mathrm{Tr}_M[B(w\otimes X)B^*]$ with $X=\sum_{h\in\{g,g_2\}}h(R)[h(R),\rho]$, and $\|X\|_1\le4L_g\|[R,\xi]\|_F$, so its diamond norm is at most
+$4L_g\,k_R/\sqrt d$, by splitting $X$ into positive and negative parts and using $B^*B\le1$. Next,
+$\|\Phi_{Bg_2(R)\xi}\|_\diamond\le\Tr\rho\,g_2(R)Rg_2(R)+\|\xi g_2(R)\Delta g_2(R)\xi\|_1\le s_0+\sqrt d(\|\Delta\xi\|_F+L_g\,k_R)$, because $xg_2(x)^2\le s_0$ on
+$[0,1]$. And $\mathrm{Tr}_M\zeta_1^2=c_1\le1$ and $\mathrm{Tr}_M Z_0^*Z_0\le1$ give $\|\Phi_{O\zeta_1}-\Phi_{Z_0}\|_\diamond\le2\sqrt2\,a_1$. Adding up,
+\[
+\bigl\|\Phi_{O\zeta_1}-\tfrac12\Phi\bigr\|_\diamond\le2u+s_0+2\sqrt2\,a_1+\sqrt d(4+1.5L_g)\gamma+6L_g\gamma/\sqrt d\le \mathcal E .
+\]
+Evaluating at $\tau_d$ gives $|c_1-\frac12|\le \mathcal E$, so $c_1\ge\frac12-\mathcal E$, and $\|\Psi'-\Phi\|_\diamond\le \mathcal E/c_1+|1/(2c_1)-1|\le2\mathcal E/c_1$. If
+$\langle x|\Phi(|x\rangle\langle y|)|y\rangle=0$, then $|\langle x|\Phi_{O\zeta_1}(|x\rangle\langle y|)|y\rangle|\le\|\Phi_{O\zeta_1}-\frac12\Phi\|_\diamond\le \mathcal E$, and dividing by
+$c_1$ gives the last bound.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:lazy}(b)]
+Let a service of $\Theta_+$ for $n$ rounds have error $\epsilon\le\frac1{16}$ and $P+C\le B$ with $\log n\le B$. Theorem~\ref{thm:extraction},
+applied to $\Theta_+$ on $M_{1746}$, gives a round with bath $\mathbb C^M$, $M=2^Q$, $u=\ddia(\Psi_t,\Theta_+)\le\frac1{15}$ and
+$\nu_t=\ell_t+\Delta S_t\le t_n\le\frac{16}{15}\cdot\frac{B+1+\log n}n\le\frac{3.2\,B}n$, as in the proof of Theorem~\ref{thm:main-channel}. The normalization
+step of the proof of Lemma~\ref{lem:weighted-extraction}, which uses only that $U_t$ is a unitary on $\mathbb C^{2d}\otimes\mathbb C^M$, replaces $U_t$ by
+$(1\otimes W)U_t$ without changing $\Psi_t$ or its leakage, after which $\epsilon_S^2=\|[U_t,1\otimes\sqrt{\rho_t}\,]\|_F^2\le4(2d)\Delta S_t\ln2$; so
+$\gamma^2\le2(2d\ell_t+8d\ln2\,\Delta S_t)\le12d\,\nu_t$. Apply Lemma~\ref{lem:block-extraction} with $s_0=\frac1{100}$ and $d=873$:
+$\mathcal E\le\frac2{15}+\frac1{100}+14K_ad\sqrt{\nu_t}\le\frac3{14}$ as soon as $14K_ad\sqrt{3.2B/n}\le0.07$. Then $c_1\ge\frac12-\mathcal E\ge\frac27$, and the anchors $0$
+and $z=z(j)$ satisfy $\langle z|\Phi(|z\rangle\langle0|)|0\rangle=\tau(\lambda([j]))=0$, so the round $\Psi'$ satisfies~\eqref{eq:coherence}. By
+Lemma~\ref{lem:commutator-form} it may be used in Corollary~\ref{cor:amplification} with
+\[
+\nu'=\ell_\Phi(\Psi')+\frac{\|[U',1\otimes\sqrt{\rho'}]\|_F^2}{4d\ln2}\le\Bigl(4+\frac2{\ln2}\Bigr)\frac{K_a^2\gamma^2}{d\,c_1}\le290K_a^2\,\nu_t\le928K_a^2\,\frac Bn .
+\]
+Let $C_R$ and $y_0$ be the constants of Corollary~\ref{cor:amplification}(a) for $R_\Phi$ and the transport of Section~\ref{sec:lamp-channel}, and put
+$y_n=n/(928K_a^2C_RB)$, so that $C_R\nu'y_n\le1$ and $y_n\le n$. With
+$c_0=\min\{1/(928K_a^2C_Ry_0),\ (0.07/(14K_ad))^2/3.2\}$ and $B\le c_0n$, the corollary gives
+\[
+Q=\log M\ \ge\ S(\rho')\ \ge\ \frac{y_n}{32(\log y_n)^{2\kappa}}\ \ge\ \frac1{29696\,K_a^2C_R}\cdot\frac n{B(\log n)^{2\kappa}} .
+\]
+For the second statement take $B=\max(1,A_0)\log n$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:lazy}(c)]
+Let $E$, $K_G$ and a $(1-r^{-1})$-expansive $r^{-1}$-morphism $f:E\to\Sym(\Omega)$ be as in Proposition~\ref{prop:sofic-upper}, with its unitary
+$U_f=\sum_ac_aE_a\otimes P_{\pi_a}$ and its set $\Omega_0$ of good points, at which $\mathrm{Tr}_\Omega U_f(w\otimes|\omega\rangle\langle\omega|)U_f^*=\Phi(w)$. Let
+$\Omega_1$ be the set of $\omega$ with $(f([x])f([y]))^{-1}(\omega)=f([z])^{-1}(\omega)$ for every triangle $(x,y,z)$ and $f(g)^{-1}(\omega)\ne f(h)^{-1}(\omega)$ for
+distinct labels $g,h$. As $U_f^*(\psi\otimes|\omega\rangle)=\sum_a\overline{c_a}E_a^*\psi\otimes|\pi_a^{-1}(\omega)\rangle$, the computation of
+Proposition~\ref{prop:sofic-upper} gives $\mathrm{Tr}_\Omega U_f^*(x\otimes|\omega\rangle\langle\omega|)U_f=\Phi^*(x)$ for $\omega\in\Omega_1$. A point outside $\Omega_1$
+is the image under the bijection $f([z])$ of a point where $f([x])f([y])$ and $f([z])$ differ, or under $f(g)$ of a point where $f(g)$ and $f(h)$
+agree; so $|\Omega\setminus\Omega_1|\le K_GM/r$, and $\Omega_*=\Omega_0\cap\Omega_1$ has $|\Omega_*|\ge(1-2K_G/r)M$.
+
+Let the bath be a coin qubit, a phase qubit carrying $z=\mathrm{diag}(1,i)$, and $\mathbb C^\Omega$, and put
+$W_f=|0\rangle\langle0|\otimes1+|1\rangle\langle1|\otimes V_f$ with $V_f=\bigl(\begin{smallmatrix}0&U_f\otimes z\\U_f^*\otimes z^*&0\end{smallmatrix}\bigr)$. For every
+state $\beta$ that is a mixture of the $|\omega\rangle\langle\omega|$, $\omega\in\Omega_*$, the bath state $\tau_2\otimes\tau_2\otimes\beta$ makes $W_f$ apply
+exactly $\Theta_+$. The coin splits the channel into $\frac12\mathrm{id}$ and $\frac12$ the channel of $V_f$, the phase qubit removes the off-diagonal
+blocks since $\tau(z^2)=0$, and the diagonal blocks are $\Phi(w)$ and $\Phi^*(x)$ at the points of $\Omega_*$. Now repeat the exact service of
+Proposition~\ref{prop:sofic-upper}(c) with $K_G$ replaced by $2K_G$ and two more qubits, which are imported maximally mixed. With
+$\eta=B/(4n)$ and $r=2K_G/\eta$ the imported register is maximally mixed on $\mathrm{span}\{|\omega\rangle:\omega\in\Omega_*\}\otimes\mathbb C^{k_0}$ and on the
+two qubits, its deficit is below $B/n$, every round applies exactly $\Theta_+$, and $Q=\lceil\log\sigma_E(8K_Gn/B)+\log(4n/B)\rceil+2$. The bound
+$\log\sigma_E(R)\le C_ER\log R$ of Theorem~\ref{thm:main-group}(b) gives $Q\le K(n/B)\log(2n/B)$. With $\beta$ maximally mixed on all of $\Omega$,
+the same unitary gives a finite tracial factorization of $(1-\vartheta)\Theta_++\vartheta\,\Upsilon$ for some channel $\Upsilon$ and some $\vartheta\le2K_G/r$, for every $r$; hence
+$\Theta_+\in\cK_{1746}$.
+\end{proof}
+
+\begin{remark}[Exact finite factorizations of $\Theta_+$]\label{rem:lazy-exact}
+$\Theta_+$ is an exact autonomous value but not an exact finite factor. Indeed, if $\Theta_+(X)=(\mathrm{id}\otimes\tau_m)[W(X\otimes1)W^*]$ for a unitary
+$W$ on $\mathbb C^{2d}\otimes\mathbb C^m$, the proof of Lemma~\ref{lem:block-extraction} with $\rho=\tau_m$ has $\ell=0$ and $\epsilon_S=0$: the diagonal blocks of
+$W$ are both $1\otimes\alpha$, its upper right block $B$ lies in $\mathcal S_\Phi\otimes M_m$, $B^*B=1\otimes R$ and $BB^*=1\otimes R'$. Then
+$B(1\otimes R)=(1\otimes R')B$, so for every eigenvalue $\mu>0$ of $R$ the operator $\mu^{-1/2}B$ maps $\mathbb C^d\otimes\ker(R-\mu)$ unitarily onto
+$\mathbb C^d\otimes\ker(R'-\mu)$, and the upper left block of $\Theta_+(e_{11}\otimes w)$ writes $\Phi$ as the convex combination
+$\sum_\mu\frac{2\mu m_\mu}m\,\Phi_\mu$ of exact factors with baths of dimension $m_\mu=\dim\ker(R-\mu)\le m$. For the channel of
+Theorem~\ref{thm:main-channel} this is impossible: such a combination is a single round with $\ell=\Delta S=0$, a direct sum of flat baths, and
+Theorem~\ref{thm:weighted} with $\nu=0$ would give it entropy at least $N/16$ for every $N$.
+\end{remark}
+
+\begin{remark}[A lower exchange]\label{rem:lazy-exchange}
+At an anchor $z$ of the gadget, $\Phi(|z\rangle\langle z|)=|z\rangle\langle z|$, so $\Theta_+$ maps $|1\rangle\langle1|\otimes|z\rangle\langle z|$ to the flat state
+$\frac12(|0\rangle\langle0|+|1\rangle\langle1|)\otimes|z\rangle\langle z|$ of rank two. Proposition~\ref{prop:purity-budget} with $r=2$ therefore gives $P+C<3Q+6$ for
+services of $\Theta_+$ with error at most $1/16$ and exchange $J\le n/2$. Proposition~\ref{prop:lazy}(b), used as in the proof of
+Theorem~\ref{thm:main-channel}(b) with $B=\max(3Q+6,\log n)$, then gives $Q\ge c\sqrt n/(\log n)^\kappa$ for such services, whatever their purity. If
+$B>c_0n$, then already $Q\ge(c_0n-6)/3$.
+\end{remark}
+
+\begin{proof}[Proof of Proposition~\ref{prop:compositions}]
+Let $\mathcal F$ be the set of labels, and write $A_g=\sum_{[w_a]=g}c_aE_a$, so that $\Phi_G\Phi_G^*(X)=\sum_{g,h}A_gA_h^*XA_hA_g^*$. A product $A_gA_h^*$
+is a sum of terms $c_a\overline{c_b}E_aE_b^*$ over slots $a,b$ in a common column, so it vanishes unless $g$ and $h$ label two slots of one column. In a
+triangle block with labels $1,y$ in the first row and $x,z$ in the second, where $z=xy$, the columns carry the labels $\{1,x\}$ and $\{y,z\}$; so
+$A_gA_h^*\ne0$ forces $hg^{-1}\in K=\{1\}\cup\{x^{\pm1}\}$, the union over the triangles. For $k\in K$ let $\pi_k$ be a permutation of $\mathcal F$ that
+extends the partial map $g\mapsto kg$, defined when $g,kg\in\mathcal F$, with $\pi_1=\mathrm{id}$ and $\pi_{k^{-1}}=\pi_k^{-1}$. For $k\ne k^{-1}$ extend
+one of the two maps and invert it; for an involution $k$ the partial map is an involution on its domain, which we extend by the identity.
+
+The bath is $r_*+|K|-1\le3r_*-2$ qubits. On the first $r_*$, indexed by $\mathcal F$, let $V_g$ be the Pauli matrix $Z$ on the qubit $g$, so that
+$\tau(V_gV_h)=\delta_{gh}$, and let $P_k$ permute these qubits by $\pi_k$, so that $P_kV_gP_k^*=V_{kg}$ whenever $g,kg\in\mathcal F$. On the other
+qubits choose diagonal unitaries $\chi_k$ with $\chi_1=I$, $\chi_{k^{-1}}=\chi_k^*$ and $\tau(\chi_k^*\chi_l)=\delta_{kl}$: for an involution, $Z$ on one
+qubit, and for a pair $k\ne k^{-1}$, $\mathrm{diag}(1,i,-1,-i)$ and its adjoint on two qubits, different pairs on different qubits. Put
+$R_k=P_k\otimes\chi_k$, so that $R_{k^{-1}}=R_k^*$ and $R_kV_gR_k^*=V_{kg}$ for $g,kg\in\mathcal F$, and put $C_{g,h}=V_gR_{hg^{-1}}^*$. These are
+orthonormal for the normalized trace: if $hg^{-1}\ne h'g'^{-1}$ the factor $\chi$ has trace zero, and otherwise
+$\tau(C_{g,h}^*C_{g',h'})=\tau(R_kV_gV_{g'}R_k^*)=\delta_{gg'}$, which then forces $h=h'$. In the same way
+$\tau(C_{g,h}C_{g',h'}^*)=\tau(V_gV_{g'})=\delta_{gg'}$ when $hg^{-1}=h'g'^{-1}$, and it vanishes otherwise.
+
+Let $W=\sum A_gA_h^*\otimes C_{g,h}$, summed over the pairs with $hg^{-1}\in K$; the other products $A_gA_h^*$ vanish. On the block of a symbol
+with label $g$, including the first block, where $g=1$, it is $V_g$. On a triangle block, with $H$ the Hadamard matrix and using
+$R_xV_1R_x^*=V_x$ and $R_xV_yR_x^*=V_z$,
+\[
+W=\frac12\begin{pmatrix}V_1+V_y&(V_1-V_y)R_x^*\\ R_x(V_1-V_y)&V_x+V_z\end{pmatrix}
+=\begin{pmatrix}I&0\\0&R_x\end{pmatrix}(H\otimes I)\begin{pmatrix}V_1&0\\0&V_y\end{pmatrix}(H\otimes I)\begin{pmatrix}I&0\\0&R_x^*\end{pmatrix},
+\]
+a self-adjoint unitary; triangles with coinciding labels are covered by the same computation. So $W$ is unitary, and by orthonormality of the
+$C_{g,h}$, $(\mathrm{id}\otimes\tau)[W(X\otimes I)W^*]=\sum_{g,h}A_gA_h^*XA_hA_g^*=\Phi_G\Phi_G^*(X)$. For $\Phi_G^*\Phi_G$ use right translations
+$g\mapsto gk$ with $k\in\{1\}\cup\{y^{\pm1}\}$, the operators $C_{g,h}=V_gR_{g^{-1}h}^*$, and rows instead of columns; on a triangle block the rows carry
+$\{1,y\}$ and $\{x,z\}$, and the same computation applies with $x$ and $y$ exchanged. For $\Theta^2$, one further maximally mixed qubit dephases the
+two blocks, and controlled on the block the two factorizations act on a common bath. Refreshing the whole bath in every round gives the services.
+\end{proof}

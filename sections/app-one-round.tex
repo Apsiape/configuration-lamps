@@ -1,0 +1,394 @@
+%======================================================================
+\section{Proof of the weighted one-round theorem}\label{sec:weighted-proof}
+%======================================================================
+
+This appendix proves Theorem~\ref{thm:weighted}, the weighted one-round theorem. Theorem~B uses it through
+Corollary~\ref{cor:amplification} in Section~\ref{sec:main-channel-proof}, and Appendix~\ref{app:lazy} reuses its proof in a commutator form.
+
+Four steps lead from the round to the entropy bound. A round with small leakage and entropy production yields unitaries on the bath under
+which every relation holds up to $O(\sqrt\nu)$, with errors weighted by the memory state (Lemma~\ref{lem:weighted-extraction}). Weighted
+errors add up over a van Kampen diagram, at a price paid once for each face and each vertex (Lemma~\ref{lem:charged-area}). Each transported
+copy of $S_3$ is rounded to an exact representation on the same space, so the state and its entropy do not change
+(Lemma~\ref{lem:rounding}). Measuring the rounded three-cycles one after another on one half of a purification of the memory state
+produces about one bit per copy that the other half also knows (Theorem~\ref{thm:sector}).
+
+The argument generalises~\cite[Appendix~B]{DouglasMghirbiB}, which proves the one-round theorem for the Houghton
+gadget~\cite[Theorem~5.5]{DouglasMghirbiB}, to every gadget channel that satisfies the hypotheses of Theorem~\ref{thm:weighted}. The weighted
+norms are those of~\cite[Appendix~B]{DouglasMghirbiB}. Lemmas~\ref{lem:weighted-extraction} and~\ref{lem:charged-area} extend Lemmas~B.4
+and~B.2 there from the Houghton gadget to every such gadget. Lemma~\ref{lem:rounding} is Lemma~B.3 there. Theorem~\ref{thm:sector} is a form
+of Theorem~B.1 there, now proved by sequential measurement.
+
+\subsection{Weighted norms}
+
+Throughout, $\|\cdot\|_F$ is the unnormalized Hilbert--Schmidt norm on $M_M$, $\rho$ is a state on $\mathbb C^M$ and $\xi=\sqrt\rho$, so
+$\|\xi\|_F=1$. For operators $W$ on $\mathbb C^M$ put
+\[
+E_\rho(W)=\|(W-I)\xi\|_F,\qquad\chi_\rho(W)=\|W\xi-\xi W\|_F,
+\]
+the \emph{displacement} and the \emph{centrality defect} of $W$ at $\rho$. We drop the subscript $\rho$. For unitaries $u,v$ and any operator $F$:
+\begin{enumerate}[label=(W\arabic*),itemsep=1pt]
+\item $E(uv)\le E(u)+E(v)$ and $E(u^*)=E(u)$;
+\item $\chi(uv)\le\chi(u)+\chi(v)$ and $\chi(u^*)=\chi(u)$;
+\item $\|Fv\xi\|_F\le\|F\xi\|_F+\|F\|\,\chi(v)$;
+\item $|E(uWu^*)-E(W)|\le2\chi(u)$ for every $W$ with $\|W\|\le1$;
+\item $\|\xi F\|_F=\|F^*\xi\|_F$, and $\|\xi F\|_F=\|F\xi\|_F$ if $F$ is normal.
+\end{enumerate}
+For (W1) write $(uv-I)\xi=u(v-I)\xi+(u-I)\xi$ and $(u^*-I)\xi=-u^*(u-I)\xi$; for (W2), $uv\xi-\xi uv=u(v\xi-\xi v)+(u\xi-\xi u)v$ and
+$u^*\xi-\xi u^*=-u^*(u\xi-\xi u)u^*$. For (W3) write $Fv\xi=F\xi v+F(v\xi-\xi v)$. For (W4), $(uWu^*-I)\xi=u(W-I)u^*\xi$, to which (W3) applies
+with $\|W-I\|\le2$, in both directions. For (W5), $\|F^*\xi\|_F^2=\Tr(\xi FF^*\xi)$, which equals $\Tr(\xi F^*F\xi)$ when $F$ is normal. A word
+$w$ in $S^{\pm1}$ is evaluated by an assignment $\phi$ of unitaries to $S$ through $\phi(x^{-1})=\phi(x)^*$; by (W2),
+$\chi(\phi(w))\le|w|\max_{x\in S}\chi(\phi(x))$.
+
+\subsection{Extraction}
+
+\begin{lemma}[Weighted extraction]\label{lem:weighted-extraction}
+Let $G$, $S$ and $R$ be as in Section~\ref{sec:channel-setting}, with $a,b,j\in S$, $j^{-1}ab\in R$ and $j\ne1$ in $G$, and let $m$ be as in
+Theorem~\ref{thm:weighted}. Let $\Psi(X)=\mathrm{Tr}_M\,U(X\otimes\rho)U^*$
+be a round with $u=\ddia(\Psi,\Phi_G)\le1/8$, leakage $\ell$ relative to $\Phi_G$ and entropy production $\Delta S$, and put $\nu=\ell+\Delta S$,
+$\eta=\sqrt{d\nu}$ and $e=256\,m\,\eta$. There are unitaries $\phi(x)$, $x\in S$, on $\mathbb C^M$ such that
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+\item $E(\phi(r))\le e$ for every $r\in R$;
+\item $\chi(\phi(x))\le e$ for every $x\in S$;
+\item $E(\phi(a)\phi(b))\ge1-e$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\emph{Normalize the output basis.} Let $(\zeta_i)$ and $(\zeta'_i)$ be orthonormal eigenbases of $\rho$ and $T(\rho)$ with decreasing eigenvalues
+$\lambda_i$ and $\mu_i$. Replacing $U$ by $(I\otimes W)U$, where the unitary $W$ maps $\zeta'_i$ to $\zeta_i$, changes neither $\Psi$ nor its
+leakage and conjugates $T(\rho)$ by $W$. So we may assume $T(\rho)=\sum_i\mu_i|\zeta_i\rangle\langle\zeta_i|$. Input and output bath are now the
+same space, and $\xi=\sum_i\sqrt{\lambda_i}|\zeta_i\rangle\langle\zeta_i|$ acts on both; this does not assert $T(\rho)=\rho$.
+
+\emph{Entropy production controls commutators.} Write $U_{ji}=(I\otimes\langle\zeta_j|)U(I\otimes|\zeta_i\rangle)\in M_d$ and $t_{ji}=\frac1d\|U_{ji}\|_F^2$.
+Since the columns and the rows of $U$ are orthonormal, $t$ is doubly stochastic, and the diagonal of $T(\rho)$ gives $\mu_j=\sum_it_{ji}\lambda_i$. The
+distributions $p_{ji}=t_{ji}\lambda_i$ and $q_{ji}=t_{ji}\mu_j$ satisfy
+\[
+D(p\|q)=\sum_{j,i}t_{ji}\lambda_i\log\frac{\lambda_i}{\mu_j}=-S(\rho)+S(T(\rho))=\Delta S .
+\]
+By Jensen's inequality $-2\ln\sum\sqrt{p_{ji}q_{ji}}\le D(p\|q)\ln2$, and $-2\ln x\ge2(1-x)$, so
+$\sum_{j,i}t_{ji}(\sqrt{\lambda_i}-\sqrt{\mu_j})^2\le\Delta S\ln2$. The matrix $t$ is a convex combination of permutation matrices, by Birkhoff's
+theorem, and both sequences decrease, so the rearrangement inequality gives
+$\sum_{j,i}t_{ji}\sqrt{\lambda_i\mu_j}\le\sum_j\sqrt{\lambda_j\mu_j}$. Expanding the squares and using double stochasticity,
+$\sum_j(\sqrt{\lambda_j}-\sqrt{\mu_j})^2\le\sum_{j,i}t_{ji}(\sqrt{\lambda_i}-\sqrt{\mu_j})^2$. The bath block $(j,i)$ of $U(I\otimes\xi)-(I\otimes\xi)U$
+is $(\sqrt{\lambda_i}-\sqrt{\lambda_j})U_{ji}$, and $(\sqrt{\lambda_i}-\sqrt{\lambda_j})^2\le2(\sqrt{\lambda_i}-\sqrt{\mu_j})^2+2(\sqrt{\mu_j}-\sqrt{\lambda_j})^2$.
+Therefore, with $U=\sum_{o,o'}|o\rangle\langle o'|\otimes A_{oo'}$ in system blocks $A_{oo'}\in M_M$,
+\begin{equation}\label{eq:block-commutators}
+\sum_{o,o'}\|[A_{oo'},\xi]\|_F^2=\|[U,I\otimes\xi]\|_F^2\le4d\,\Delta S\ln2=:\epsilon_S^2 .
+\end{equation}
+
+\emph{Leakage controls residuals.} The Choi state $\mathcal J(\Psi)$ is the marginal on $\mathbb C^d\otimes\mathbb C^d$ of the unit vector
+$d^{-1/2}\sum_{o,o'}|oo'\rangle\otimes A_{oo'}\xi$ in $\mathbb C^d\otimes\mathbb C^d\otimes\mathcal H$, where $\mathcal H$ is $M_M$ with the Hilbert--Schmidt
+inner product. Indeed $\langle A_{o_2o_2'}\xi,A_{o_1o_1'}\xi\rangle=\Tr(A_{o_1o_1'}\rho A_{o_2o_2'}^*)=\langle o_1|\Psi(|o_1'\rangle\langle o_2'|)|o_2\rangle$. The support
+of $\mathcal J(\Phi_G)$ is spanned by the orthogonal vectors $|A_g\rangle\!\rangle$, of squared norms $\mu_g=\|A_g\|_F^2$. Projecting onto it, put
+\[
+X_g=\mu_g^{-1}\sum_{[w_a]=g}\overline{c_a}A_a,\qquad R_{oo'}=A_{oo'}-\sum_g(A_g)_{oo'}X_g,
+\]
+where $A_a$ is the block at slot $a$. Then $\sum_{o,o'}\|R_{oo'}\xi\|_F^2=d\ell=:\epsilon_\ell^2$. At a slot $A_a=c_aX_{[w_a]}+R_a$, and at every other position
+$A_{oo'}=R_{oo'}$. We have $\epsilon_\ell\le\eta$, $\epsilon_S\le2\sqrt{\ln2}\,\eta$, and, by Cauchy--Schwarz, $\epsilon_\ell+\epsilon_S\le\sqrt{1+4\ln2}\,\eta<2\eta$ and
+$2\epsilon_\ell^2+2\epsilon_S^2\le8\ln2\,\eta^2$.
+
+\emph{Anchors are nearly unitary.} Every symbol $w$, and the empty word, occupies a diagonal position $z=z(w)$ whose row and column contain
+no other slot; there the coefficient is $1$, so $B_w:=A_{zz}=X_{[w]}+R_{zz}$. Column unitarity gives
+$\Tr\rho(I-B_w^*B_w)=\sum_{o\ne z}\|R_{oz}\xi\|_F^2\le\epsilon_\ell^2$. Row unitarity gives
+$\Tr\rho(I-B_wB_w^*)=\sum_{o'\ne z}\|\xi A_{zo'}\|_F^2\le\sum_{o'\ne z}(\|R_{zo'}\xi\|_F+\|[A_{zo'},\xi]\|_F)^2\le2\epsilon_\ell^2+2\epsilon_S^2$.
+Let $B_w=V_w|B_w|=|B_w^*|V_w$ with $V_w$ unitary. Since $(1-x)^2\le1-x^2$ on $[0,1]$,
+\[
+\|(V_w-B_w)\xi\|_F\le\epsilon_\ell,\qquad\|\xi(V_w-B_w)\|_F=\|\xi(I-|B_w^*|)\|_F\le\sqrt{8\ln2}\,\eta,
+\]
+and so $\chi(V_w)\le\|(V_w-B_w)\xi\|_F+\|[B_w,\xi]\|_F+\|\xi(B_w-V_w)\|_F\le\epsilon_\ell+\epsilon_S+\sqrt{8\ln2}\,\eta<4.3\eta$, since
+$\epsilon_\ell+\epsilon_S\le\sqrt{1+4\ln2}\,\eta$.
+
+\emph{Triangles enforce the products.} In the block of a triangle $(x,y,z)$, compare each slot $a$ with the anchor of the symbol $w'(a)$ that
+carries the same label. These symbols are the empty word at the upper left, $y$ at the upper right, $x$ at the lower left and $z$ at the lower
+right. Put
+$F_a=A_a-c_aV_{w'(a)}$. Then $F_a=R_a-c_aR_{z'z'}+c_a(B_{w'(a)}-V_{w'(a)})$ with $z'=z(w'(a))$, and since $a$ and $(z',z')$ are different
+positions, Cauchy--Schwarz gives
+\begin{gather*}
+\|F_a\xi\|_F\le\sqrt{3/2}\,\epsilon_\ell+2^{-1/2}\epsilon_\ell<2\eta,\qquad\|F_a\|<2,\\
+\|\xi F_a\|_F\le\|F_a\xi\|_F+\|[A_a,\xi]\|_F+2^{-1/2}\chi(V_{w'(a)})<7\eta .
+\end{gather*}
+For two slots $a_1,a_2$ in the same row of the block, with $A_{a_i}=c_iV_i+F_i$,
+\[
+A_{a_1}^*A_{a_2}-\overline{c_1}c_2V_1^*V_2=A_{a_1}^*F_2+c_2F_1^*V_2,
+\]
+whose right-weighted norm is at most $\|F_2\xi\|_F+2^{-1/2}(\|\xi F_1\|_F+\|F_1\|\chi(V_2))<2\eta+2^{-1/2}\cdot17\eta<15\eta$ by (W3) and (W5). The two
+columns of the block are orthogonal columns of $U$, so the products for the two rows of the block add up to $-C_1^*C_2$, where $C_1,C_2$ are the
+parts of the two columns in the other rows. These are residuals, so $\|C_1^*C_2\xi\|_F\le\|C_2\xi\|_F\le\epsilon_\ell$. The coefficients are
+$\overline{c_1}c_2=\frac12$ for the pair (upper left, upper right) and $-\frac12$ for the pair (lower left, lower right), so
+\[
+\tfrac12\|(V_\varnothing^*V_y-V_x^*V_z)\xi\|_F<15\eta+15\eta+\eta .
+\]
+Put $W_w=V_\varnothing^*V_w$ for every symbol $w$, and $W_\varnothing=I$. Since $W_xW_y-W_z=V_\varnothing^*V_x(V_\varnothing^*V_y-V_x^*V_z)$,
+\begin{equation}\label{eq:triangle}
+\|(W_xW_y-W_z)\xi\|_F\le64\eta\quad\text{for every triangle }(x,y,z),\qquad\chi(W_w)<10\eta .
+\end{equation}
+
+\emph{The relations nearly hold.} Let $\phi(x)=W_x$ for $x\in S$. For a letter $x\in S$, the triangle $(x,x^{-1},\varnothing)$ gives
+$\|(W_{x^{-1}}-\phi(x^{-1}))\xi\|_F=\|W_x^*(W_xW_{x^{-1}}-I)\xi\|_F\le64\eta$. Fix a word $r=\sigma_1\cdots\sigma_\ell$ of $R$ and let
+$D_l=\|(\phi(\sigma_1\cdots\sigma_l)-W_{p_l})\xi\|_F$, with $p_l$ its prefix symbols, $p_1=\sigma_1$ and $W_{p_\ell}=I$. Then $D_1\le64\eta$, and
+\[
+\phi(\sigma_1\cdots\sigma_l)-W_{p_l}=\bigl(\phi(\sigma_1\cdots\sigma_{l-1})-W_{p_{l-1}}\bigr)\phi(\sigma_l)+W_{p_{l-1}}\bigl(\phi(\sigma_l)-W_{\sigma_l}\bigr)+\bigl(W_{p_{l-1}}W_{\sigma_l}-W_{p_l}\bigr).
+\]
+By (W3), \eqref{eq:triangle} and the triangle $(p_{l-1},\sigma_l,p_l)$, $D_l\le D_{l-1}+2\cdot10\eta+64\eta+64\eta$. So
+$E(\phi(r))=D_\ell\le148\,\ell\,\eta\le e$, which is (i); and (ii) holds because $\chi(\phi(x))<10\eta\le e$.
+
+\emph{The copy of $ab$ is displaced.} Let $z=z(j)$ and let $0$ be the position of the empty word. The labels there are $[j]\ne1$ and $1$, so
+$\langle z|\Phi_G(|z\rangle\langle0|)|0\rangle=\tau(\lambda([j]))=0$, while $\langle z|\Psi(|z\rangle\langle0|)|0\rangle=\Tr(B_j\rho B_\varnothing^*)$. Feed
+$(|zz\rangle+|00\rangle)/\sqrt2$ into $\Psi\otimes\mathrm{id}$ and $\Phi_G\otimes\mathrm{id}$. The difference $\Delta$ of the outputs is Hermitian and
+traceless with $\|\Delta\|_1\le2u$, so each of its entries has modulus at most $\|\Delta\|\le\|\Delta\|_1/2\le u$. The entry at $(zz,00)$ is half the
+difference of $\langle z|\Psi(|z\rangle\langle0|)|0\rangle$ and $\langle z|\Phi_G(|z\rangle\langle0|)|0\rangle$, so $|\Tr(\rho B_\varnothing^*B_j)|\le2u$. By the
+anchor bounds, $|\Tr(\rho V_\varnothing^*V_j)-\Tr(\rho B_\varnothing^*B_j)|\le2\epsilon_\ell$, and so
+\[
+E(\phi(j))^2=\|(V_j-V_\varnothing)\xi\|_F^2=2-2\,\mathrm{Re}\,\Tr(\rho V_\varnothing^*V_j)\ge2-4u-4\epsilon_\ell\ge\tfrac32-4\eta .
+\]
+By (i) for the word $j^{-1}ab$, $\|(\phi(a)\phi(b)-\phi(j))\xi\|_F=E(\phi(j)^*\phi(a)\phi(b))\le e$, so $E(\phi(a)\phi(b))\ge\sqrt{3/2-4\eta}-e\ge1-e$ if
+$\eta\le1/8$. If $\eta>1/8$ then $e>1$ and (iii) is trivial.
+\end{proof}
+
+\subsection{Charged area}
+
+Relator errors add up over a van Kampen diagram, but in the weighted norms every conjugation costs twice the centrality defect of the
+conjugator. Writing a null word naively as a product of conjugates of relations would charge each conjugating word once for every relation it
+encloses. Peeling the diagram one boundary face at a time charges instead each face a bounded amount and each vertex once.
+
+\begin{lemma}[Charged area]\label{lem:charged-area}
+Let $S$ and $R$ be finite, with every word of $R$ of length at most $m$, and let $\phi$ assign unitaries to $S$ with $E(\phi(r))\le e$ for $r\in R$
+and $\chi(\phi(x))\le e$ for $x\in S$. Every word $w$ of finite area satisfies
+\[
+E(\phi(w))\ \le\ \bigl(3m\Area_R(w)+|w|\bigr)\,e\ \le\ \bigl((4m+1)\Area_R(w)+2|w|\bigr)\,e .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\phi$ is a homomorphism on the free group, $E(\phi(w))$ depends only on the free reduction of $w$, which is not longer and has the same
+area; so let $w$ be freely reduced. By van Kampen's lemma~\cite[Chapter~V]{LyndonSchupp1977}, $w$ has a van Kampen diagram with at most
+$\Area_R(w)$ faces. Such a diagram is a finite, connected and simply connected planar $2$-complex with edges labelled by letters of $S$. Its
+boundary cycle, read from a base vertex, is $w$, and the boundary cycle of every face, read from a suitable vertex in a suitable direction, is
+a word of $R$. We show, by induction on the number of edges, that every such diagram $D$ with $V$ vertices and $A$ faces satisfies
+\begin{equation}\label{eq:charge}
+E(\phi(w_D))\le\bigl((2m-1)A+2(V-1)\bigr)e ,
+\end{equation}
+where $w_D$ is its boundary word. If $D$ is a single vertex, $w_D$ is empty. Otherwise let $\varepsilon$ be the first edge of the boundary cycle,
+from the base vertex $v_0$ to $v_1$, with label $x^{\pm1}$.
+
+If $\varepsilon$ lies on no face, the boundary cycle traverses it twice, and removing it leaves diagrams $D_0\ni v_0$ and $D_1\ni v_1$ with
+$w_D=x^{\pm1}w_{D_1}x^{\mp1}w_{D_0}$, the words read from $v_1$ and $v_0$. By (W1) and (W4), $E(\phi(w_D))\le2e+E(\phi(w_{D_1}))+E(\phi(w_{D_0}))$, and
+the vertices and faces of $D_0$ and $D_1$ add up to those of $D$.
+
+Otherwise $\varepsilon$ lies on the boundary of a face $f$. Let $c$ be the boundary cycle of $f$ read from $v_0$ and beginning with $\varepsilon$,
+so that $c=\varepsilon\pi$ with $\pi$ a path in $\partial f$ from $v_1$ to $v_0$. Removing $f$ and $\varepsilon$ merges $f$ with the outer
+region and leaves a van Kampen diagram $D'$ with the same vertices and one face fewer, whose boundary word read from $v_0$ is
+$w_{D'}=\pi^{-1}\varrho$, where $w_D=\varepsilon\varrho$. Hence
+$w_D=c\,w_{D'}$ freely. The word $c$ is a cyclic permutation of some $r^{\pm1}$, $r\in R$, that is $c=y^{-1}r^{\pm1}y$ freely with $|y|\le m-1$, so
+$E(\phi(c))\le e+2(m-1)e$ by (W4) and (W2), and $E(\phi(w_D))\le(2m-1)e+E(\phi(w_{D'}))$ by (W1).
+
+In both cases~\eqref{eq:charge} follows from the induction hypothesis. To finish, $V-1$ is at most the number of edges of $D$, since $D$ is
+connected. Counting the two sides of every edge gives twice the number of edges as at most $mA+|w|$, the sum of the lengths of the face
+boundaries and of the boundary cycle. So~\eqref{eq:charge} gives $E(\phi(w))\le((2m-1)A+mA+|w|)e$.
+\end{proof}
+
+\subsection{Exact \texorpdfstring{$S_3$}{S3} rounding in place}
+
+An approximate copy of $S_3$ is rounded to an exact one by functional calculus on the same space. The state is untouched, so no entropy is
+gained or lost. The lemma is~\cite[Lemma~B.3]{DouglasMghirbiB}.
+
+\begin{lemma}[Exact rounding]\label{lem:rounding}
+Let $X$ and $Y$ be unitaries on $\mathbb C^M$, and suppose that the displacements of $X^2$, $Y^2$ and $(XY)^3$ and the centrality defects of
+$X$ and $Y$ are at most $\delta$. There are unitaries $x,c$ on $\mathbb C^M$ with $x^2=c^3=I$ and $xcx=c^{-1}$, such that
+\[
+\|(x-X)\xi\|_F\le\delta,\qquad\chi(x)\le3\delta,\qquad\|(c-XY)\xi\|_F\le29\delta,\qquad\chi(c)\le56\delta .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\mathrm{sgn}\,t=1$ for $t\ge0$ and $-1$ for $t<0$, and let $x=\mathrm{sgn}(\mathrm{Re}\,X)$ and $y=\mathrm{sgn}(\mathrm{Re}\,Y)$ by functional calculus;
+they are self-adjoint unitaries. On the unit circle $|z-\mathrm{sgn}\,\mathrm{Re}\,z|\le|z^2-1|$: for $z=e^{i\vartheta}$ with $|\vartheta|\le\pi/2$ this reads
+$2|\sin(\vartheta/2)|\le2|\sin\vartheta|$, which holds as $\cos(\vartheta/2)\ge\frac12$, and the case $\mathrm{Re}\,z<0$ follows by symmetry. Hence
+$|x-X|^2\le|X^2-I|^2$ as functions of the normal operator $X$, and $\|(x-X)\xi\|_F\le E(X^2)\le\delta$; by (W5) also $\|\xi(x-X)\|_F\le\delta$, so
+$\chi(x)\le\chi(X)+2\delta\le3\delta$. The same holds for $y$.
+
+Put $Z=XY$ and $w=xy$, so that $xwx=yx=w^*$. Then $\chi(Z)\le2\delta$, $\chi(w)\le6\delta$, and, by (W3),
+$\|(w-Z)\xi\|_F\le\|x(y-Y)\xi\|_F+\|(x-X)Y\xi\|_F\le\delta+3\delta=4\delta$. From $w^3-Z^3=w^2(w-Z)+w(w-Z)Z+(w-Z)Z^2$ and (W3),
+\[
+E(w^3)\le E(Z^3)+4\delta+(4\delta+2\cdot2\delta)+(4\delta+2\cdot4\delta)\le25\delta .
+\]
+Let $f$ send each point of the unit circle to a nearest cube root of unity, with the ties $e^{\pm i\pi/3}$ and $-1$ sent to $1$. Then
+$f(\bar z)=\overline{f(z)}$, and $|z-f(z)|\le|z^3-1|$: for $z=-1$ both sides equal $2$, and otherwise $z=f(z)e^{i\vartheta}$ with
+$|\vartheta|\le\pi/3$, and the inequality reads $2|\sin(\vartheta/2)|\le2|\sin(3\vartheta/2)|$. Let $c=f(w)$. Then $c^3=I$, and $xcx=f(xwx)=f(w^*)=c^*=c^{-1}$. As before
+$\|(c-w)\xi\|_F\le E(w^3)\le25\delta$ and $\|\xi(c-w)\|_F\le25\delta$. Hence $\|(c-Z)\xi\|_F\le29\delta$ and
+$\chi(c)\le\chi(w)+\|(c-w)\xi\|_F+\|\xi(c-w)\|_F\le56\delta$.
+\end{proof}
+
+\subsection{A weighted sector bound}
+
+Rounded copies of $S_3$ that nearly commute in the weighted sense force entropy. We work in the Hilbert space $\mathcal H$ of operators on
+$\mathbb C^M$ with the Hilbert--Schmidt inner product $\langle Y,Z\rangle=\Tr(Y^*Z)$, identified with $\mathbb C^M\otimes\mathbb C^M$. Left multiplications
+act on the first factor, which we call the system, and right multiplications on the second, the reference; they commute. The unit vector $\xi$
+purifies $\rho$ on the system, and its reference marginal has the same nonzero spectrum, so it has entropy $S(\rho)$. The first lemma
+is~\cite[Lemma~4.1]{DouglasMghirbiA}, with its short proof.
+
+\begin{lemma}[Projection products]\label{lem:projection-product}
+Let $P_1,\dots,P_k$ be orthogonal projections on a Hilbert space. Every vector $y$ satisfies
+$\|y\|^2-\mathrm{Re}\langle y,P_k\cdots P_1y\rangle\le2\sum_l\|(I-P_l)y\|^2$.
+\end{lemma}
+
+\begin{proof}
+By homogeneity let $\|y\|=1$. Put $y_0=y$, $y_l=P_ly_{l-1}$ and $s_l=y_{l-1}-y_l$, which lies in the range of $I-P_l$. Then
+$\sum_l\|s_l\|^2=1-\|y_k\|^2=:\beta$, and $\alpha:=1-\mathrm{Re}\langle y,y_k\rangle=\mathrm{Re}\sum_l\langle(I-P_l)y,s_l\rangle\le\sqrt{E\beta}$ with
+$E=\sum_l\|(I-P_l)y\|^2$. Since $0\le\|y-y_k\|^2=2\alpha-\beta$, we get $\alpha\le\sqrt{2E\alpha}$, that is $\alpha\le2E$.
+\end{proof}
+
+Let $c_1,\dots,c_N$ be unitaries on $\mathbb C^M$ with $c_i^3=I$, and write $c_i=\sum_{k\in\Z/3}\omega^kP_i^k$ with $\omega=e^{2\pi i/3}$ and spectral
+projections $P_i^k$. For every $Y\in\mathcal H$,
+\begin{equation}\label{eq:spectral-identities}
+\|(c_i-I)Y\|_F^2=3\sum_{k\ne0}\|P_i^kY\|_F^2,\qquad\|[c_i,Y]\|_F^2=3\sum_{k\ne l}\|P_i^kYP_i^l\|_F^2,
+\end{equation}
+because $|\omega^k-\omega^l|^2=3$ for $k\ne l$ and the pieces $P_i^kYP_i^l$ are orthogonal. For $\mathbf a=(a_1,\dots,a_{i-1})\in(\Z/3)^{i-1}$ put
+$Q_{\mathbf a}=P_{i-1}^{a_{i-1}}\cdots P_1^{a_1}$. Summing over the coordinates one at a time gives
+$\sum_{\mathbf a}Q_{\mathbf a}^*Q_{\mathbf a}=\sum_{\mathbf a}Q_{\mathbf a}Q_{\mathbf a}^*=I$.
+
+\begin{lemma}[Transfer to the reference]\label{lem:transfer}
+For every $Y\in\mathcal H$ and $1\le i\le N$,
+\[
+\sum_{\mathbf a}\|Q_{\mathbf a}Y-YQ_{\mathbf a}\|_F^2\ \le\ \frac43\sum_{k<i}\|[c_k,Y]\|_F^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+The pinchings $\mathcal E_k(Y)=\sum_lP_k^lYP_k^l$ are orthogonal projections on $\mathcal H$, and by~\eqref{eq:spectral-identities}
+$\|(I-\mathcal E_k)Y\|_F^2=\sum_{l\ne l'}\|P_k^lYP_k^{l'}\|_F^2=\frac13\|[c_k,Y]\|_F^2$. Both $\sum_{\mathbf a}\|Q_{\mathbf a}Y\|_F^2$ and
+$\sum_{\mathbf a}\|YQ_{\mathbf a}\|_F^2$ equal $\|Y\|_F^2$, and summing over the coordinates one at a time,
+$\sum_{\mathbf a}\langle YQ_{\mathbf a},Q_{\mathbf a}Y\rangle=\sum_{\mathbf a}\Tr(Q_{\mathbf a}^*Y^*Q_{\mathbf a}Y)=\langle\mathcal E_1\cdots\mathcal E_{i-1}Y,Y\rangle$.
+So the left side equals $2\|Y\|_F^2-2\,\mathrm{Re}\langle Y,\mathcal E_1\cdots\mathcal E_{i-1}Y\rangle$, and Lemma~\ref{lem:projection-product} bounds it by
+$4\sum_{k<i}\|(I-\mathcal E_k)Y\|_F^2$.
+\end{proof}
+
+A three-valued distribution that is nearly symmetric under $k\mapsto-k$ carries about one bit for each unit of weight off $0$. Let $h_2$ be the
+binary entropy. With $t=(1+y)/2$,
+\[
+\ln2\,\bigl(1-h_2(t)\bigr)=\sum_{k\ge1}\frac{y^{2k}}{2k(2k-1)}\ \le\ \sum_{k\ge1}\binom{2k}k\frac{y^{2k}}{(2k-1)4^k}=1-\sqrt{1-y^2}=1-2\sqrt{t(1-t)},
+\]
+by comparing coefficients: $4^k\le2k\binom{2k}k$ holds for $k=1$, and the right side grows by the factor $2(2k+1)/k\ge4$ from $k$ to $k+1$. For a
+distribution $(r_0,r_1,r_2)$ with $s=r_1+r_2>0$ this gives, with $t=r_1/s$,
+\begin{equation}\label{eq:binary-hellinger}
+H(r_0,r_1,r_2)\ \ge\ s\,h_2(r_1/s)\ \ge\ s-\frac{(\sqrt{r_1}-\sqrt{r_2})^2}{\ln2},
+\end{equation}
+which also holds when $s=0$.
+
+\begin{theorem}[Weighted sector bound]\label{thm:sector}
+Let $c_i,x_i$, $1\le i\le N$, be unitaries on $\mathbb C^M$ with $c_i^3=x_i^2=I$ and $x_ic_ix_i=c_i^{-1}$, with no condition relating different
+indices. For a state $\rho$ with $\xi=\sqrt\rho$ put $\Delta_i=E(c_i)$, $\theta_i=\chi(c_i)$, $\theta'_i=\chi(x_i)$, and
+\[
+T_i=\Bigl(\sum_{k<i}\theta_k^2\Bigr)^{1/2},\qquad K_i=\Bigl(\sum_{k<i}\|[c_i,c_k]\xi\|_F^2\Bigr)^{1/2},\qquad K'_i=\Bigl(\sum_{k<i}\|[x_i,c_k]\xi\|_F^2\Bigr)^{1/2},
+\]
+\[
+w_i=\frac13\Bigl(\Delta_i-\frac4{\sqrt3}T_i\Bigr)_+^2,\qquad\beta_i=\theta'_i+\frac2{\sqrt3}(2T_i+K'_i),\qquad
+\pi_i=\frac13\Bigl(\theta_i+\frac2{\sqrt3}(2T_i+K_i)\Bigr)^2 .
+\]
+If $\pi_i\le2/3$ for all $i$, then
+\[
+S(\rho)\ \ge\ \sum_{i=1}^N\Bigl[w_i-\frac{\beta_i^2}{2\ln2}-h_2(\pi_i)-\pi_i\Bigr].
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Measure the copies in turn.} Measure $c_1,\dots,c_N$ in turn on the system, with the projections $P_i^k$, and let $A_i\in\Z/3$ be the outcomes.
+Then $\Pr(A_{<i}=\mathbf a,A_i=k)=\|P_i^kQ_{\mathbf a}\xi\|_F^2=:p(\mathbf a,k)$. The measurements do not touch the reference, whose entropy is
+$S(\rho)$, so
+\[
+S(\rho)\ \ge\ I(A_1\cdots A_N:\mathrm{Ref})=\sum_{i=1}^NI(A_i:\mathrm{Ref}\mid A_{<i}),
+\]
+since the conditional entropy of the reference given the classical outcomes is nonnegative. Fix $i$.
+
+\emph{The copy stays displaced.} By~\eqref{eq:spectral-identities}, $\Pr(A_i\ne0)=\frac13\sum_{\mathbf a}\|(c_i-I)Q_{\mathbf a}\xi\|_F^2$. By
+Lemma~\ref{lem:transfer} with $Y=\xi$, the vectors $Q_{\mathbf a}\xi$ and $\xi Q_{\mathbf a}$ differ by at most $\frac2{\sqrt3}T_i$ in $\ell^2$ over $\mathbf a$,
+and $\sum_{\mathbf a}\|(c_i-I)\xi Q_{\mathbf a}\|_F^2=\Delta_i^2$ because $\sum_{\mathbf a}Q_{\mathbf a}Q_{\mathbf a}^*=I$. Since $\|c_i-I\|\le2$, the triangle
+inequality in $\ell^2$ gives $\Pr(A_i\ne0)\ge w_i$.
+
+\emph{The sign is a fair coin.} Since $x_iP_i^kx_i=P_i^{-k}$ and right multiplication by $x_i$ is unitary,
+$\sqrt{p(\mathbf a,-k)}=\|P_i^kx_iQ_{\mathbf a}\xi\|_F$ and $\sqrt{p(\mathbf a,k)}=\|P_i^kQ_{\mathbf a}\xi x_i\|_F$, so
+$\sum_{\mathbf a,k}(\sqrt{p(\mathbf a,k)}-\sqrt{p(\mathbf a,-k)})^2\le\sum_{\mathbf a}\|x_iQ_{\mathbf a}\xi-Q_{\mathbf a}\xi x_i\|_F^2$. Write
+\[
+x_iQ_{\mathbf a}\xi-Q_{\mathbf a}\xi x_i=x_i(Q_{\mathbf a}\xi-\xi Q_{\mathbf a})+\bigl((x_i\xi)Q_{\mathbf a}-Q_{\mathbf a}(x_i\xi)\bigr)+Q_{\mathbf a}(x_i\xi-\xi x_i).
+\]
+In $\ell^2$ over $\mathbf a$ the first term is at most $\frac2{\sqrt3}T_i$ and the third is $\theta'_i$. For the second apply Lemma~\ref{lem:transfer} with
+$Y=x_i\xi$: since $[c_k,x_i\xi]=[c_k,x_i]\xi+x_i[c_k,\xi]$, it is at most $\frac2{\sqrt3}(K'_i+T_i)$. So the sum is at most $\beta_i^2$, and since the
+terms $k=1$ and $k=2$ contribute equally, \eqref{eq:binary-hellinger} gives
+\[
+H(A_i\mid A_{<i})\ \ge\ \Pr(A_i\ne0)-\frac1{\ln2}\sum_{\mathbf a}\bigl(\sqrt{p(\mathbf a,1)}-\sqrt{p(\mathbf a,2)}\bigr)^2\ \ge\ w_i-\frac{\beta_i^2}{2\ln2}.
+\]
+
+\emph{The reference knows the outcome.} Let the reference measure $c_i$ from the right, with the projections $Y\mapsto YP_i^l$, and call the outcome
+$B_i$. Left and right multiplications commute, so $\Pr(A_{<i}=\mathbf a,A_i=k,B_i=l)=\|P_i^kQ_{\mathbf a}\xi P_i^l\|_F^2$, and
+by~\eqref{eq:spectral-identities} $\Pr(A_i\ne B_i)=\frac13\sum_{\mathbf a}\|[c_i,Q_{\mathbf a}\xi]\|_F^2$. The same three-term splitting gives
+\[
+[c_i,Q_{\mathbf a}\xi]=c_i(Q_{\mathbf a}\xi-\xi Q_{\mathbf a})+\bigl((c_i\xi)Q_{\mathbf a}-Q_{\mathbf a}(c_i\xi)\bigr)+Q_{\mathbf a}(c_i\xi-\xi c_i),
+\]
+and Lemma~\ref{lem:transfer} with $Y=\xi$ and $Y=c_i\xi$ gives $\Pr(A_i\ne B_i)\le\pi_i$. By data processing and Fano's inequality for three values,
+\[
+I(A_i:\mathrm{Ref}\mid A_{<i})\ \ge\ I(A_i:B_i\mid A_{<i})\ \ge\ H(A_i\mid A_{<i})-h_2(\pi_i)-\pi_i ,
+\]
+where we used that $h_2(\pi)+\pi$ increases on $[0,2/3]$. Summing over $i$ proves the theorem.
+\end{proof}
+
+\begin{corollary}\label{cor:sector}
+In Theorem~\ref{thm:sector}, suppose $\Delta_i\ge1/2$ for all $i$, and that $\theta_i$, $\theta'_i$, $\|[c_i,c_k]\xi\|_F$ and $\|[x_i,c_k]\xi\|_F$ are at
+most $b$ for all $i\ne k$, where $\sqrt N\,b\le10^{-3}$. Then $S(\rho)\ge N/16$.
+\end{corollary}
+
+\begin{proof}
+Now $T_i,K_i,K'_i\le\sqrt N\,b\le10^{-3}$ and $\theta_i,\theta'_i\le10^{-3}$. So $w_i\ge\frac13(\frac12-\frac4{\sqrt3}10^{-3})^2>0.0825$, and $\beta_i$ and
+$\sqrt{3\pi_i}$ are at most $10^{-3}+2\sqrt3\cdot10^{-3}<4.5\cdot10^{-3}$. Hence $\beta_i^2/(2\ln2)<1.5\cdot10^{-5}$ and $\pi_i<6.8\cdot10^{-6}$, and with
+$h_2(\pi)\le\pi\log(e/\pi)$ we get $h_2(\pi_i)<1.3\cdot10^{-4}$. Each summand exceeds $0.0823>1/16$.
+\end{proof}
+
+\subsection{Completion}
+
+\begin{proof}[Proof of Theorem~\ref{thm:weighted}]
+Let $\phi$ be given by Lemma~\ref{lem:weighted-extraction}, with $e=256\,m\sqrt{d\nu}$, and put
+\[
+b_*=100\,m\,(A+L+1)\,e=25600\,m^2(A+L+1)\sqrt{d\nu},\qquad\delta_L=(2L+1)e .
+\]
+Condition~\eqref{eq:weighted-condition} gives $\sqrt N\,b_*\le25600\cdot2^{-25}<10^{-3}$.
+
+\emph{Round the copies.} Let $\psi_i=\phi(u_i)$, so $\chi(\psi_i)\le Le$, and put $X_i=\psi_i\phi(a)\psi_i^*$, $Y_i=\psi_i\phi(b)\psi_i^*$ and $Z_i=X_iY_i$. Since
+$a^2$, $b^2$ and $(ab)^3$ lie in $R$, (W4) and Lemma~\ref{lem:weighted-extraction} give $E(X_i^2),E(Y_i^2),E(Z_i^3)\le e+2Le=\delta_L$, and (W2) gives
+$\chi(X_i),\chi(Y_i)\le\delta_L$. Lemma~\ref{lem:rounding} gives unitaries $x_i,c_i$ with $x_i^2=c_i^3=I$, $x_ic_ix_i=c_i^{-1}$ and
+\[
+\|(x_i-X_i)\xi\|_F\le\delta_L,\qquad\chi(x_i)\le3\delta_L,\qquad\|(c_i-Z_i)\xi\|_F\le29\delta_L,\qquad\chi(c_i)\le56\delta_L .
+\]
+By (W4) and Lemma~\ref{lem:weighted-extraction}(iii), $E(Z_i)\ge E(\phi(a)\phi(b))-2Le\ge1-\delta_L$, so $\Delta_i=E(c_i)\ge1-30\delta_L$.
+
+\emph{The raw copies nearly commute.} Let $i\ne k$ and $x,y\in\{a,b\}$, and let $P=\psi_i\phi(x)\psi_i^*$ and $P'=\psi_k\phi(y)\psi_k^*$. The group commutator
+$g=[u_ixu_i^{-1},u_kyu_k^{-1}]$ is a word of length at most $8L+4$ and area at most $A$, so Lemma~\ref{lem:charged-area} gives
+$E(\phi(g))\le(3mA+8L+4)e$. Since $PP'-P'P=(\phi(g)-I)P'P$ and $\chi(P'P)\le2\delta_L$, (W3) gives
+\[
+\|(PP'-P'P)\xi\|_F\le\gamma:=(3mA+8L+4)e+4\delta_L=(3mA+16L+8)e .
+\]
+Expanding $[X_i,X_kY_k]=[X_i,X_k]Y_k+X_k[X_i,Y_k]$ and $[X_iY_i,Z_k]=X_i[Y_i,Z_k]+[X_i,Z_k]Y_i$ and using (W3),
+$\|[X_i,Z_k]\xi\|_F,\|[Y_i,Z_k]\xi\|_F\le2\gamma+2\delta_L$ and $\|[Z_i,Z_k]\xi\|_F\le4\gamma+6\delta_L$.
+
+\emph{The rounded copies nearly commute too.} For unitaries $U,V,U_0,V_0$,
+\[
+[U,V]-[U_0,V_0]=U(V-V_0)+(U-U_0)V_0-V(U-U_0)-(V-V_0)U_0,
+\]
+so by (W3) the weighted norms of the two commutators differ by at most
+$2\|(U-U_0)\xi\|_F+2\|(V-V_0)\xi\|_F+2\chi(U_0)+2\chi(V_0)$. With $(U,U_0,V,V_0)=(x_i,X_i,c_k,Z_k)$ and $(c_i,Z_i,c_k,Z_k)$ this gives
+\begin{gather*}
+\|[x_i,c_k]\xi\|_F\le2\gamma+68\delta_L=(6mA+168L+84)e,\\
+\|[c_i,c_k]\xi\|_F\le4\gamma+130\delta_L=(12mA+324L+162)e .
+\end{gather*}
+Since $m\ge6$, these and $\chi(c_i)\le(112L+56)e$ and $\chi(x_i)\le(6L+3)e$ are at most $b_*$, and $\Delta_i\ge1-(60L+30)e\ge1-b_*>1/2$.
+Corollary~\ref{cor:sector} gives $S(\rho)\ge N/16$.
+\end{proof}
+
+The constant $2^{25}$ is not optimized; the proof uses only $25600\cdot2^{-25}<10^{-3}$, and Corollary~\ref{cor:sector} has room to spare.
+
+\begin{remark}[The constant term]\label{rem:plus-one}
+The term $+1$ in~\eqref{eq:weighted-condition} cannot be dropped. Take $N=1$, the empty transport word, so that $L=0$, and $A=0$, which is
+allowed since there are no pairs. The gadget channel has a Stinespring dilation with a pure environment of dimension $r_*$, so there is a round
+with $M=r_*$, $\rho$ pure and $\Psi=\Phi_G$ exactly. Then $\ddia(\Psi,\Phi_G)=0$ and the condition with $A+L$ in place of $A+L+1$ holds, since its left
+side vanishes, but $S(\rho)=0<1/16$. With the $+1$, the condition forces $\nu\le2^{-50}m^{-4}d^{-1}$, while this round has $\ell=0$ and
+$\Delta S=S(T(\rho))$, the entropy of the complementary output at the maximally mixed input. That output is diagonal with entries
+$\|A_g\|_F^2/d\ge1/d$, and there are at least two labels, since $ab\ne1$; so $\Delta S\ge h_2(1/d)$, far above the threshold.
+\end{remark}

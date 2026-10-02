@@ -1,0 +1,52 @@
+%======================================================================
+\section{Hyperlinearity transfers from $F$ to $\mathcal L$}\label{app:hyperlinear}
+%======================================================================
+
+Proposition~\ref{prop:thompson-hyperlinear} states that $\mathcal L=\bigl(\bigoplus_{\mathbb D}S_3\bigr)\rtimes F$ is hyperlinear exactly when
+$F$ is. This appendix proves it by embedding $L(\mathcal L)$ into an ultrapower $L(F)^\omega$: a copy of $S_3$ is built from a localized
+sequence of $\mathrm{II}_1$ subfactors that $F_{1/2}$ asymptotically fixes. Nothing else in the paper depends on this appendix.
+
+\begin{proof}[Proof of Proposition~\ref{prop:thompson-hyperlinear}]
+Subgroups of hyperlinear groups are hyperlinear, so suppose that $F$ is hyperlinear. A countable group $\Gamma$ is hyperlinear if and only if
+its von Neumann algebra $L(\Gamma)$ has a trace-preserving embedding into an ultrapower $\mathcal R^\omega$ of the hyperfinite
+$\mathrm{II}_1$ factor~\cite{CapraroLupini2015}. Then every separable von Neumann subalgebra of $L(\Gamma)^\omega$ embeds in
+$\mathcal R^\omega$ as well, by a diagonal argument. It therefore suffices to embed $L(\mathcal L)$ into $L(F)^\omega$ preserving the trace,
+for a free ultrafilter $\omega$ on $\mathbb N$. We write $\tau$ for the canonical traces and $F_J$ for the subgroup of elements supported in an
+interval $J$. If $J,J'$ are disjoint, $L(F_J)$ and $L(F_{J'})$ commute and $\tau(xy)=\tau(x)\tau(y)$ for $x\in L(F_J)$ and $y\in L(F_{J'})$,
+since $F_J$ and $F_{J'}$ generate their direct product. If $f,f'\in F$ agree on $J$, then $\lambda(f)x\lambda(f)^{-1}=\lambda(f')x\lambda(f')^{-1}$
+for $x\in L(F_J)$, because $f'^{-1}f$ fixes $J$ pointwise and therefore commutes with $F_J$.
+
+\emph{A localized copy of $S_3$.} Choose $\sigma\in F$ supported in $[\frac12,\frac34]$, with $\sigma(x)<x$ on $(\frac12,\frac34)$ and
+$\sigma(x)=\frac12+\frac12(x-\frac12)$ near $\frac12$, and a dyadic $x_0\in(\frac12,\frac34)$. The intervals
+$J_k=\sigma^k((\sigma(x_0),x_0))$, $k\in\mathbb Z$, are disjoint and accumulate at $\frac12$ as $k\to\infty$. For a nonempty open interval $J$ with
+dyadic endpoints, $F_J\cong F$ has infinite conjugacy classes, since a nontrivial element has conjugates with infinitely many different
+supports, so $L(F_J)$ is a $\mathrm{II}_1$ factor. In $L(F_{J_0})$ choose a unital copy of $M_6$ and, in its relative commutant, which is again a
+$\mathrm{II}_1$ factor, a self-adjoint $Z_0$ with uniform distribution on $[0,1]$. Let $v_0:S_3\to U(M_6)$ be the regular representation, so
+that $\tau(v_0(g))=0$ for $g\ne1$, and put $v_k=\lambda(\sigma)^kv_0\lambda(\sigma)^{-k}$ and $Z_k=\lambda(\sigma)^kZ_0\lambda(\sigma)^{-k}$,
+which lie in $L(F_{J_k})$. By the factorization of traces, the $Z_k$ are independent and uniform. For a finite $K\subset\mathbb Z$ and $k\in K$,
+let $p^K_k$ be the spectral projection of the event that $Z_k$ is the largest of the $Z_j$, $j\in K$. Ties have trace zero, so these projections
+are orthogonal and sum to $1$, and they commute with every $v_j(g)$. Hence
+\[
+V_K(g)=\sum_{k\in K}p^K_kv_k(g)
+\]
+is a representation of $S_3$. Since $v_k(g)$ lies in a copy of $M_6$ whose relative commutant contains $Z_k$, and the other $Z_j$ lie in
+algebras with factorized trace, $\tau(p^K_kv_k(g))=\tau(p^K_k)\tau(v_0(g))$; so $\tau(V_K(g))=0$ for $g\ne1$. If $K$ is an interval of $n$ integers and $|q|\le n$,
+the two selected indices agree unless the largest $Z_j$ over $K\cup(K+q)$ has its index outside $K\cap(K+q)$, an event of trace
+$2|q|/(n+|q|)$. On its complement $V_K(g)=V_{K+q}(g)$. Hence $\|V_{K+q}(g)-V_K(g)\|_2^2\le8|q|/(n+|q|)$.
+
+\emph{Invariance.} Put $V_n=V_{\{n,\dots,2n-1\}}$, and let $h\in F_{1/2}$. Near $\frac12$ on the right, $h(x)=\frac12+2^m(x-\frac12)$ for an
+integer $m$. Since $\sigma$ has slope $\frac12$ on the right of $\frac12$, $h$ agrees with $\sigma^{-m}$ on $J_k$ for all large $k$. Conjugation by $\lambda(h)$ therefore carries $v_k$ and $Z_k$ to
+$v_{k-m}$ and $Z_{k-m}$ for large $k$, and $V_n$ to $V_{\{n,\dots,2n-1\}-m}$ for large $n$, so $\|\lambda(h)V_n(g)\lambda(h)^{-1}-V_n(g)\|_2\to0$.
+Thus $V(g)=(V_n(g))_\omega$ is a representation of $S_3$ in $L(F)^\omega$ with $\tau(V(g))=0$ for $g\ne1$, and it commutes with $\lambda(F_{1/2})$.
+
+\emph{The embedding.} For $x\in\mathbb D$ choose $f_x\in F$ with $f_x(\frac12)=x$ and put $V_x=\lambda(f_x)V\lambda(f_x)^{-1}$. By the
+invariance of $V$ under $\lambda(F_{1/2})$, $V_x$ does not depend on the choice of $f_x$, and $\lambda(f)V_x\lambda(f)^{-1}=V_{f(x)}$ for $f\in F$.
+The representatives $V_n(g)$ lie in $L(F_{I_n})$, where $I_n=\bigcup_{n\le k<2n}J_k$ shrinks to $\frac12$ from the right, so those of $V_x$ lie
+in $L(F_{f_x(I_n)})$. For $x\ne y$ the intervals $f_x(I_n)$ and $f_y(I_n)$ are disjoint for large $n$. So copies at distinct points commute, and
+the $V_x$ together with $\lambda$ define a homomorphism $\pi:\mathcal L\to U(L(F)^\omega)$. Let $\gamma=\bigl(\prod_{x\in X}\ell_x\bigr)f$, with
+$X$ finite, $\ell_x$ in the copy of $S_3$ at $x$ and $f\in F$. If $f=1$ and some $\ell_x\ne1$, the factors lie in commuting algebras with
+factorized trace for large $n$, so $\tau(\pi(\gamma))=\prod_x\tau(V(\ell_x))=0$. If $f\ne1$, choose a point moved by $f$ outside $X$. For large
+$n$ it lies outside the closure of every $f_x(I_n)$, so $f$ is not in the group $K_n$ generated by the $F_{f_x(I_n)}$. Then $\tau(a\lambda(f))=0$
+for every $a\in L(K_n)$, in particular for the representatives of $\prod_x\pi(\ell_x)$. Hence $\tau(\pi(\gamma))=0$ whenever $\gamma\ne1$, and
+$\pi$ extends to a trace-preserving embedding of $L(\mathcal L)$ into $L(F)^\omega$.
+\end{proof}

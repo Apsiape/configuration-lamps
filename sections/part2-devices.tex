@@ -1,0 +1,131 @@
+%======================================================================
+\section{Sofic models give devices, and streaming at the rank rate}\label{sec:devices}
+%======================================================================
+
+\subsection{An upper bound from sofic models}\label{sec:sofic-upper}
+
+Sofic models of the labels give devices, for two reasons. The triangle blocks are exactly unitary for arbitrary permutations. And at most
+points of a model the pure bath vector reproduces the target channel exactly, not approximately, so a memory that is maximally mixed on the
+good points of a model serves the channel exactly. This gives every upper bound in Theorem~B. Recall from Section~\ref{sec:criterion}
+that $\sigma_E(r)$ is the least $M$ for which some $f:E\to\Sym(\Omega)$, $|\Omega|=M$, with $f(1)=\mathrm{id}$, is a
+\emph{$(1-r^{-1})$-expansive $r^{-1}$-morphism}. This means that $f(x)f(y)$ and $f(xy)$ differ on at most $M/r$ points whenever $x,y,xy\in E$,
+and that $f(x)$ and $f(y)$ agree on at most $M/r$ points whenever $x\ne y$ in $E$.
+
+\begin{proposition}[Sofic models give devices]\label{prop:sofic-upper}
+Let $G$, $S$ and $R$ be as in Section~\ref{sec:channel-setting}, with $t_\triangle$ triangles and $r_*$ labels, let $E$ be a chunk of $G$ containing
+all labels, and put $K_G=t_\triangle+\binom{r_*}2$. Every $(1-r^{-1})$-expansive $r^{-1}$-morphism $f:E\to\Sym(\Omega)$, $|\Omega|=M$, gives a unitary $U_f$ on
+$\mathbb C^d\otimes\mathbb C^\Omega$ whose tracial channel $\Phi_f(X)=(\mathrm{id}\otimes\tau_M)[U_f(X\otimes I)U_f^*]$ satisfies
+\[
+\Phi_f=(1-\vartheta)\Phi_G+\vartheta\,\Xi
+\]
+for some channel $\Xi$ and some $0\le\vartheta\le K_G/r$. Consequently, for all $n\ge1$ and $0<\epsilon\le1$ with $\sigma_E(2K_Gn/\epsilon)<\infty$,
+$\Phi_G$ has
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item a causal service with error at most $\epsilon$, $P=C=0$, $J=(n-1)Q$ and $Q=\bigl\lceil\log\sigma_E(2K_Gn/\epsilon)+\log(2n/\epsilon)\bigr\rceil$;
+\item a causal service with error at most $\epsilon$, $J=P=C=0$ and $Q=\bigl\lceil n\log\sigma_E(2K_Gn/\epsilon)+\log(2/\epsilon)\bigr\rceil$;
+\end{enumerate}
+and, for all $n\ge1$ and $0<B\le n$ with $\sigma_E(4K_Gn/B)<\infty$,
+\begin{enumerate}[label=(\alph*),itemsep=1pt,resume]
+\item an exact causal service, with error $0$, purity $P+C<B$, $J=(n-1)Q$ and $Q=\bigl\lceil\log\sigma_E(4K_Gn/B)+\log(4n/B)\bigr\rceil$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\emph{The permutation gadget is unitary.} For a symbol $w$ let $P_w$ be the permutation matrix of $f([w])$ on $\mathbb C^\Omega$, so that symbols
+with the same label get the same matrix, and let $U_f$ be the gadget $U_\lambda$ with $\lambda(w)=P_w$. Each triangle block is
+$\frac1{\sqrt2}\bigl(\begin{smallmatrix}I&P_y\\P_x&-P_xP_y\end{smallmatrix}\bigr)=\mathrm{diag}(I,P_x)(H\otimes I)\mathrm{diag}(I,P_y)$, so $U_f$ is unitary
+although no relation holds among the $P_w$. Writing $\pi_a$ for the permutation of $\Omega$ in slot $a$, namely $f([w_a])$ for every slot except the
+lower right corner of a triangle $(x,y,z)$, where it is $f([x])f([y])$, we have $U_f=\sum_ac_aE_a\otimes P_{\pi_a}$.
+
+\emph{Good points reproduce $\Phi_G$.} Since $\tau_M$ is the average of the vector states of the points of $\Omega$, $\Phi_f=\frac1M\sum_{\omega\in\Omega}\Phi_\omega$ with
+$\Phi_\omega(X)=\mathrm{Tr}_\Omega\,U_f(X\otimes|\omega\rangle\langle\omega|)U_f^*$. The isometry $|\psi\rangle\mapsto U_f(|\psi\rangle\otimes|\omega\rangle)$ is
+$\sum_ac_aE_a\otimes|\pi_a(\omega)\rangle$, so
+\begin{gather*}
+\Phi_\omega(X)=\sum_{a,b\in\mathcal T}c_a\overline{c_b}\;\mathbf 1[\pi_a(\omega)=\pi_b(\omega)]\;E_aXE_b^*,\\
+\Phi_G(X)=\sum_{a,b\in\mathcal T}c_a\overline{c_b}\;\mathbf 1\bigl[[w_a]=[w_b]\bigr]\;E_aXE_b^*,
+\end{gather*}
+the second because $\tau(\lambda(g)\lambda(h)^*)=\delta_{gh}$. Call $\omega$ \emph{good} if $f([x])f([y])(\omega)=f([z])(\omega)$ for every triangle
+$(x,y,z)$ and $f(g)(\omega)\ne f(h)(\omega)$ for all distinct labels $g,h$. At a good point $\pi_a(\omega)=f([w_a])(\omega)$ for every slot, since
+$[w_a]=[z]$ at the lower right corner of a triangle $(x,y,z)$; so $\pi_a(\omega)=\pi_b(\omega)$ exactly when $[w_a]=[w_b]$, and $\Phi_\omega=\Phi_G$.
+
+\emph{Bad points are few.} The labels of a triangle satisfy $[x][y]=[z]$ with all three in $E$, so $f([x])f([y])$ and $f([z])$ differ on at most
+$M/r$ points; and distinct labels $g,h\in E$ have $f(g)(\omega)=f(h)(\omega)$ for at most $M/r$ points. So the fraction $\vartheta$ of bad points is
+at most $K_G/r$, and $\Phi_f=(1-\vartheta)\Phi_G+\vartheta\,\Xi$, where $\Xi$ is the average of $\Phi_\omega$ over the bad points. If there are no
+bad points, $\Xi$ may be any channel.
+
+\emph{Refreshing the memory gives part~(a).} Let $r=2K_Gn/\epsilon$, let $f$ have degree $M=\sigma_E(r)$, and let $Q$ be as in part~(a), so that
+$M\le2^Q\epsilon/(2n)$. Split the $Q$-qubit memory as $(\mathbb C^\Omega\otimes\mathbb C^{k_0})\oplus\mathbb C^{g_0}$ with $k_0=\lfloor2^Q/M\rfloor$ and
+$g_0=2^Q-k_0M<M$. In every round apply $U_f\otimes I_{k_0}$ on the first summand and the identity on the second. After every round but the
+last, export all $Q$ memory qubits and import $Q$ fresh qubits in the maximally mixed state; the initial state is maximally mixed as well, so
+$P=C=0$. Every round then meets a fresh flat memory, and the observer faces $n$ independent uses of the channel
+$(1-g_0/2^Q)\Phi_f+(g_0/2^Q)\mathrm{id}$, which is within $\vartheta+g_0/2^Q\le\epsilon/(2n)+\epsilon/(2n)$ of $\Phi_G$ in diamond distance, by
+convexity. A hybrid argument over the rounds bounds the error by $\epsilon$.
+
+\emph{A memory flat on the good points gives part~(c).} Let $0<B\le n$, put $\eta=B/(4n)\le\frac14$ and $r=K_G/\eta$, let $f$ have degree
+$M=\sigma_E(r)$, and let $Q$ be as in part~(c), so that $M\le\eta2^Q$. Let $\Omega_0\subseteq\Omega$ be the set of good points, so that
+$|\Omega_0|\ge(1-\eta)M$. Split the memory as $(\mathbb C^\Omega\otimes\mathbb C^{k_0})\oplus\mathbb C^{g_0}$ as in part~(a), with
+$k_0=\lfloor2^Q/M\rfloor$ and $g_0<M\le\eta2^Q$, and let $\beta$ be the maximally mixed state on
+$\mathrm{span}\{|\omega\rangle:\omega\in\Omega_0\}\otimes\mathbb C^{k_0}$. Since $k_0M=2^Q-g_0$, its deficit is
+\[
+Q-\log(|\Omega_0|k_0)=\log\frac{2^Q}{2^Q-g_0}+\log\frac M{|\Omega_0|}\le2\log\frac1{1-\eta}\le\frac{8\eta}{3\ln2}<\frac Bn .
+\]
+Start the memory in $\beta$ and apply $U_f\otimes I_{k_0}$ on the first summand in every round. After every round but the last, export all $Q$
+memory qubits and import $Q$ fresh qubits in the state $\beta$. The $n$ registers used have total deficit $P+C<B$. In every round the memory is a
+fresh copy of $\beta$, a uniform mixture of vector states $|\omega\rangle\otimes|j\rangle$ with $\omega$ good, and $\Phi_\omega=\Phi_G$ at good points.
+So every round applies exactly $\Phi_G$, independently of the other rounds, and the error is $0$.
+
+\emph{One factor per round gives part~(b).} Let $f$ be the model of part~(a) and $Q$ as in part~(b), so that $M^n\le2^Q\epsilon/2$. Split the
+memory as $(\mathbb C^{\Omega^n}\otimes\mathbb C^{k_0})\oplus\mathbb C^{g_0}$ with $k_0=\lfloor2^Q/M^n\rfloor$ and $g_0<M^n$, start it maximally
+mixed, and in round $s$ apply $U_f$ to the input and the $s$-th factor $\mathbb C^\Omega$ of the first summand, and the identity on the second.
+With probability $1-g_0/2^Q\ge1-\epsilon/2$ the memory starts in the first summand, uniformly distributed, and then the $n$ factors are
+independent flat baths, each used once. The observer then faces $n$ independent uses of $\Phi_f$, which is within $n\vartheta\le\epsilon/2$ of
+the ideal experiment. The remaining branch has weight at most $\epsilon/2$, so the error is at most $\epsilon$.
+\end{proof}
+
+In particular, if $\sigma_E(r)$ is finite for every $r$, as it is when $G$ is sofic, then $\Phi_G\in\cK_d$, since
+$\ddia(\Phi_f,\Phi_G)\le K_G/r$ for models at every accuracy. This is a quantitative form, for sofic groups, of the fact that gadget channels of
+hyperlinear groups lie in $\cK_d$~\cite{DouglasMghirbiB}.
+
+\subsection{Streaming at the rank rate}\label{sec:streaming}
+
+The services of Proposition~\ref{prop:sofic-upper} refresh the whole memory in every round, so their exchange is far above the rank rate. At
+the rank rate the memory has to be kept, and a sofic model cannot simply be reused, since its bad points would then accumulate error.
+Theorem~\ref{thm:streaming} keeps one sofic model for all rounds and pays for its bad points with purity. It uses the good points of the model
+as an exact \emph{rectangular} dilation, whose input bath is smaller than its output bath, and lets the part of the memory in use grow slightly
+in every round. The mixing and export steps are those of the rolling reservoir of~\cite[Appendix~A]{DouglasMghirbiB}, and the proof is in
+Appendix~\ref{app:streaming}.
+
+\begin{theorem}[Streaming at the rank rate]\label{thm:streaming}
+Let $\Phi$ be a channel on $M_d$ with linearly independent Kraus operators $A_1,\dots,A_r$, $r\ge2$, and let $1\le k\le k'$. Suppose that
+$W=\sum_iA_i\otimes B_i$, with $B_i:\mathbb C^k\to\mathbb C^{k'}$, is an isometry from $\mathbb C^d\otimes\mathbb C^k$ to $\mathbb C^d\otimes\mathbb C^{k'}$ and that
+\begin{equation}\label{eq:rectangular}
+\Tr(B_i^*B_j)=k\,\delta_{ij},\qquad \sum_iB_i^*B_i=r\,I_k .
+\end{equation}
+Then for all $n\ge2$ and $0<\epsilon<1$ there is a causal service of $\Phi$ for $n$ rounds with error at most $\epsilon$, $C=0$,
+$J=\lfloor\frac{n-1}2\log r\rfloor$ and
+\[
+P\le n\log\frac{k'}k+2,\qquad Q\le\log k+n\log\frac{k'}k+O_r\Bigl(\log\frac n\epsilon+\log(2+\log k)\Bigr).
+\]
+\end{theorem}
+
+The first identity in~\eqref{eq:rectangular} says that $W$ with a flat input bath realizes $\Phi$ exactly:
+$\Phi(X)=\mathrm{Tr}_{k'}[W(X\otimes I_k/k)W^*]=\sum_iA_iXA_i^*$. The second says that every Kraus history costs the same. For a channel with a
+flat probe of rank $r$ it follows from $W^*W=I$ alone: apply $\Tr(\rho_*\,\cdot\,)$ to the first factor of $\sum_{i,j}A_i^*A_j\otimes B_i^*B_j=I$,
+where $\rho_*$ is the input marginal of the probe, for which $\Tr(\rho_*A_i^*A_j)=\delta_{ij}/r$.
+
+\begin{corollary}[The lamp channel at the rank rate]\label{cor:streaming-lamps}
+There is $K$ such that for every $n\ge2$ the channel $\Phi$ of Theorem~\ref{thm:main-channel} has a causal service for $n$ rounds with error at most
+$1/16$, $C=0$, $J=\lfloor\frac{n-1}2\log r_*\rfloor$ and $P,Q\le K\sqrt{n\log n}$.
+\end{corollary}
+
+\begin{proof}
+Let $E$ be the chunk of labels of Proposition~\ref{prop:sofic-upper}, let $s\ge2K_G$, and let
+$f:E\to\Sym(\Omega)$ be a $(1-s^{-1})$-expansive $s^{-1}$-morphism of degree $M=\sigma_E(s)$. Let $\Omega_0$ be its set of good points, so that
+$k=|\Omega_0|\ge(1-K_G/s)M$, and for each label $g$ let $B_g:\mathbb C^{\Omega_0}\to\mathbb C^\Omega$ send $|\omega\rangle$ to $|f(g)\omega\rangle$. At a good point
+$\omega$ every slot of $U_f$ acts through the permutation of its label, so $U_f(\xi\otimes|\omega\rangle)=\sum_gA_g\xi\otimes|f(g)\omega\rangle$, and
+$W=\sum_gA_g\otimes B_g$ is the restriction of the unitary $U_f$ to $\mathbb C^d\otimes\mathbb C^{\Omega_0}$, an isometry. Each $B_g^*B_g$ is $I_k$, and
+$\Tr(B_g^*B_h)=0$ for $g\ne h$ because distinct labels do not collide at good points; the $A_g$ are linearly independent, having disjoint
+supports. So Theorem~\ref{thm:streaming} applies with $r=r_*$ and $k'=M$. Here $\log(M/k)\le-\log(1-K_G/s)\le2K_G/(s\ln2)$, and
+$\log k\le\log\sigma_E(s)\le C_Es\log s$ by Theorem~\ref{thm:main-group}(b). With $\epsilon=1/16$ the theorem gives
+$Q\le C_Es\log s+2K_Gn/(s\ln2)+O(\log n)$ and $P\le2K_Gn/(s\ln2)+2$; take $s=\max(2K_G,\lceil\sqrt{n/\log n}\,\rceil)$.
+\end{proof}

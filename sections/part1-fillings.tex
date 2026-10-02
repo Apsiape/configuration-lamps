@@ -1,0 +1,109 @@
+%======================================================================
+\section{Local fillings}\label{sec:fillings}
+%======================================================================
+
+To compare lamps we carry the two prototypes, the translation $t$ and the transvection $d$, around the first $n$ points of ray~$1$ by short
+words in $p$ and $q$. This section shows that any two short words that agree on the prototype give the same conjugate, at the cost of two
+fillings in $H_3$ at scale $n$. The output is one number, the $L(n)$ of Lemma~\ref{lem:local-filling}: the price of every local identity used
+in Section~\ref{sec:pair-areas}.
+
+\paragraph{Three facts about Houghton's group.} All transport takes place among the first points of ray~$1$. For $n\ge1$ let $\Sigma_n\le H$
+be the group of permutations of $Y$ supported in $\{(1,1),\dots,(1,n)\}$, identified with $\Sym(n)$, and write $(x\ y)$ for the transposition of
+the points $x$ and $y$ of the first ray. Let $\delta_H$ be the Dehn function of the presentation $P_H$ of $H$ in~\eqref{eq:PH}, whose four
+relators are the family \textsf{H}. That is, $\delta_H(n)$ is the largest area, with respect to these relators, of a word of length at most $n$
+in $p^{\pm1},q^{\pm1}$ that represents $1$ in $H$. Appendix~\ref{sec:houghton} proves the three facts used here.
+\begin{enumerate}[label=(H\arabic*),itemsep=1pt,leftmargin=*]
+\item \emph{Short words for finite permutations} (Lemma~\ref{lem:transpositions}). The word $\sigma_k=p^ksp^{-k}$ represents the transposition
+$(k{+}1\ \,k{+}2)$, and for $1\le x<y$ the transposition $(x\ y)$ is represented by a word $\omega_{x,y}$ of length less than $10y$ in $p,q$. For
+distinct $x_1,\dots,x_l\in\{1,\dots,n\}$ there is a word $\pi[x_1,\dots,x_l]$ of length less than $10ln$ that sends $m$ to $x_m$ for $m\le l$; it
+is a product of at most $l$ transpositions of points in $\{1,\dots,n\}$.
+\item \emph{Point stabilizers} (Lemma~\ref{lem:stabilizers}). Let $H^{(k)}$ be the pointwise stabilizer in $H$ of the points $1,\dots,k$ of
+ray~$1$, and put $\zeta_k=\sigma_{k-1}\cdots\sigma_1\sigma_0$. Every element of $\Sigma_n\cap H^{(k)}$ that moves $m\ge2$ points is represented
+by a word of length less than $10(m-1)n$ in the two letters of $K_k=(\zeta_kp,\zeta_kq)$. For $k=1,2$ these are the pairs of
+Section~\ref{sec:certificate}, whose letters have length at most $5$ and $11$ in $p,q$.
+\item \emph{The Dehn function} (Proposition~\ref{prop:dehn}). There are absolute constants $K$ and $C$ with $\delta_H(n)\le e^{Kn}$, by
+Lee~\cite[Theorem~D]{Lee2012}, and $\delta_H(n)\le Cn^{p_H}$ with $p_H$ as in Theorem~\ref{thm:main-group},
+by~\cite[Theorems~3.2 and~3.3]{DouglasMghirbiA}.
+\end{enumerate}
+
+Let $n\ge3$. Three elementary properties of area are also used. The area is invariant under free equality, inversion and conjugation, and
+subadditive under products. If $N$ represents~$1$, then $\mu N\nu=(\mu N\mu^{-1})\mu\nu$ for all words $\mu,\nu$, so replacing a subword $U$ by
+$U'$ changes the area by at most $\Area_R(UU'^{-1})$. And $[w,z_1z_2]=[w,z_1]\cdot z_1[w,z_2]z_1^{-1}$ and $[w,z^{-1}]=z^{-1}[w,z]^{-1}z$, so
+$\Area_R([w,z])$ is at most the sum of the areas $\Area_R([w,z_l])$ over the letters $z_l$ of any factorization $z=z_1^{\pm1}\cdots z_m^{\pm1}$.
+
+\paragraph{Canonical transporters.} For points $i\ne j$ in $\{1,\dots,n\}$ put
+\[
+U_i=\pi[i],\qquad \tau_i=U_i\,t\,U_i^{-1},\qquad U_{ij}=\pi[j,i],\qquad X_{ij}=U_{ij}\,d\,U_{ij}^{-1},
+\]
+with the words of Lemma~\ref{lem:transpositions}(c). We use $\tau_i$ both for this word and for the translation by $e_i$ that it represents, since
+$U_i(1)=i$; and $X_{ij}$ represents $E_{i\leftarrow j}$, since $U_{ij}$ maps $1$ to $j$ and $2$ to $i$. By Lemma~\ref{lem:transpositions},
+$|U_i|<10n$ and $|U_{ij}|<20n$, and $U_i$ is a product of at most one transposition and $U_{ij}$ of at most two.
+
+Lemma~\ref{lem:exchange} says that it does not matter which short word transports a prototype: two such words differ by an element of a
+stabilizer, which commutes with the transported element by the family~\textsf{S}. We allow the transporting word to end with a power of $p$,
+because the relations of Table~\ref{tab:certificate} use $t_2=ptp^{-1}$ and $t_3=p^2tp^{-2}$.
+
+\begin{lemma}[Change of transporter]\label{lem:exchange}
+Let $n\ge3$ and $f\in\{t,d\}$. Let $U$ and $W_0$ be words in $p^{\pm1},q^{\pm1}$ of length less than $30n$ that represent elements of $\Sigma_n$,
+such that $W_0^{-1}U$ moves at most $10$ points, and let $W=W_0p^j$, where $j=0$ if $f=d$ and $j\in\{0,1,2\}$ if $f=t$. If $W$ and $U$ agree
+on $P_f$, then
+\[
+\Area_R\bigl(WfW^{-1}\cdot Uf^{-1}U^{-1}\bigr)\ \le\ \mathcal E(n):=2\,\delta_H(1500n)+130n .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $k=|P_f|$ and let $g$ be the element represented by $W^{-1}U$; it fixes $P_f$ pointwise, so $g\in H^{(k)}$. If $j=0$, then $g\in\Sigma_n$ moves at
+most $10$ points, and by Lemma~\ref{lem:stabilizers}(b) it is represented by a word $Z$ with fewer than $90n$ letters from $K_k^{\pm1}$. If
+$j\ge1$, then $f=t$, $k=1$, and $g=(sp)^{-j}g'$ with $g'=(sp)^jp^{-j}\cdot W_0^{-1}U$. Here $(sp)p^{-1}=s$ and $(sp)^2p^{-2}=sB$ lie in
+$\Sigma_3$, so $g'\in\Sigma_n$ moves at most $13$ points; and $g'$ fixes the point $1$, since $g$ and $sp$ do. By Lemma~\ref{lem:stabilizers}(b),
+$g'$ is represented by a word $Z'$ with fewer than $120n$ letters from $K_1^{\pm1}$, and we put $Z=(sp)^{-j}Z'$. In both cases $Z$ has fewer than
+$122n$ letters from $K_k^{\pm1}$, each of length at most $11$ in $p,q$.
+
+Let $N=W^{-1}UZ^{-1}$. It represents $1$ in $H$ and has length less than $30n+2+30n+1342n\le1500n$, so by the family \textsf{H} its area is at
+most $\delta_H(1500n)$. By the family \textsf{S}, $\Area_R([f,Z])<122n$. Since $U=WNZ$ freely,
+\[
+WfW^{-1}\cdot Uf^{-1}U^{-1}=W\,(fNf^{-1})\,[f,Z]\,N^{-1}\,W^{-1},
+\]
+whose area is at most $2\delta_H(1500n)+122n\le\mathcal E(n)$.
+\end{proof}
+
+\begin{lemma}[Local fillings]\label{lem:local-filling}
+Let $n\ge3$ and
+\[
+L(n)=10\,\delta_H(1500n)+700\,n .
+\]
+Let $i,j,k\in\{1,\dots,n\}$ be points with $i\ne j$, and $x,y\in\{a,b\}$, where $b$ stands for the word $ac^4$. Each of the following words
+represents $1$ and has area at most $L(n)$ with respect to $R$.
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item $\tau_i^2$, of area $1$, and $[\tau_i,\tau_j]$.
+\item $X_{ij}\tau_kX_{ij}^{-1}\tau_k^{-1}$ if $k\ne j$, and $X_{ij}\tau_jX_{ij}^{-1}\tau_i^{-1}\tau_j^{-1}$.
+\item $[X_{ij},x]$, of area less than $40n+1$.
+\item $[x,\tau_iy\tau_i^{-1}]$, of area less than $40n+1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+All the words represent $1$ by~\eqref{eq:affine-identities}. Call replacing a subword $UfU^{-1}$ by $WfW^{-1}$ as in Lemma~\ref{lem:exchange} a
+\emph{change of transporter}; it costs at most $\mathcal E(n)$, and $5\mathcal E(n)+1\le L(n)$. In each part, $W_0$ is a product of at most three
+transpositions, of length less than $30n$, and $U\in\{U_i,U_j,U_k,U_{ij}\}$ is a product of at most two, so $W_0^{-1}U$ moves at most $10$ points.
+
+(a) $\tau_i^2=U_it^2U_i^{-1}$ freely, a conjugate of the relation \textsf{Q}. For $[\tau_i,\tau_j]$ let $W_0=\pi[i,j]$. Replace both occurrences
+of $\tau_i^{\pm1}$ by $(W_0tW_0^{-1})^{\pm1}$, and both occurrences of $\tau_j^{\pm1}$ by $(W_0t_2W_0^{-1})^{\pm1}=(W_0p\,t\,p^{-1}W_0^{-1})^{\pm1}$.
+These are four changes of transporter, since $W_0$ and $U_i$ both map $1$ to $i$, and $W_0p$ and $U_j$ both map $1$ to $j$. The result
+$W_0[t_1,t_2]W_0^{-1}$ is a conjugate of the relation \textsf{C}, so the area is at most $4\mathcal E(n)+1$.
+
+(b) Let $W_0=\pi[j,i,k]$, or $\pi[j,i]$ if $k\in\{i,j\}$, so that $W_0$ maps $1$ to $j$, $2$ to $i$, and $3$ to $k$ when $k\notin\{i,j\}$; let
+$m\in\{1,2,3\}$ be the point with $W_0(m)=k$, so that $m=1$ exactly when $k=j$. Replace $X_{ij}^{\pm1}$ by $(W_0dW_0^{-1})^{\pm1}$, a change of
+transporter because $W_0$ and $U_{ij}$ agree on $P_d=\{1,2\}$. Replace $\tau_k^{\pm1}$ by $(W_0t_mW_0^{-1})^{\pm1}=(W_0p^{m-1}\,t\,p^{1-m}W_0^{-1})^{\pm1}$,
+and $\tau_i^{\pm1}$ by $(W_0t_2W_0^{-1})^{\pm1}$, again changes of transporter. If $k\ne j$, four of them turn the word into
+$W_0(dt_md^{-1}t_m^{-1})W_0^{-1}$ with $m\in\{2,3\}$, a conjugate of a relation \textsf{A}. If $k=j$, five of them turn it into
+$W_0(dt_1d^{-1}t_2^{-1}t_1^{-1})W_0^{-1}$, again a conjugate of a relation \textsf{A}. So the area is at most $5\mathcal E(n)+1$.
+
+(c) Moving $x$ across a letter of $U_{ij}$ costs one relation \textsf{Z}, and moving it across $d=c^3$ costs one relation $[d,a]$, since
+$[c^3,ac^4]=[c^3,a]$ freely. Hence $\Area_R([X_{ij},x])\le2|U_{ij}|+1<40n+1$.
+
+(d) Freely the word is $U_i[U_i^{-1}xU_i,\,t(U_i^{-1}yU_i)t^{-1}]U_i^{-1}$. Replacing the two occurrences of $U_i^{-1}x^{\pm1}U_i$ and the two of
+$U_i^{-1}y^{\pm1}U_i$ by $x^{\pm1}$ and $y^{\pm1}$ costs at most $4|U_i|$ relations \textsf{Z} and leaves $U_i[x,tyt^{-1}]U_i^{-1}$, a conjugate of a
+relation \textsf{P}; so the area is at most $4|U_i|+1<40n+1$.
+\end{proof}

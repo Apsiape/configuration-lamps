@@ -2,6 +2,8 @@
 \section{Open problems}\label{sec:open}
 %======================================================================
 
+\paragraph{Groups.}
+
 \begin{enumerate}[label=(\arabic*)]
 \item \emph{The exact profile.} Theorem~A gives $\exp(r^{1+o(1)})$, with polylogarithmic factors in the exponent between
 $c\,r/(\log r)^{\kappa}$, $\kappa=6+\log107$, and $C\,r\log r$. The exponent $\kappa$ comes from the Dehn function of $H_3$, known to be polynomial of
@@ -13,12 +15,8 @@ second question, grids of fixed dimension should not help: the argument sketched
 chunks by $\exp(O(r\log r))$. By
 Remark~\ref{rem:sandwich}, a gadget channel of a sofic group can need superlinear memory at zero purity only if its chunk profile exceeds
 $\exp(O(r))$. Every fixed chunk of a sofic group has a computable profile~\cite[Lemma~1]{Ivanov2021} (search the degrees $1,2,\dots$ and the finitely
-many maps at each), so no chunk outgrows every computable function; how fast a computable profile can grow is open.
-\item \emph{The optimal exchange rate in general.} For $\Phi$ the least memory at the rank rate and the least memory with purity at most the
-memory are both $n^{1/2+o(1)}$ (Remark~\ref{rem:sqrt-limit}). For every channel with a flat probe the second is at most three times the first, plus
-six. Is the converse true up to polylogarithmic factors for every channel in $\cK_d$ with a flat probe? Theorem~\ref{thm:streaming} bounds the
-rank-rate memory by $\log k+n\log(k'/k)+O(\log n)$, so the converse holds whenever some exact rectangular dilation makes this at most a
-polylogarithmic factor times the least memory at purity at most memory.
+many maps at each), so no chunk outgrows every computable function. How fast the profile of a chunk of a finitely presented amenable group can grow is
+open.
 \item \emph{The dyadic group.} Its profile is finite and at least $\exp(c\,r^{1/3})$. In $\mathcal G$ the words $w_0=1$,
 $w_{2n}=uw_n$ and $w_{2n+1}=tuw_n$ reach the integer $n$ with length $O(\log n)$, and commutators of copies at points of equal parity reduce
 freely to smaller indices. What is the area of the commutators at points of opposite parity?
@@ -26,6 +24,16 @@ freely to smaller indices. What is the area of the commutators at points of oppo
 does not obviously give permutations, and not every action of a sofic group is sofic: some coset actions of residually finite Kazhdan groups
 are not~\cite{KunThom2026}. We do not know whether the action of $F$ on $\mathbb D$ is sofic when $F$ is. Does $\Gamma$ embed in $V$ or
 in $2V$? The embedding of Proposition~\ref{prop:3V} uses one coordinate for each ray.
+\end{enumerate}
+
+\paragraph{Channels and physics.}
+
+\begin{enumerate}[label=(\arabic*),resume]
+\item \emph{The optimal exchange rate in general.} For $\Phi$ the least memory at the rank rate and the least memory with purity at most the
+memory are both $n^{1/2+o(1)}$ (Remark~\ref{rem:sqrt-limit}). For every channel with a flat probe the second is at most three times the first, plus
+six. Is the converse true up to polylogarithmic factors for every channel in $\cK_d$ with a flat probe? Theorem~\ref{thm:streaming} bounds the
+rank-rate memory by $\log k+n\log(k'/k)+O(\log n)$, so the converse holds whenever some exact rectangular dilation makes this at most a
+polylogarithmic factor times the least memory at purity at most memory.
 \item \emph{Local autonomous physics.} Proposition~\ref{prop:lazy} gives an expensive long-time limit of an autonomous dynamics with a tracial
 bath, but the dynamics is not local. Can an expensive channel be the long-time limit of a fixed translation-invariant local rule, such as a
 quantum cellular automaton or a time-independent finite-range Hamiltonian, with the bath in its tracial state? By Proposition~\ref{prop:light-cone}

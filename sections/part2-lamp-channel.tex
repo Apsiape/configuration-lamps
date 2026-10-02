@@ -1,0 +1,73 @@
+%======================================================================
+\section{The channel of the configuration lamps, and Theorem B}\label{sec:lamp-channel}
+%======================================================================
+
+This section builds the channel of Theorem~B from the certificate of Theorem~A and states the theorem in full.
+Theorem~\ref{thm:weighted} needs $a$, $b$ and a name for $ab$ among the generators. Let $R$ be the certificate of Table~\ref{tab:certificate}, in
+the five generators $p,q,t,c,a$, with $b$ standing for the word $ac^4$. Let $S_\Phi=\{p,q,t,c,a,b,j\}$, where the new letters represent
+$b=ac^4$ and $j=ab$ in $\Gamma$, and let $R_\Phi$ consist of the $25$ words of $R$ and the four words
+\[
+b^{-1}ac^4,\qquad b^2,\qquad (ab)^3,\qquad j^{-1}ab
+\]
+in the letters of $S_\Phi$. They represent $1$ in $\Gamma$, $a^2\in R$, and $j\ne1$ because $ab$ has order three (Lemma~\ref{lem:structure}). The
+channel of the configuration lamps is the gadget channel $\Phi=\Phi_\Gamma$ of $R_\Phi$.
+
+\paragraph{Dimension and rank.} The channel by the numbers:
+\begin{center}\small
+\begin{tabular}{cccccccc}
+\toprule
+letters & words & total length & symbols & triangles & longest word & dimension & Choi rank\\
+\midrule
+$s=7$ & $r_0=29$ & $\Lambda=320$ & $276$ & $298$ & $m=24$ & $d=873$ & $r_*=130$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The total length is $\Lambda=303+6+2+6+3$, and~\eqref{eq:gadget-dimension} gives $d=1+4\cdot7+3\cdot320-4\cdot29=873$. The Choi rank $r_*$ is
+the number of distinct labels. Of the $277$ candidates, the identity and the $276$ symbols, exactly $130$ are distinct elements of
+$\Gamma$, so $r_*=130$. Most coincidences are shared prefixes: $pq$ and $pqp^{-1}$, for instance, begin several words. The others are relations
+such as $a^2=1$ and $j=ab=c^4$. The script \texttt{verification/choi\_rank\_check.py} computes this partition with two independent engines,
+the faithful action of $\Gamma$ on configurations and the embedding in $3V$ (Appendix~\ref{app:machine-checks}). The rank rate is therefore
+$\frac12\log130\approx3.51$ qubits per use.
+
+\paragraph{Transport.} For $N\ge1$, the proof of Theorem~\ref{thm:main-group} provides $2^N$ words $T_u$, one for each configuration $u$
+supported in the first $N$ points of ray~$1$, with $|T_u|\le21N\max(3,N)\le63N^2$ (Theorem~\ref{thm:pair-area}) and
+$\Area_{R_\Phi}([T_uxT_u^{-1},T_wyT_w^{-1}])\le\Lambda_N+4\le C_1N^{\kappa}$ for $u\ne w$ and $x,y\in\{a,b\}$, where
+\[
+p_H=\log107+4,\qquad \kappa=2+p_H<12.75,
+\]
+and $C_1$ is absolute; the letter $b$ is converted to $ac^4$ by the word $b^{-1}ac^4$, at most four times, and areas with respect to
+$R_\Phi\supseteq R$ are no larger than with respect to $R$. So the hypothesis of Corollary~\ref{cor:amplification}(a) holds with this $\kappa$ and
+$K=C_1+64$.
+
+\begin{theorem}[Theorem B]\label{thm:main-channel}
+The channel $\Phi$ on $M_{873}$ lies in $\cK_{873}$, and its Choi rank is $r_*=130$. Let $\kappa=2+p_H=6+\log107$. There are
+constants $c,c_0,K>0$ and $n_0$ such that the following hold; all services have error at most $1/16$.
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item \emph{Memory against purity.} For $n\ge n_0$ and $\log n\le B\le c_0n$, every causal service of $\Phi$ for $n$ rounds with purity
+$P+C\le B$ has, at any exchange,
+\[
+Q\ \ge\ c\,\frac{n}{B\,(\log n)^{2\kappa}} .
+\]
+For every $n\ge1$ and $0<B\le n$ there is an exact causal service, with error $0$, purity $P+C<B$, exchange $J=(n-1)Q$ and memory
+$Q\le K(n/B)\log(2n/B)$. In particular, for every $A_0\ge0$ there is $c'>0$ such that services with $P+C\le A_0\log n$ have
+$Q\ge c'n/(\log n)^{2\kappa+1}$ for all large $n$, where $2\kappa+1=2p_H+5<26.49$, and there are services with $P=C=0$ and $Q\le Kn\log n$.
+\item \emph{The rank rate.} For $n\ge n_0$, every causal service of $\Phi$ for $n$ rounds at the rank rate, $J\le\frac n2\log r_*$, has, whatever
+its purity,
+\[
+Q\ \ge\ c\,\frac{\sqrt n}{(\log n)^{\kappa}} .
+\]
+For every $n\ge2$ there is a causal service at the rank rate with $C=0$ and $P,Q\le K\sqrt{n\log n}$.
+\end{enumerate}
+So memory and purity trade at a fixed rate: for $n\ge n_0$ and $\log n\le B\le c_0n$ the least memory of a service with purity at most $B$ lies
+between $c\,n/(B(\log n)^{2\kappa})$ and $K(n/B)\log(2n/B)$, and the product of memory and purity is $n^{1+o(1)}$. At the rank rate the least
+memory is $n^{1/2+o(1)}$, and it is attained with purity of the same order: the rank rate sits where memory and purity are equal.
+\end{theorem}
+
+\input{figures/tradeoff}
+
+The exponent $2\kappa$ in (a) is the unitary exponent of Theorem~\ref{thm:main-group}(c): a service with purity $B$ is read at relator defect about
+$(B/n)^{1/2}$. The lower bound in (b) needs no assumption on purity, because at the rank rate purity is paid for with memory
+(Proposition~\ref{prop:purity-budget}): there $P+C<3Q+6$, and the argument of (a) with $B$ of order $Q$ gives $Q^2\gtrsim n$ up to logarithms. The
+services in (a) and (b) are the two devices of Section~\ref{sec:devices}. We prove Theorem~\ref{thm:main-channel} in
+Section~\ref{sec:main-channel-proof}, after the purity budget and the upper bound, and read it as a statement about finite tracial
+approximations in Corollary~\ref{cor:profile}.

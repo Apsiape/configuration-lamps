@@ -1,0 +1,43 @@
+% Figure: a causal service (the device) and its rounds.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\small,>=Stealth,
+  box/.style={draw,fill=white,minimum width=1.1cm,minimum height=1.5cm,inner sep=2pt},
+  wire/.style={->,thick},
+  xw/.style={->,thick,accent},
+  lbl/.style={font=\footnotesize,inner sep=1pt}]
+\colorlet{accent}{blue!50!black}
+% the memory band
+\fill[accent!12] (0,-0.5) rectangle (13.7,0.5);
+\draw[accent!60] (0,-0.5) -- (13.7,-0.5) (0,0.5) -- (13.7,0.5);
+\node[anchor=west] at (0.2,0) {$\beta_0$};
+\node[lbl,anchor=north west,align=left] at (0,-0.65) {memory: $Q$ qubits\\ purity $P=Q-S(\beta_0)$};
+% the observer, and the error of the service
+\node[draw,rounded corners,align=center,inner ysep=4pt,anchor=south west] (obs) at (2.8,2.62)
+  {observer: keeps a quantum reference, chooses each input adaptively\\
+   \footnotesize error: half trace distance of its final state from $n$ independent uses of $\Phi$};
+% the rounds: the input enters, U_t acts, the output is released before the next input
+\foreach \x/\t in {3.5/1,6.7/2,11.2/n}{
+  \node[box] at (\x,0.15) {$U_{\t}$};
+  \draw[wire] (\x-0.3,2.62) -- (\x-0.3,0.9);
+  \draw[wire] (\x+0.3,0.9) -- (\x+0.3,2.62);
+  \node[lbl,anchor=east] at (\x-0.42,2.15) {input $\t$};
+  \node[lbl,anchor=west] at (\x+0.42,1.35) {output $\t$};
+}
+\node at (9.05,0.15) {$\cdots$};
+\node at (9.05,1.75) {$\cdots$};
+% export and import after each round but the last
+\foreach \x in {4.7,7.9,9.9}{
+  \draw[xw] (\x,-0.5) -- (\x,-1.5);
+  \draw[xw] (\x+0.5,-1.5) -- (\x+0.5,-0.5);
+}
+\node[lbl,anchor=east] at (4.6,-1.0) {export};
+\node[lbl,anchor=west] at (5.3,-1.0) {import};
+\node[lbl,anchor=north,align=center] at (4.95,-1.65) {exchange $J$: the number of qubits exported, for good\\ purity $C$: qubits minus entropy, summed over the imports};
+\end{tikzpicture}
+\caption{A causal service of $\Phi$ for $n$ rounds. In each round the input enters, a fixed unitary $U_t$ acts on it and the memory, and the output
+is released before the next input arrives; after each round but the last, a prescribed set of memory qubits is exported for good and replaced by
+the same number of fresh qubits in a fixed state. The resources are the memory $Q$, the exchange $J$, the purity $P+C$, and the error, the
+largest half trace distance between the observer's final state and its final state after $n$ independent uses of $\Phi$.}
+\label{fig:device}
+\end{figure}

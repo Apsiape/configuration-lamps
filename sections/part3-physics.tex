@@ -1,0 +1,236 @@
+%======================================================================
+\section{Local physics}\label{sec:physics}
+%======================================================================
+
+Theorem~B concerns an abstract channel. This section asks which physical systems could produce the lamp channel $\Phi$, and what a
+system left to itself can produce in the long run. The answers are given at the scale of Theorem~B. A channel is \emph{cheap} if for all
+$n$ and $\epsilon$ it has causal services for $n$ rounds with error at most $\epsilon$, $P=C=0$ and memory polynomial in $\log(n/\epsilon)$.
+It is \emph{expensive} if for some $A,c>0$ every service for $n$ rounds with error at most $1/16$ and $P+C\le A\log(n+1)$ needs memory at
+least $n^c$ for all large $n$. Neither notion constrains the exchange.
+
+Local dynamics with a maximally mixed bath are cheap at every finite time, so they need time about $\delta^{-1/\nu}$ to come within
+$\delta$ of $\Phi$ (Section~\ref{sec:physics-local}). An autonomous dynamics with a tracial bath has only self-adjoint, positive channels as
+long-time limits (Section~\ref{sec:physics-autonomous}). Those two properties do not force cheapness: a lazy doubling of $\Phi$ has both, is
+the exact value of an autonomous dynamics at every time $t\ge1$, and is still expensive (Section~\ref{sec:physics-lazy}). Finer constraints
+on autonomous limits, which exclude some exact finite factors, are in Appendix~\ref{sec:physics-finer}.
+
+\subsection{Local reservoirs are cheap at every finite time}\label{sec:physics-local}
+
+\paragraph{Local reservoirs.} A \emph{local reservoir} is a finite box of the lattice $\Z^\nu$ with a system of dimension at most $q$ at each
+site, the probe $\mathbb C^d$ attached to the origin, and a Hamiltonian $H(t)=\sum_Xh_X(t)$, possibly time dependent. Its terms are
+supported in sets $X$ of diameter at most $R_0$ and satisfy $\|h_X(t)\|\le J_0$. The reservoir starts in its tracial state, and the probe is
+coupled to it for a time $T$. The resulting channel on the probe is $\Phi_T(X)=(\mathrm{id}\otimes\tau)[W_T(X\otimes I)W_T^*]$, where $W_T$ is
+the time-ordered evolution and $\tau$ the normalized trace of the reservoir. We call $\nu,q,R_0,J_0$ and $d$ the \emph{parameters} of the
+reservoir; the size of the box is arbitrary.
+
+\begin{proposition}[Local reservoirs are cheap at every finite time]\label{prop:light-cone}
+There is $K$, depending only on the parameters, such that for every local reservoir, every $T\ge0$, every $n\ge1$ and every $0<\epsilon\le1$, the
+channel $\Phi_T$ has a causal service for $n$ rounds with error at most $\epsilon$, $P=C=0$, $J=(n-1)Q$ and
+\[
+Q\ \le\ K\,\bigl[1+T+\log(n/\epsilon)\bigr]^\nu .
+\]
+\end{proposition}
+
+\begin{proof}
+For $r\ge0$ let $\Phi_T^{(r)}$ be the channel produced by the terms $h_X$ with $X$ inside the ball $B_r$ of radius $r$ about the origin. The
+Lieb--Robinson bound~\cite{LiebRobinson1972,BHV2006,NSY2019} gives constants $C_1,v,\mu>0$, depending only on the parameters, such that the Heisenberg
+evolutions of an operator $A$ at the origin under the full and the truncated dynamics differ in norm by at most $C_1\|A\|e^{vT-\mu r}$. The bound
+does not depend on the dimension of the site at the origin, so it holds for operators on the probe tensored with a reference system that the
+dynamics does not touch. Hence the Heisenberg-picture maps of $\Phi_T$ and $\Phi_T^{(r)}$ differ in completely bounded norm by at most
+$C_1e^{vT-\mu r}$, and by duality $\ddia(\Phi_T,\Phi_T^{(r)})\le C_1e^{vT-\mu r}$. The truncated evolution acts only on the probe and the sites
+of $B_r$, and the other sites start in their tracial state, so $\Phi_T^{(r)}$ has a finite tracial factorization with bath dimension
+$m\le q^{(2r+1)^\nu}$.
+
+Choose $r=\lceil(vT+\ln(2C_1n/\epsilon))/\mu\rceil$, so that $\ddia(\Phi_T,\Phi_T^{(r)})\le\epsilon/(2n)$, and let $Q=\lceil\log m+\log(2n/\epsilon)\rceil$.
+The exchange construction in the proof of Proposition~\ref{prop:sofic-upper}, with $U_f$ replaced by the unitary of this factorization and
+$\vartheta=0$, gives a service of $\Phi_T^{(r)}$ in which every round is within $\epsilon/(2n)$ of $\Phi_T^{(r)}$, hence within $\epsilon/n$ of
+$\Phi_T$. A hybrid argument bounds the error by $\epsilon$. The memory is $Q\le(2r+1)^\nu\log q+\log(2n/\epsilon)+1\le K[1+T+\log(n/\epsilon)]^\nu$.
+\end{proof}
+
+With Theorem~B this says that local physics cannot produce the lamp channel quickly.
+
+\begin{corollary}[Preparation time]\label{cor:preparation}
+Let $\Phi$ be the channel of Theorem~\ref{thm:main-channel}, and fix the parameters of a local reservoir with $d=873$. There are $c,\delta_0>0$ such
+that, whenever such a reservoir produces at time $T$ a channel within $\delta\le\delta_0$ of $\Phi$ in diamond distance,
+\[
+T\ \ge\ c\,\delta^{-1/\nu}\bigl(\log(1/\delta)\bigr)^{-(2\kappa+1)/\nu},\qquad 2\kappa+1<26.49 .
+\]
+\end{corollary}
+
+\begin{proof}
+Let $n=\lfloor1/(32\delta)\rfloor$. Proposition~\ref{prop:light-cone} gives a service of $\Phi_T$ with error at most $1/32$, zero purity and
+$Q\le K[1+T+\log(32n)]^\nu$. Replacing the $n$ uses of $\Phi_T$ by uses of $\Phi$ one at a time changes the observer's final state by at most
+$n\delta\le1/32$, so the same device serves $\Phi$ with error at most $1/16$ and zero purity. For $\delta_0$ small, $n$ is large, and
+Theorem~\ref{thm:main-channel}(a) with $A_0=0$ gives $Q\ge c'n/(\log n)^{2\kappa+1}$. Hence
+$1+T+\log(32n)\ge\bigl(c'n/(K(\log n)^{2\kappa+1})\bigr)^{1/\nu}$, and since $n\ge1/(64\delta)$ this gives the claim for $\delta_0$ small.
+\end{proof}
+
+The maximally mixed start of the reservoir is essential: $\Phi$ has a Stinespring dilation with a pure environment of dimension $r_*$, so
+from a pure state a bounded number of sites produce $\Phi$ exactly in bounded time. The same argument applies to a circuit of depth $T$ of
+gates of bounded range, whose light cone is exact, and so bounds the depth of any local circuit that prepares $\Phi$. The corollary does not
+exclude that local dynamics produce $\Phi$ in the limit of long times; it says how slowly. What the limit of long times can be, for a system
+left to itself, is the question of the rest of the section.
+
+\subsection{Autonomous limits are self-adjoint}\label{sec:physics-autonomous}
+
+\paragraph{Autonomous dynamics.} Let $\mathcal B$ be a von Neumann algebra with a faithful normal tracial state $\tau_{\mathcal B}$. Put
+$\mathcal M=M_d\otimes\mathcal B$ with the trace $\tau=\mathrm{tr}_d\otimes\tau_{\mathcal B}$, where $\mathrm{tr}_d$ is the normalized trace, and let
+$\iota(a)=a\otimes1$ and $E=\mathrm{id}\otimes\tau_{\mathcal B}$. An \emph{autonomous dynamics} is a trace-preserving automorphism $\alpha$ of
+$\mathcal M$, and the channel after $t\in\N$ steps is $\Phi_t=E\circ\alpha^t\circ\iota$. For $\alpha=\mathrm{Ad}\,U$ with $\mathcal B=M_m$ this is
+the tracial factorization $\Phi_t(X)=(\mathrm{id}\otimes\tau_m)[U^t(X\otimes I)U^{-t}]$. Let $\mathcal N$ be the fixed-point algebra of $\alpha$
+and $E_{\mathcal N}$ the $\tau$-preserving conditional expectation onto it.
+
+The next proposition is standard. It combines the mean ergodic theorem with an observation of Junge, Le Merdy and
+Xu~\cite[Remark~10.3]{JungeLeMerdyXu2006}, and of Haagerup and Musat~\cite[Remark~5.2]{HaagerupMusat2011}: compressions
+$E\circ E_{\mathcal N}\circ\iota$ of trace-preserving conditional expectations are self-adjoint and positive.
+
+\begin{proposition}[Autonomous limits are self-adjoint]\label{prop:autonomous}
+The averages $\frac1T\sum_{t=0}^{T-1}\Phi_t$ converge in diamond norm to $\overline\Phi=E\circ E_{\mathcal N}\circ\iota$, and if $\Phi_t$ converges, its
+limit is $\overline\Phi$. The channel $\overline\Phi$ is self-adjoint and positive semidefinite for the Hilbert--Schmidt inner product on $M_d$. In
+particular, a channel $\Psi$ with $\Psi^*\ne\Psi$ is not the long-time limit of any autonomous dynamics with a tracial bath, local or not.
+\end{proposition}
+
+\begin{proof}
+The automorphism extends to a unitary $V$ on $L^2(\mathcal M,\tau)$. By the mean ergodic theorem~\cite{Krengel1985}, $\frac1T\sum_{t<T}V^t$ converges
+strongly to the orthogonal projection $P$ onto the invariant vectors. For $x\in\mathcal M$ the averages of $x$ lie in the ball of radius $\|x\|$ of
+$\mathcal M$, which is closed in $L^2$, so $Px\in\mathcal M$, and $Px$ is invariant; hence $P(\mathcal M)\subseteq\mathcal N$. Since
+$\mathcal N$ consists of invariant vectors and $\mathcal M$ is dense in $L^2(\mathcal M)$, $P$ is the orthogonal projection onto
+$L^2(\mathcal N)$, whose restriction to $\mathcal M$ is $E_{\mathcal N}$. The map $\iota$ is an isometry from $(M_d,\mathrm{tr}_d)$ into
+$L^2(\mathcal M,\tau)$ with adjoint $E$, so $\Phi_t=\iota^*V^t\iota$, and the averages converge to $\iota^*P\iota=\overline\Phi$ on every $a\in M_d$,
+hence in diamond norm, since $M_d$ is finite dimensional. An ordinary limit equals the limit of the averages. And
+$\mathrm{tr}_d(b^*\overline\Phi(a))=\langle P\iota(b),P\iota(a)\rangle$ is Hermitian in $(a,b)$ and nonnegative for $a=b$.
+\end{proof}
+
+Conversely, every channel of the form $\Psi\Psi^*$ with $\Psi$ in the tracial closure is a compression of a conditional expectation:
+apply~\cite[Theorem~5.9]{HaagerupMusat2011} to $\Psi^*$, which is again factorizable. It is in fact an autonomous long-time limit. The dynamics
+that produces it adapts K\"ummerer's tensor dilations with a Bernoulli shift~\cite{Kummerer1985}, and nothing in the construction makes it local.
+
+\begin{proposition}[Autonomy without locality]\label{prop:nonlocal}
+Let $\mathcal N_0$ be a von Neumann algebra with a faithful normal tracial state $\tau_0$, let $U$ be a unitary in $M_d\otimes\mathcal N_0$, and put
+$\Psi(X)=(\mathrm{id}\otimes\tau_0)[U(X\otimes1)U^*]$. Let $\mathcal B=\overline\bigotimes_{k\in\Z}(\mathcal N_0,\tau_0)$, with $U$ acting on the factor
+$k=0$, and let $\beta$ be the Bernoulli shift of $\mathcal B$. Then the autonomous dynamics $\alpha=\mathrm{Ad}\,U\circ(\mathrm{id}\otimes\beta)\circ\mathrm{Ad}\,U^*$
+has $\Phi_t\to\Psi\Psi^*$, where $\Psi^*(a)=(\mathrm{id}\otimes\tau_0)[U^*(a\otimes1)U]$ is the Hilbert--Schmidt adjoint of $\Psi$.
+\end{proposition}
+
+\begin{proof}
+We have $\alpha^t=\mathrm{Ad}\,U\circ(\mathrm{id}\otimes\beta^t)\circ\mathrm{Ad}\,U^*$. The shift is mixing: $\tau_{\mathcal B}(w\,\beta^t(z))\to\tau_{\mathcal B}(w)\tau_{\mathcal B}(z)$ for
+$w,z\in\mathcal B$. Equality holds as soon as $w$ and $\beta^t(z)$ are elementary tensors with disjoint supports, and by Kaplansky's density
+theorem such tensors of norm at most $\|w\|$ and $\|z\|$ approximate $w$ and $z$ in $2$-norm. Let $a\in M_d$ and $y=U^*(a\otimes1)U$, and write
+$y=\sum_{i,j}e_{ij}\otimes y_{ij}$. For every $x=\sum_{k,l}e_{kl}\otimes x_{kl}$ in $M_d\otimes\mathcal B$,
+\[
+\tau\bigl(x\,(\mathrm{id}\otimes\beta^t)(y)\bigr)=\frac1d\sum_{k,l}\tau_{\mathcal B}\bigl(x_{kl}\beta^t(y_{lk})\bigr)\ \longrightarrow\ \tau\bigl(x\,(E(y)\otimes1)\bigr).
+\]
+Taking $x=U^*(e_{ji}\otimes1)U$ shows that every matrix entry of $\Phi_t(a)=E[U(\mathrm{id}\otimes\beta^t)(y)U^*]$ converges to the corresponding entry
+of $E[U(E(y)\otimes1)U^*]=\Psi(\Psi^*(a))$. Convergence on a basis of $M_d$ gives convergence in diamond norm.
+\end{proof}
+
+By a theorem of Haagerup and Musat~\cite[Theorem~3.6]{HaagerupMusat2015}, every channel in $\cK_d$ has the form $\Psi$ of
+Proposition~\ref{prop:nonlocal} for some $\mathcal N_0$, and the lamp channel has it with $\mathcal N_0=L(\Gamma)$. Nothing in
+Proposition~\ref{prop:nonlocal} makes the dynamics local. The unitary $U$ is arbitrary in $M_d\otimes\mathcal N_0$, and whether a dynamics of
+this kind can be given by a local rule is open (Section~\ref{sec:open}).
+
+Applied to the lamp channel, Proposition~\ref{prop:nonlocal} makes $\Phi\Phi^*$ an autonomous limit. That limit is cheap, since $\Phi\Phi^*$
+has an exact finite factorization with a bounded bath (Proposition~\ref{prop:compositions}). An expensive limit needs a construction that keeps
+more of the group, and the next subsection gives one.
+
+\subsection{An expensive autonomous limit: the lazy doubling}\label{sec:physics-lazy}
+
+The limit we build is a self-adjoint, positive and expensive channel on a doubled system, reached in two steps. The first step doubles $\Phi$
+to a self-adjoint channel $\Theta$ that keeps the lower bounds of Theorem~B. The second averages $\Theta$ with the identity, which makes it
+positive and leaves it expensive.
+
+\begin{remark}[Self-adjoint expensive channels]\label{rem:doubling}
+A self-adjoint channel can still be expensive. Let $z$ be the unitary of order three in $L(\Z_3)$, so that $\tau(z)=\tau(z^2)=0$, let $U$ be the gadget
+unitary of the channel $\Phi$ of Theorem~B, and let
+$V=\bigl(\begin{smallmatrix}0&U\otimes z\\U^*\otimes z^*&0\end{smallmatrix}\bigr)$, a self-adjoint unitary over $\mathbb C^2\otimes\mathbb C^{873}$ and
+$L(\Gamma\times\Z_3)$. The channel it defines on $M_{1746}$ is
+$\Theta\bigl(\begin{smallmatrix}x&y\\u&w\end{smallmatrix}\bigr)=\mathrm{diag}\bigl(\Phi(w),\Phi^*(x)\bigr)$, which is self-adjoint. It keeps the lower bounds of
+Theorem~B. The memory-against-purity bound transfers: a service of $\Theta$ becomes a service of $\Phi$ with one more memory qubit and one more
+bit of purity, at the same exchange. Feed each input together with a retained tag qubit that starts in $|1\rangle$ and is flipped after every
+round; this works because $\Theta$ maps $|1\rangle\langle1|\otimes\rho$ to $|0\rangle\langle0|\otimes\Phi(\rho)$. The bound at the rank rate transfers
+as well. $\Theta$ has a flat probe of rank $2r_*$, with anchors in both blocks, so Proposition~\ref{prop:purity-budget} gives $P+C<3Q+6$ at its
+own rank rate $J\le\frac n2\log(2r_*)$; the tag transfer and Theorem~\ref{thm:main-channel}(a) then give $Q\ge c\sqrt n/(\log n)^\kappa$. But
+$\Theta$ maps $\mathrm{diag}(I,-I)$ to $-\mathrm{diag}(I,-I)$, so it is not positive and not an autonomous limit. Its square
+$\Theta^2=\mathrm{diag}(\Phi\Phi^*,\Phi^*\Phi)$ is an autonomous limit, by Proposition~\ref{prop:nonlocal}, and it is cheap
+(Proposition~\ref{prop:compositions}).
+\end{remark}
+
+\paragraph{A lazy doubling.} The doubled channel $\Theta$ is expensive but not positive, and its square is cheap. Averaging $\Theta$ with the
+identity restores positivity and keeps it expensive. Put
+\[
+\Theta_+=\tfrac12(\mathrm{id}+\Theta),\qquad
+\Theta_+\begin{pmatrix}x&y\\u&w\end{pmatrix}=\frac12\begin{pmatrix}x+\Phi(w)&y\\u&w+\Phi^*(x)\end{pmatrix}\qquad\text{on }M_{1746}.
+\]
+Remark~\ref{rem:doubling} uses only $zz^*=1$ and $\tau(z^2)=0$, so $z$ may also be the unitary $\mathrm{diag}(1,i)$ of a qubit with its
+normalized trace. Since $\Theta$ is a unital channel that is self-adjoint for the Hilbert--Schmidt inner product, its spectrum lies in $[-1,1]$;
+unital channels are contractions for the Hilbert--Schmidt norm. Hence $\Theta_+$ is self-adjoint and positive semidefinite, as
+Proposition~\ref{prop:autonomous} requires of an autonomous limit.
+
+\begin{proposition}[An expensive autonomous limit]\label{prop:lazy}
+Let $\Phi$, $V$ and $\Theta$ be as in Remark~\ref{rem:doubling}, and $\kappa=6+\log107$.
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item \emph{Autonomy.} Let $Z$ be the coordinate of $L^\infty[-1,1]$ with the normalized Lebesgue measure, put
+$\mathcal B=L(\Gamma\times\Z_3)\,\overline\otimes\,L^\infty[-1,1]$ with the product trace, and
+$W=\exp\bigl(i\tfrac\pi2V\otimes Z\bigr)=\cos(\tfrac\pi2Z)+i\sin(\tfrac\pi2Z)\,V\in M_{1746}\otimes\mathcal B$. The autonomous dynamics
+$\alpha=\mathrm{Ad}\,W$ has $\Phi_t=\Theta_+$ for every $t\ge1$. More generally, $\exp(isV\otimes Z)$ gives the channel
+$\Xi_s=\frac{1+\mathrm{sinc}\,2s}2\,\mathrm{id}+\frac{1-\mathrm{sinc}\,2s}2\,\Theta$, with $\mathrm{sinc}\,x=\sin x/x$, and
+$\ddia(\Xi_s,\Theta_+)=|\sin2s|/(4s)$.
+\item \emph{Memory against purity, lower bound.} There are $c,c_0>0$ and $n_0$ such that for $n\ge n_0$ and $\log n\le B\le c_0n$ every causal
+service of $\Theta_+$ for $n$ rounds with error at most $1/16$ and purity $P+C\le B$ has, at any exchange,
+\[
+Q\ \ge\ c\,\frac n{B\,(\log n)^{2\kappa}} .
+\]
+In particular, for every $A_0\ge0$ there is $c'>0$ such that services with $P+C\le A_0\log n$ have $Q\ge c'n/(\log n)^{2\kappa+1}$ for all large $n$.
+\item \emph{Upper bound.} There is $K$ such that for every $n\ge1$ and $0<B\le n$, $\Theta_+$ has an exact causal service with purity $P+C<B$,
+$J=(n-1)Q$ and $Q\le K(n/B)\log(2n/B)$. Moreover $\Theta_+\in\cK_{1746}$.
+\end{enumerate}
+\end{proposition}
+
+Thus $\Theta_+$ is the long-time limit, indeed the exact value at every time $t\ge1$, of an autonomous dynamics with a tracial bath. It is
+expensive in the sense of this section, and it trades memory and purity at the same rate as $\Phi$ (Theorem~\ref{thm:main-channel}(a)). Like
+the dynamics of Proposition~\ref{prop:nonlocal}, the construction is not local. Part (a) is a computation, and we give it here.
+Appendix~\ref{app:lazy} proves parts (b) and (c).
+
+Part (b) loses nothing against Theorem~\ref{thm:main-channel}(a). A service of $\Theta_+$ yields, by Theorem~\ref{thm:extraction}, one round
+$(U,\rho)$ on the bath $\mathbb C^M$, $M=2^Q$, with small leakage and entropy production. Write $U$ in $2\times2$ blocks with respect to the
+qubit factor of the doubled system. The upper right block $B$ is where $\Theta_+$ applies $\Phi$. It is nearly a round of $\Phi$ on the same
+bath, except that it is not unitary: in the norm weighted by $\rho$, $B^*B$ is close to $1\otimes R$ for an operator $0\le R\le1$ on the bath. Where $R$ is bounded away from $0$, the operator $BR^{-1/2}$ is nearly an isometry. A smooth cutoff restricts to that part of the bath,
+and a polar decomposition produces a unitary $U'$ on $\mathbb C^{873}\otimes\mathbb C^M$ and a state $\rho'$, the state $\rho$ reweighted by the
+cutoff (Lemma~\ref{lem:block-extraction}). The leakage of the new round and its commutator $\|[U',1\otimes\sqrt{\rho'}\,]\|_F^2$ are at most a
+constant times the leakage and the commutator $\|[U,1\otimes\sqrt\rho\,]\|_F^2$ of the old round, a linear loss. The one-round theorem accepts
+the commutator in place of entropy production, because its proof uses entropy production only to bound that commutator. It also accepts, in
+place of a small diamond distance to $\Phi$, a bound on one coherence between two anchors, which the block extraction gives as well
+(Lemma~\ref{lem:commutator-form}). Corollary~\ref{cor:amplification} then yields the bound of Theorem~\ref{thm:main-channel}(a) for $\Theta_+$,
+with the same exponent.
+
+For part (c), two maximally mixed qubits join the bath of a sofic model of the labels: a coin that chooses between the identity and $\Theta$,
+and a phase qubit carrying $\mathrm{diag}(1,i)$ in place of $z$. The model then serves $\Theta_+$ exactly at its good points. The exact service of
+Proposition~\ref{prop:sofic-upper}(c) then goes through unchanged, and the same unitary with a flat bath puts $\Theta_+$ in $\cK_{1746}$.
+
+\begin{proof}[Proof of (a)]
+Since $V^2=1$ and $Z$ commutes with $V$, $\exp(isV\otimes Z)=\cos(sZ)+i\sin(sZ)V$, so that $W^t=\exp(it\frac\pi2V\otimes Z)$ and
+\[
+W^t(X\otimes1)W^{-t}=\cos^2(\tfrac{t\pi}2Z)\,X+\sin^2(\tfrac{t\pi}2Z)\,V(X\otimes1)V+\tfrac i2\sin(t\pi Z)\bigl(V(X\otimes1)-(X\otimes1)V\bigr).
+\]
+The trace of $\mathcal B$ is the product of the trace of $L(\Gamma\times\Z_3)$ and the integral over $Z$. The last term integrates to $0$ because
+$\sin(t\pi Z)$ is odd, $\int\cos^2(\frac{t\pi}2Z)=\frac12(1+\mathrm{sinc}\,t\pi)=\frac12$ for $t\ge1$, and $(\mathrm{id}\otimes\tau)[V(X\otimes1)V]=\Theta(X)$.
+So $\Phi_t=\frac12(\mathrm{id}+\Theta)$. The same computation with $s$ in place of $\frac{t\pi}2$ gives $\Xi_s$. Finally
+$\Xi_s-\Theta_+=\frac12\mathrm{sinc}(2s)(\mathrm{id}-\Theta)$, and $\|\mathrm{id}-\Theta\|_\diamond=2$: the input $|0\rangle\langle0|\otimes\sigma$ is mapped
+by $\Theta$ into the block $|1\rangle\langle1|$. The automorphism $\mathrm{Ad}\,W$ is inner, hence trace preserving.
+\end{proof}
+
+The same channel is reached, for every $t\ge1$, by a Bernoulli-shift construction like that of Proposition~\ref{prop:nonlocal}. Take
+$\mathcal B=L(\Gamma\times\Z_3)\,\overline\otimes\,\overline\bigotimes_{k\in\Z}(M_2,\tau_2)$, let $\beta$ be the shift of the chain, and let $p_0$ be
+the projection $|1\rangle\langle1|$ of the qubit at site $0$. The automorphism $\mathrm{Ad}\bigl((1-p_0)+p_0V\bigr)\circ(\mathrm{id}\otimes\beta)$ raises
+$V$ to the parity of $t$ fair bits.
+
+Autonomous dynamics with a tracial bath can therefore produce expensive channels. The reduced dynamics of the probe matters. If the channels
+$\Phi_t$ themselves form a semigroup of unital channels, they are mixed unitary for all large $t$~\cite{BhatDevendra2025}, hence cheap; here
+$\Theta_+^2\ne\Theta_+$. Locality constrains how $\Theta_+$ can be approached. Proposition~\ref{prop:light-cone} and
+Proposition~\ref{prop:lazy}(b) combine as in the proof of Corollary~\ref{cor:preparation}. Together they show that a local reservoir whose
+probe is the doubled system, and which produces a channel within $\delta\le\delta_0$ of $\Theta_+$ at time $T$, has
+$T\ge c\,\delta^{-1/\nu}(\log(1/\delta))^{-(2\kappa+1)/\nu}$, with constants $c,\delta_0>0$ depending only on the parameters of the reservoir. No
+local reservoir, then, produces $\Theta_+$ exactly at a finite time or approaches it exponentially fast. Whether a local dynamics can produce an
+expensive channel at all is open (Section~\ref{sec:open}). Self-adjointness and positivity, which $\Theta_+$ has, are not all that an
+autonomous limit must satisfy: Appendix~\ref{sec:physics-finer} gives a sharper necessary condition and excludes an exact finite
+factor by it.

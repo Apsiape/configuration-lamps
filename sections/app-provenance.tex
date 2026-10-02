@@ -1,0 +1,63 @@
+% layout: start this appendix on a new page so that the table precedes the machine checks.
+\clearpage
+%======================================================================
+\section{Results from the companion papers, and machine checks}\label{app:provenance}
+%======================================================================
+
+Table~\ref{tab:dependencies} lists every result of the companion papers~\cite{DouglasMghirbiA,DouglasMghirbiB} that this paper uses, and
+where it is used.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{0.47\textwidth}p{0.2\textwidth}p{0.25\textwidth}@{}}
+\toprule
+result & source & used in\\
+\midrule
+counting criterion (proof in App.~\ref{app:imported}) & \cite[Thm.~8.1]{DouglasMghirbiA} & Thm.~\ref{thm:criterion}, every lower bound\\
+transport by the powers of one element & \cite[Cor.~8.2]{DouglasMghirbiA} & Section~\ref{sec:criterion}\\
+Johnson's presentation of $H_3$ and its conventions & \cite[Section~2]{DouglasMghirbiA} & Appendix~\ref{sec:houghton}\\
+far-commutator area and polynomial Dehn bound for $H_3$ & \cite[Thms.~3.2, 3.3]{DouglasMghirbiA} & Prop.~\ref{prop:dehn}\\
+quadratic lower bound along a ray & \cite[Prop.~3.4]{DouglasMghirbiA} & Sections~\ref{sec:intro}, \ref{sec:criterion}, \ref{sec:ladder}\\
+bounded or at least $2r$ (sharpening Cornulier's Fact~3.5); embeddings in finite groups & \cite[Lemma~2.1]{DouglasMghirbiA} & Section~\ref{sec:criterion}\\
+superpolynomial profile of $H_3$ & \cite[Thm.~1.1]{DouglasMghirbiA} & Section~\ref{sec:thompson}\\
+projection products, exact $S_3$ rounding, sector bounds & \cite[Section~4]{DouglasMghirbiA} & Lemma~\ref{lem:projection-product}, App.~\ref{app:imported}\\
+\midrule
+causal services, exchange, purity and error & \cite[Def.~2.3, Section~3]{DouglasMghirbiB} & Section~\ref{sec:channel}\\
+gadget channels: Choi rank $r_*$, flat probe, entropy $\log r_*$ & \cite[Prop.~9.1]{DouglasMghirbiB} & Section~\ref{sec:channel-setting}\\
+the rank rate is the optimal exchange rate of gadget channels in $\cK_d$ & \cite[Props.~3.1, 9.1]{DouglasMghirbiB} & Thm.~B(b)\\
+sequential extraction (proof in App.~\ref{app:imported}) & \cite[Thm.~5.2]{DouglasMghirbiB} & Thm.~\ref{thm:extraction}\\
+purity budget $14Q+3$ at the rank rate (sharpened here) & \cite[Thm.~5.8]{DouglasMghirbiB} & Prop.~\ref{prop:purity-budget}\\
+entropy variance & \cite[Lemma~5.9]{DouglasMghirbiB} & Lemma~\ref{lem:surprisal}\\
+rolling-reservoir compiler & \cite[Appendix~A, Lemmas~A.1, A.4]{DouglasMghirbiB} & Thm.~\ref{thm:streaming}\\
+channel profiles are group profiles; hyperlinear groups give channels in $\cK_d$ & \cite[Thm.~9.2]{DouglasMghirbiB} & Section~\ref{sec:channel}\\
+one-round theorem for the Houghton gadget (generalised here) & \cite[Thm.~5.5, Appendix~B]{DouglasMghirbiB} & Thm.~\ref{thm:weighted}, Appendix~\ref{sec:weighted-proof}\\
+weighted norms; charged transport and weighted extraction for the Houghton gadget (generalised here) & \cite[Appendix~B, Lemmas~B.2, B.4]{DouglasMghirbiB} & Lemmas~\ref{lem:weighted-extraction}, \ref{lem:charged-area}\\
+weighted $S_3$ rounding & \cite[Lemma~B.3]{DouglasMghirbiB} & Lemma~\ref{lem:rounding}\\
+weighted sector bound (proved here by sequential measurement) & \cite[Thm.~B.1]{DouglasMghirbiB} & Thm.~\ref{thm:sector}\\
+\bottomrule
+\end{tabular}
+\caption{Results of the companion papers used in this paper (numbering of their version 1.1.2).}
+\label{tab:dependencies}
+\end{table}
+
+\subsection{Machine checks}\label{app:machine-checks}
+
+The $25$ freely reduced words are listed in the file \texttt{verification/relators1d.txt}. The script \texttt{verification/relators1d\_check.py}
+rebuilds each word from the abbreviations and checks it, independently of Lemma~\ref{lem:validity}, in the faithful action of $\Gamma$ on
+$V\times S_3$. For a word $w$ of length $l$ it checks that the exponent sums of $p$ and $q$ vanish; that $w$ fixes the empty configuration and
+every configuration $\{y\}$ with $y$ of height at most $l+2$ or far out on a ray; and that it fixes $(v,s)$ for every $s\in S_3$ at every
+configuration $v$ at which one of its lamp letters acts. These checks are exhaustive: while $w$ is applied, a point of height greater than $l+2$
+never reaches the points $1$ and $2$ and is moved only by translations along its ray, so the checks determine the affine part of $w$, and then
+the lamps of $w$ sit at the configurations just listed. The script also checks random configurations, that the abbreviations act as stated, and,
+as a negative control, that deleting any single letter from a sample of eleven relations produces a word that acts nontrivially.
+
+The script \texttt{verification/embedding3v\_check.py} composes the prefix tables exactly and checks the identities of the proof of
+Proposition~\ref{prop:3V} and
+that the images of $p,q,t,c,a$ satisfy the $25$ relations of Table~\ref{tab:certificate}.
+
+The script \texttt{verification/choi\_rank\_check.py} computes the Choi rank of the lamp channel. It sorts the identity and the $276$ symbols of
+the gadget of $R_\Phi$ into classes of equal elements of $\Gamma$ twice: once with the faithful action on configurations and the triviality
+test just described, and once with the exact images in $3V$. The two partitions agree and have $130$ classes, so $r_*=130$.
+
+The fillings in the proof of Theorem~\ref{thm:dyadic} have been generated and checked by free reduction for $k\le64$; the largest ratio of cell count to $k^2$ among
+them is $15/4$, at $k=2$.

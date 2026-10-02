@@ -1,0 +1,166 @@
+%======================================================================
+\section{Hash models, and the proof of Theorem A}\label{sec:profile}
+%======================================================================
+
+The lower bound of Theorem~A follows by feeding $2^N$ lamps of pair area polynomial in $N$ (Theorem~\ref{thm:pair-area}) into the criterion.
+The upper bound needs models far smaller than Følner sets, which we build by hashing configurations through random affine maps, a universal
+hash family that the affine group moves covariantly. The two halves meet in the proof of Theorem~A at the end of the section.
+
+\subsection{Affine hashing and the upper bound}\label{sec:hashing}
+
+The Følner sets of $\Gamma$ are doubly exponential (Proposition~\ref{prop:folner-lower}), but its chunks have far smaller models. A Følner set
+gives models of every chunk, by Cornulier's comparison of the sofic profile with the Følner function~\cite[Proposition~3.14]{Cornulier2013}, but
+it records the lamp at every configuration of a large finite part of $V$. A model need only record the lamps that are lit, and it can store them
+through a random affine hash of the configurations, which the affine group moves covariantly. Random $\F_2$-linear maps form a universal
+hash family of Carter and Wegman~\cite{CarterWegman1979}, and a random translation does not change collision probabilities.
+
+Let $W$ be a finite-dimensional vector space over $\F_2$, and let $K_W=S_3^W\rtimes\AGL(W)$, where $S_3^W$ is the group of functions
+$W\to S_3$ under pointwise multiplication, and $g\in\AGL(W)$ acts by $(g\lambda)(w)=\lambda(g^{-1}w)$. Thus $(\lambda,g)(\mu,h)=(\lambda\cdot g\mu,\,gh)$.
+The support of $\lambda$ is the set of $w$ with $\lambda(w)\ne1$. Fix $k\ge1$ and a total order on $W$, let $\operatorname{Aff}(W,\F_2^k)$ be the
+set of affine maps $W\to\F_2^k$, and let
+\[
+\Omega=\operatorname{Aff}(W,\F_2^k)\times S_3^{\F_2^k},\qquad |\Omega|=2^{k(\dim W+1)}\,6^{2^k}.
+\]
+For $\eta\in\operatorname{Aff}(W,\F_2^k)$ and $\lambda\in S_3^W$ let $\lambda^\eta:\F_2^k\to S_3$ send $z$ to the product, in the order of $W$, of the
+$\lambda(w)$ with $\eta(w)=z$. For $\gamma=(\lambda,g)\in K_W$ define a permutation $\Theta_\gamma$ of $\Omega$ by
+\[
+\Theta_\gamma(\eta,u)=\bigl(\eta\circ g^{-1},\ \lambda^{\eta\circ g^{-1}}\cdot u\bigr);
+\]
+its inverse sends $(\eta',u')$ to $(\eta'\circ g,(\lambda^{\eta'})^{-1}u')$, and $\Theta_1$ is the identity.
+
+\begin{lemma}[Affine hashing]\label{lem:hash}
+Let $b\ge1$, let $\gamma_1=(\lambda,g)$ and $\gamma_2=(\mu,h)$ be elements of $K_W$ whose lamp parts $\lambda,\mu$ have supports of size at most
+$b$, and let $\omega$ be uniformly distributed on $\Omega$. Then
+\begin{enumerate}[label=(\roman*),itemsep=1pt]
+\item $\Theta_{\gamma_1}\Theta_{\gamma_2}\omega=\Theta_{\gamma_1\gamma_2}\omega$ except with probability at most $\binom{2b}2\,2^{-k}$;
+\item if $\gamma_1\ne\gamma_2$, then $\Theta_{\gamma_1}\omega\ne\Theta_{\gamma_2}\omega$ except with probability at most $\binom{2b}2\,2^{-k}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $\omega=(\eta,u)$ and $\eta=\eta_0+z_0$ with $\eta_0$ linear; then $\eta_0$ and $z_0$ are independent and uniform. For $w\ne w'$ in $W$,
+$\eta(w)-\eta(w')=\eta_0(w-w')$ is uniform on $\F_2^k$, because $\eta_0\mapsto\eta_0(w-w')$ is a surjective linear map; so
+$\eta(w)=\eta(w')$ with probability exactly $2^{-k}$. Precomposition with a fixed affine bijection of $W$ permutes $\operatorname{Aff}(W,\F_2^k)$, so
+$\eta\circ f$ is again uniform for every $f\in\AGL(W)$. Hence, for a set $S\subset W$ of size at most $2b$, $\eta\circ f$ is injective on $S$ except
+with probability at most $\binom{2b}2\,2^{-k}$. If $\eta'$ is injective on a set $S$ containing the support of $\lambda$, then
+$\lambda^{\eta'}(\eta'(w))=\lambda(w)$ for $w\in S$, and $\lambda^{\eta'}=1$ off $\eta'(S)$.
+
+(i) Put $\eta'=\eta\circ(gh)^{-1}$. Then $\Theta_{\gamma_1}\Theta_{\gamma_2}(\eta,u)=(\eta',\lambda^{\eta'}\mu^{\eta\circ h^{-1}}u)$ and
+$\Theta_{\gamma_1\gamma_2}(\eta,u)=(\eta',(\lambda\cdot g\mu)^{\eta'}u)$. Let $S$ be the union of the support of $\lambda$ and the image under $g$ of
+the support of $\mu$, and suppose that $\eta'$ is injective on $S$. Since $\eta\circ h^{-1}(v)=\eta'(gv)$, the map $\eta\circ h^{-1}$ is injective on
+the support of $\mu$, and $\mu^{\eta\circ h^{-1}}(\eta'(w))=\mu(g^{-1}w)$ for $w\in S$. The support of $\lambda\cdot g\mu$ lies in $S$. So all three
+functions are trivial off $\eta'(S)$, and at $\eta'(w)$, $w\in S$, both sides equal $\lambda(w)\mu(g^{-1}w)$.
+
+(ii) If $g\ne h$, choose $w_0$ with $h^{-1}g(w_0)\ne w_0$. If $\eta\circ g^{-1}=\eta\circ h^{-1}$, then $\eta=\eta\circ h^{-1}g$, so
+$\eta(h^{-1}g(w_0))=\eta(w_0)$, which has probability $2^{-k}$. If $g=h$, then $\lambda\ne\mu$; put $\eta'=\eta\circ g^{-1}$ and let $S$ be the union
+of the supports. If $\eta'$ is injective on $S$, then $\lambda^{\eta'}$ and $\mu^{\eta'}$ take the different values $\lambda(w)$ and $\mu(w)$ at
+$\eta'(w)$ for some $w\in S$.
+\end{proof}
+
+To use the lemma in $\Gamma$ we need finite subgroups that contain the relevant cocycles. The quotient $\Z^2$ of Lemma~\ref{lem:structure}(c)
+serves as a clock. A model is a box in $\Z^2$ times the hash space $\Omega$; a generator advances the clock and applies a cocycle, which lies in
+a finite subgroup of the locally finite kernel of $\pi$. For $z\in\Z^2$ put $g_z=p^{z_1}q^{z_2}$, so that
+$\pi(g_z)=z$, and for $m\ge1$ let $B_m=\{-m,\dots,m\}^2$. For $R\ge1$ let $Y_R\subset Y$ be the set of points of height at most $R$, and let
+$W_R=\F_2^{Y_R}\subset V$. Let $K_R\le\ker\pi$ consist of the elements whose lamps lie at configurations in $W_R$ and whose affine part lies in
+$W_R\rtimes\GL(W_R)$, with $\GL(W_R)$ extended by the identity on the other basis vectors. Restricting to $W_R$ identifies $K_R$ with $K_{W_R}$.
+
+\begin{lemma}[The clock]\label{lem:clock}
+Let $m\ge1$, $R=2m+3$, $z\in B_m$ and $s\in\{p,q,t,c,a\}^{\pm1}$. Then $g_{z+\pi(s)}^{-1}sg_z$ and $g_zsg_{z+\pi(s)}^{-1}$ lie in $K_R$, and their
+lamps sit at no more than one configuration.
+\end{lemma}
+
+\begin{proof}
+Each of $p^{\pm1},q^{\pm1}$ changes heights by at most one and acts on the points of height at least $2$ as a translation along the rays, and these
+translations commute. Hence for $(y_1,y_2)\in\Z^2$ the commutator $[p^{y_1},q^{y_2}]$ fixes every point of height greater than $|y_1|+|y_2|+1$:
+while it is applied, such a point stays at height at least $2$. For $s=p^{\pm1}$ we have $\pi(s)=(\pm1,0)$, $g_{z+\pi(s)}^{-1}sg_z=1$ and
+$g_zsg_{z+\pi(s)}^{-1}=p^{z_1}[q^{z_2},p^{\pm1}]p^{-z_1}$, which is supported in heights at most $|z_2|+2+|z_1|\le2m+2$. For $s=q^{\pm1}$ we have
+$\pi(s)=(0,\pm1)$, $g_zsg_{z+\pi(s)}^{-1}=1$ and $g_{z+\pi(s)}^{-1}sg_z=q^{-z_2\mp1}[p^{-z_1},q^{\pm1}]q^{z_2\pm1}$, supported in heights at most
+$|z_1|+2+|z_2|+1\le2m+3$. These are permutations of
+$Y_R$, hence elements of $\GL(W_R)$. For $s\in\{t,c,a\}^{\pm1}$ we have $\pi(s)=0$, and $g_z^{\pm1}$ moves the points $1$ and $2$ to height at most
+$2m+2$; so the conjugates of $t$ and $d$ by $g_z^{\pm1}$ are a translation and a transvection of $W_R$, while those of $a$ and $ab$ are $a$ and
+$ab$, at the configuration~$0$.
+\end{proof}
+
+\begin{proposition}[Hash models]\label{prop:upper}
+Let $E'$ be a chunk of $\Gamma$ each of whose elements is a product of at most $\ell\ge1$ of the generators $p,q,t,c,a$ and their inverses. Then
+\[
+\log\sigma_{E'}(r)\ \le\ 500\,\ell^2\,r\log(2+r)\qquad(r>1).
+\]
+\end{proposition}
+
+\begin{proof}
+Let $m=\lceil8\ell r\rceil$, $R=2m+3$, $D=|Y_R|=6m+9$ and $k=\lceil\log(4\ell^2r)\rceil$, and let $\Omega$ be the hash space for $W=W_R$. For $g\in\Gamma$
+and $z\in\Z^2$ put $\psi(g,z)=g_{z+\pi(g)}^{-1}gg_z\in\ker\pi$; then $\psi(gh,z)=\psi(g,z+\pi(h))\,\psi(h,z)$. If $g$ is a product of at most $\ell$
+generators and inverses and $z\in B_{m-\ell}$, then $\psi(g,z)$ is the product of the $\psi(s,z')$ for the letters $s$ of the word, at points
+$z'\in B_m$, so by Lemma~\ref{lem:clock} it lies in $K_R$ with lamps at no more than $\ell$ configurations.
+
+Let $X=B_m\times\Omega$. For $g\in E'$ let $F_g$ be a permutation of $X$ that extends the injective partial map
+$(z,\omega)\mapsto(z+\pi(g),\Theta_{\psi(g,z)}\omega)$, defined for $z\in B_{m-\ell}$, with $F_1=\mathrm{id}$. Let $g,h,gh\in E'$ and
+$z\in B_{m-2\ell}$. Then $z$ and $z+\pi(h)$ lie in $B_{m-\ell}$, so $F_gF_h(z,\omega)=(z+\pi(gh),\Theta_{\psi(g,z+\pi(h))}\Theta_{\psi(h,z)}\omega)$ and
+$F_{gh}(z,\omega)=(z+\pi(gh),\Theta_{\psi(g,z+\pi(h))\psi(h,z)}\omega)$; by Lemma~\ref{lem:hash}(i) these agree for all but a fraction
+$\binom{2\ell}2\,2^{-k}$ of the $\omega$. Since $|B_{m-2\ell}|\ge(1-8\ell/(2m+1))|B_m|$,
+\[
+d\bigl(F_gF_h,F_{gh}\bigr)\ \le\ \varepsilon:=\frac{8\ell}{2m+1}+\binom{2\ell}2\,2^{-k}<\frac1{2r}+\frac1{2r}=\frac1r .
+\]
+If $g\ne h$ in $E'$ and $z\in B_{m-\ell}$, then either $\pi(g)\ne\pi(h)$ and $F_g(z,\omega)\ne F_h(z,\omega)$, or $\psi(g,z)\ne\psi(h,z)$ and
+Lemma~\ref{lem:hash}(ii) applies; so $d(F_g,F_h)\ge1-\varepsilon$. Hence $\sigma_{E'}(r)\le|X|$.
+
+Finally $\log|X|=2\log(2m+1)+k(D+1)+2^k\log6$. Here $2^k<8\ell^2r$, $k<\log(8\ell^2r)\le5\ell\log(2+r)$ and $D+1\le64\ell r$, so
+$k(D+1)\le320\ell^2r\log(2+r)$; also $2^k\log6\le21\ell^2r\le14\ell^2r\log(2+r)$ and $2\log(2m+1)\le10\ell^2r\log(2+r)$. The sum is less than
+$500\ell^2r\log(2+r)$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:main-group}}
+
+We now feed the pair areas of Theorem~\ref{thm:pair-area} into the criterion and the hash models of Proposition~\ref{prop:upper} into the
+upper bound.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main-group}]
+\emph{Setting up the criterion.} Theorem~\ref{thm:criterion} asks for $a$ and $b$ among the generators, while in $R$ the letter $b$ abbreviates
+$ac^4$. So let $S^+$ consist of the five generators and $b=ac^4\in\Gamma$, and let $R^+$ consist of $R$ and the three words $b^{-1}ac^4$, $b^2$
+and $(ab)^3$ in the letters of $S^+$. These words represent $1$, $a^2,b^2,(ab)^3\in R^+$, $ab\ne1$, and the longest word of $R^+$ has length
+$l=24$. The chunk $E^+$ that Theorem~\ref{thm:criterion} associates with $S^+$ and $R^+$ is contained in $E$. The reason, in one line, is that
+every new element is a power of $c$ or is represented, using $a^2=1$, by a prefix of the expanded words $b^2$ and $(ab)^3$. In detail, besides
+the elements of $E$, the chunk $E^+$ contains $b^{\pm1}$, the prefixes $b^{-1},c^{-4},c^{-3},c^{-2},c^{-1}$ of $b^{-1}ac^4$, and the prefixes $b$,
+$ab=c^4$, $aba=c^4a$, $abab=c^2$ and $ababa=c^2a$ of $b^2$, $(ab)^3$ and $ab$. These lie in $E$, because $ac^4$, $a^2c^4$, $a^2c^4a$ and
+$a^2c^4a^2c^4a$ are prefixes of $b^2$ and $(ab)^3$ in Table~\ref{tab:certificate}, $c^2$ and $c^3$ are prefixes of the relations $[d,k]$ of the
+family \textsf{S}, $a^2=1$, and $c^6=1$. Restricting a model of $E$ to $E^+$ gives a model of $E^+$, so $\sigma_E\ge\sigma_{E^+}$.
+
+For $N\ge1$ take the $M=2^N$ words $T_u$ of Theorem~\ref{thm:pair-area}, one for each configuration $u$ supported in the first $N$ points of
+ray~$1$. A commutator $[T_uxT_u^{-1},T_wyT_w^{-1}]$ with $x,y\in\{a,b\}$ contains the letter $b^{\pm1}$ at most four times, and replacing each
+occurrence by $(ac^4)^{\pm1}$ costs one relation $b^{-1}ac^4$. So its area with respect to $R^+$ is at most $\Lambda^+_N=\Lambda_N+4$, and
+Theorem~\ref{thm:criterion} gives
+\begin{equation}\label{eq:criterion-applied}
+\log\sigma_E(r)\ge2^N/16\qquad\text{whenever}\qquad r\ge4.7\cdot10^{9}\cdot2^N\Lambda^+_N .
+\end{equation}
+Since $a\ne1$, a $(1-1/r)$-expansive map needs at least two points, so $\log\sigma_E(r)\ge1$; for $r$ below any fixed bound $r_0$ claim (a)
+therefore holds once $c$ is small enough, and we may assume $r$ large.
+
+(a) By Theorem~\ref{thm:pair-area}, $\Lambda^+_N\le C_1N^\kappa$ with $C_1$ absolute. Let $r'=r/(4.7\cdot10^9C_1)$ and
+$N=\lfloor\log r'-\kappa\log\log r'\rfloor$, which is at least $1$ for large $r$. Then
+$2^N\Lambda^+_N\le C_1r'(\log r')^{-\kappa}(\log r')^\kappa=r/(4.7\cdot10^9)$, so~\eqref{eq:criterion-applied} applies, and
+$\log\sigma_E(r)\ge2^N/16\ge r'/(32(\log r')^\kappa)$. Since $\log r'\le\log r$, this is~(a).
+
+(b) Every element of $E$ is a generator, the inverse of one, or represented by a prefix of a word of length at most $24$ or by its inverse.
+Proposition~\ref{prop:upper} with $\ell=24$ gives $\log\sigma_E(r)\le500\cdot24^2r\log(2+r)$, and $\log(2+r)\le2\log r$ for $r\ge2$. The same
+proposition applies to every chunk.
+
+(c) Extend $\phi$ to $S^+$ by $\phi(b)=\phi(a)\phi(c)^4$. Then $b^{-1}ac^4$ is mapped to $I$ exactly, and $b^2$ and $(ab)^3$ are mapped to the
+images of the words $b^2$ and $(ab)^3$ of Table~\ref{tab:certificate}; so every word of $R^+$ is mapped within $e$ of $I$. With
+$\Lambda^+_N\le C_1N^\kappa$ as in (a), the condition $K_\Delta\sqrt M\,\Lambda^+_Ne\le1$ of Theorem~\ref{thm:criterion} holds when
+$2^NN^{2\kappa}\le Y:=(C_1K_\Delta e)^{-2}$, which is the case for $N=\lfloor\log Y-2\kappa\log\log Y\rfloor$; this $N$ is at least $1$ for $e$ small
+in terms of $\Delta$. Then $2^N\ge Y/(2(\log Y)^{2\kappa})$, and since $C_1K_\Delta\ge1$ we have $\log Y\le2\log(1/e)$. Hence
+\[
+\log D\ \ge\ \frac{\Delta^2}{12}\,2^N\ \ge\ \frac{\Delta^2}{24\cdot4^\kappa C_1^2K_\Delta^2}\cdot\frac{e^{-2}}{(\log(1/e))^{2\kappa}}.
+\]
+
+(d) Proposition~\ref{prop:fp} gives finite presentation and Lemma~\ref{lem:structure} elementary amenability.
+\end{proof}
+
+\begin{remark}\label{rem:lee}
+Part~(a) uses the polynomial Dehn bound of Proposition~\ref{prop:dehn}(b). With Lee's exponential bound alone, Theorem~\ref{thm:pair-area} gives
+$\Lambda^+_N\le2^{BN}$ for a constant $B$ that depends on the constant in Lee's inequality, and $N=\lfloor\log(r/(4.7\cdot10^9))/(1+B)\rfloor$
+in~\eqref{eq:criterion-applied} gives only $\log\sigma_E(r)\ge c\,r^{1/(1+B)}$: a superpolynomial profile, with an exponent we cannot make
+explicit. Transport at scale $N$ is too expensive for an exponential Dehn bound. The grid host transports at scale $\sqrt N$ and reaches
+$\log\sigma\ge c\,r\,e^{-C\sqrt{\log r}}$ with Lee's bound alone (conditionally, Remark~\ref{rem:grid}).
+\end{remark}

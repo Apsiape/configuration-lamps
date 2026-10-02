@@ -1,0 +1,84 @@
+%======================================================================
+\section{Proof of the streaming theorem}\label{app:streaming}
+%======================================================================
+
+This appendix proves Theorem~\ref{thm:streaming}, the streaming service at the rank rate. Theorem~B uses it through
+Corollary~\ref{cor:streaming-lamps}, which gives the services at the rank rate in Section~\ref{sec:main-channel-proof}.
+
+The device keeps one rectangular dilation $W$ for all rounds and lets the part of the memory in use, the \emph{active space}, grow by the
+factor $k'/k$ in every round; that growth is the whole purity bill. Three things are then controlled. The Kraus histories must stay nearly
+orthogonal, and a Haar-random unitary of the active space before each round ensures this, through a concentration bound on the Gram matrix of
+the histories. The concentration bound needs the state of everything outside the memory to stay spread out, and exporting about
+$\frac12\log r$ qubits per round ensures that. And the error follows from the Gram bound alone, because the final vector of the service differs
+from the ideal one by the polar part of a frame. The proof fixes the schedule, chooses the unitaries round by round, and then bounds the error
+and the memory.
+
+\begin{proof}[Proof of Theorem~\ref{thm:streaming}]
+We use the frames of~\cite[Appendix~A]{DouglasMghirbiB}. A \emph{frame} is a linear map $F:\mathbb C^M\to\mathbb C^D\otimes\mathbb C^S$; its columns
+are the vectors, in the memory $\mathbb C^D$ and an inaccessible exterior $\mathbb C^S$, attached to the Kraus histories. The exterior holds the
+purifier of the initial memory, the exported qubits and the purifiers of the imported ones. Put $g(F)=\|F^*F\|$ and
+$\alpha(F)=\|\mathrm{Tr}_{\mathbb C^D}FF^*\|$. Two lemmas from there carry the argument.
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt]
+\item \emph{Concentration}~\cite[Lemma~A.1]{DouglasMghirbiB}. For Hermitian $X$ on $\mathbb C^D$ and Haar-random $V\in U(D)$, the matrix
+$Z=F^*((V^*XV)\otimes I)F-\tau_D(X)F^*F$ satisfies $\Pr\{\|Z\|\ge s\}\le2M\exp[-Ds^2/(4\alpha(F)g(F)\|X\|^2)]$.
+\item \emph{Export}~\cite[Lemma~A.4]{DouglasMghirbiB}. If $\mathbb C^D=\mathbb C^{D/e}\otimes\mathbb C^e$, there is a unitary of $\mathbb C^D$ after
+which exporting the factor $\mathbb C^e$ and importing a maximally mixed $e$-dimensional register give a frame $F'$ with $F'^*F'=F^*F$ and, for every
+$\eta>0$, $\alpha(F')\le(1+\eta)\alpha(F)/e^2+4e^2g(F)\ln(8Se^2)/(\eta D)$.
+\end{itemize}
+
+\emph{Fix the schedule and the dimensions.} Put $h=\log r$, $E_p=2^{\lceil h/2\rceil}$, $J_t=\lfloor th/2\rfloor$, $j_t=J_t-J_{t-1}\le\lceil h/2\rceil$ and
+$e_t=2^{j_t}$, a divisor of $E_p$. Choose $D_0$, a multiple of $kE_p$, with $D_0\ge nkE_p$ and
+\begin{equation}\label{eq:D0}
+D_0^2\ \ge\ \frac{32\,A_*\,r^4n^2\ln(8r^{n+2})}{\epsilon^2},\qquad\text{where}\quad A_*=12\bigl(1+8E_p^2n^2L_*\bigr),\quad L_*=\ln(8D_0r^nE_p^2).
+\end{equation}
+Put $q_0=k'/k$. For $t\ge1$ let $\widetilde D_t=q_0D_{t-1}$, a multiple of $k'E_p$, and let $D_t$ be the least multiple of $kE_p$ with
+$D_t\ge\widetilde D_t$. Then $D_t\le q_0D_{t-1}+kE_p$, so $D_n\le q_0^n(D_0+nkE_p)\le2q_0^nD_0$. The memory has $Q=\lceil\log D_n\rceil$ qubits, of
+which the last $\lceil h/2\rceil$ form a \emph{port}. A space whose dimension $D'$ is a multiple of $E_p$ is realized as a subspace of the first
+$Q-\lceil h/2\rceil$ qubits of dimension $D'/E_p$, tensored with the port. The active space of round $t$ is such a space of dimension $D_{t-1}$,
+identified with $\mathbb C^k\otimes\mathbb C^{D_{t-1}/k}$.
+
+\emph{The device never leaves the active spaces.} The memory starts maximally mixed on the active space of round $1$, of dimension $D_0$. In
+round $t$ the device applies a unitary $V_t$ of the active space and then $W\otimes I_{D_{t-1}/k}$, which maps the input and the active space
+isometrically onto the output and a space of dimension $\widetilde D_t$. It releases the output. It then applies a unitary $V'_t$ of that space;
+since $V'_t$ acts on the memory alone, it could equally act before the release. If $t<n$, the device exports $j_t$ port qubits and imports
+$j_t$ qubits in the maximally mixed state in their place. The resulting space of dimension $\widetilde D_t$ lies in the active space of round
+$t+1$. These maps are completed arbitrarily to unitaries of the input and the whole memory; the completion never acts, since the memory never
+leaves the active spaces. So $C=0$, $J=J_{n-1}$, and $P=Q-\log D_0\le n\log q_0+2$.
+
+\emph{Frames track the histories.} Purify the initial memory: its frame $F_0$ is one unit vector, with $\alpha(F_0)=1/D_0$. Let $F$ be the frame
+before round $t$, with one column $F_y$ for each history $y\in[r]^{t-1}$. After the call the frame has the columns $(B_i\otimes I)(V_t\otimes I)F_y$,
+indexed by the histories $(y,i)$. Its Gram matrix has the blocks $F^*\bigl((V_t^*(B_i^*B_j\otimes I)V_t)\otimes I\bigr)F$, whose Haar means are
+$\tau(B_i^*B_j\otimes I)F^*F=\delta_{ij}F^*F$ by the first identity in~\eqref{eq:rectangular}. By the second identity and cyclicity of the partial
+trace over the memory, the exterior marginal after the call is exactly $r$ times the one before, whatever $V_t$ is; so the call multiplies
+$\alpha$ by $r$.
+
+\emph{Choose the unitaries round by round.} We choose $V_1,V'_1,V_2,\dots$ in turn so that the frame $F_t$ after round $t$ satisfies
+\begin{equation}\label{eq:streaming-induction}
+\|F_t^*F_t-I\|\le t\epsilon/n,\qquad \alpha(F_t)\le A_*/D_0 .
+\end{equation}
+This holds for $t=0$. Suppose it holds for $t-1$; then $g(F_{t-1})\le2$. Since $B_i^*B_i\le rI$, the Hermitian and anti-Hermitian parts of the $B_i^*B_j$
+have norm at most $r$. Apply the concentration lemma to these $2r^2$ operators, tensored with $I_{D_{t-1}/k}$, with $D=D_{t-1}\ge D_0$, at most $r^n$
+columns and level $s=\epsilon/(2rn)$: by~\eqref{eq:D0} the failure probabilities add up to at most
+$4r^{n+2}\exp[-D_0^2\epsilon^2/(32A_*r^4n^2)]\le\frac12$. So some $V_t$ makes every block of the new Gram matrix deviate from its mean by at most
+$\epsilon/(rn)$, hence the $r\times r$ block matrix by at most $\epsilon/n$, and the Gram matrix after the call is within $t\epsilon/n$ of $I$. Exports and
+imports preserve it. Choose $V'_t$ by the export lemma with $e=e_t$, $\eta=1/n$ and $D=\widetilde D_t\ge D_0$. The exterior has dimension
+$S\le D_0\,2^{2J_{t-1}}\le D_0r^n$, so $\ln(8Se_t^2)\le L_*$, and
+\[
+\alpha(F_t)\ \le\ \Bigl(1+\frac1n\Bigr)\frac{r\,\alpha(F_{t-1})}{e_t^2}+\frac{8E_p^2nL_*}{D_0}.
+\]
+Put $c_t=2^{2J_t}r^{-t}$, so that $c_0=1$, $\frac14<c_t\le1$ and $c_tr/e_t^2=c_{t-1}$. Multiplying by $c_t$ and unrolling gives
+$c_t\alpha(F_t)\le(1+\frac1n)^t(1+8E_p^2n^2L_*)/D_0$, hence $\alpha(F_t)\le4e(1+8E_p^2n^2L_*)/D_0\le A_*/D_0$. In round $n$ there is no export, and only the
+Gram bound is needed.
+
+\emph{The error is at most $\epsilon$.} Purify the observer. In the ideal experiment, with the Stinespring isometry
+$\xi\mapsto\sum_iA_i\xi\otimes|i\rangle$ in each round, its final vector is $\sum_y\psi_y\otimes|y\rangle$. In the service it is
+$\sum_y\psi_y\otimes F_n|y\rangle$ with the same vectors $\psi_y$, because the device acts on the input and the memory through
+$W=\sum_iA_i\otimes B_i$ and unitaries of the memory, and the observer never touches the memory or the exterior. The polar part
+$T=F_n(F_n^*F_n)^{-1/2}$ is an isometry with $\|F_n-T\|=\|(F_n^*F_n)^{1/2}-I\|\le\epsilon$. So the actual final vector is within $\epsilon$ of the
+ideal one mapped by $I\otimes T$, and after tracing out the memory and the exterior the observer's final states are within $\epsilon$ in trace
+distance.
+
+\emph{The memory is as claimed.} We have $Q\le\log D_n+1\le\log D_0+n\log q_0+2$. The conditions on $D_0$ hold for
+$D_0=kE_p\lceil K_r(n/\epsilon)^4(1+\ln k)\rceil$ with $K_r$ large enough in terms of $r$, and then
+$\log D_0=\log k+O_r(\log(n/\epsilon)+\log(2+\log k))$.
+\end{proof}

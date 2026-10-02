@@ -1,0 +1,69 @@
+%======================================================================
+\section{A purity budget at the rank rate}\label{sec:purity-budget}
+%======================================================================
+
+At the rank rate a device cannot buy memory with purity: the purity it can spend is linear in its memory. This is the last tool for the lower
+bound at the rank rate in Theorem~B. We sharpen the budget $14Q+3$ of~\cite{DouglasMghirbiB} by combining its rank count with a one-sided
+second-moment bound.
+
+\begin{proposition}[Purity budget]\label{prop:purity-budget}
+Let $\Phi$ be a channel on $M_d$, and suppose that some pure state $\psi_*$ of the input and a reference has output
+$\omega=(\Phi\otimes\mathrm{id})(\psi_*)$ flat of rank $r$. Every causal service of $\Phi$ for $n$ rounds with error $\epsilon\le1/16$ and exchange
+$J\le\frac n2\log r$ satisfies
+\[
+P+C\ <\ 3Q+6 .
+\]
+\end{proposition}
+
+Every gadget channel has such a probe with $r=r_*$ (Section~\ref{sec:channel-setting}). The proof uses the variance of the surprisal of a
+state with small deficit, which is~\cite[Lemma~5.9]{DouglasMghirbiB}; we include the short argument.
+
+\begin{lemma}[Surprisal variance]\label{lem:surprisal}
+Let $\beta$ be a state on $q\ge1$ qubits with spectrum $(\beta_i)$ and deficit $D=q-S(\beta)$. The surprisal $-\log\beta_i$, drawn with probability
+$\beta_i$, has variance at most $(q+2/\ln2)\,D$.
+\end{lemma}
+
+\begin{proof}
+Put $\varphi(x)=x\ln x-x+1\ge0$. We claim $x(\ln x)^2\le(2+\ln_+x)\varphi(x)$ for $x\ge0$. For $x=e^t$ with $t\ge0$ the difference of the two sides
+is $f(t)=e^t(t-2)+t+2$, with $f(0)=f'(0)=0$ and $f''(t)=te^t\ge0$. For $t\le0$ it is $g(t)=2(te^t-e^t+1)-t^2e^t$, with $g(0)=0$ and
+$g'(t)=-t^2e^t\le0$; and $x=0$ is clear. Now let $Q_0=2^q$ and $x_i=Q_0\beta_i\le Q_0$, the index running over all $Q_0$ eigenvalues. Then
+$\frac1{Q_0}\sum_ix_i=1$ and $D\ln2=\sum_i\beta_i\ln(Q_0\beta_i)=\frac1{Q_0}\sum_i\varphi(x_i)$. The variance is at most
+\[
+\sum_i\beta_i\bigl(\log(Q_0\beta_i)\bigr)^2=\frac1{Q_0(\ln2)^2}\sum_ix_i(\ln x_i)^2\le\frac{2+q\ln2}{(\ln2)^2}\,D\ln2=\Bigl(q+\frac2{\ln2}\Bigr)D .
+\]
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:purity-budget}]
+Put $b=P+C$ and suppose, for a contradiction, that $b\ge3Q+6$.
+
+\emph{Preloading.} The imports are fixed states, independent of everything else, and the exported qubits are never used again. So the observer's
+final state does not change if every import is prepared at the start in a register of its own, and each replacement swaps it with the exported
+qubits, which then stay in the device. The device becomes a register of $L=Q+J$ qubits in the product state
+$\sigma_0=\beta_0\otimes\bigotimes_f\omega_f$ of the initial memory state and the imported states, and it applies a fixed unitary in each round.
+
+\emph{The surprisal.} Let $(\sigma_i)$ be the spectrum of $\sigma_0$ and let $Z=L+\log\sigma_i$, with $i$ drawn with probability $\sigma_i$. Then
+$\mathbb EZ=L-S(\sigma_0)=b$. Also $Z$ is the sum of the independent variables $Z_f=q_f+\log\beta^{(f)}_i$ attached to the factors of $\sigma_0$,
+where $q_f$ is the number of qubits of the factor and $\beta^{(f)}$ its spectrum. Every factor has at most $Q$ qubits, since an import replaces
+exported memory qubits, and the deficits $b_f=\mathbb EZ_f$ of the factors add up to $b$. By Lemma~\ref{lem:surprisal},
+\[
+\mathrm{Var}\,Z=\sum_f\mathrm{Var}\,Z_f\le\Bigl(Q+\frac2{\ln2}\Bigr)b .
+\]
+
+\emph{A tail bound from the rank.} Let the observer feed the input halves of $n$ copies of $\psi_*$ and keep the references. Its final state is
+$\tau_O=\sum_i\sigma_i\tau_i$, where $\tau_i$ is its final state when the register starts in the eigenvector of $\sigma_i$. Each $\tau_i$ is a
+marginal of a pure state of the observer's system and the $L$-qubit register, so $\rank\tau_i\le2^L$. Fix a real number $k$ and let $I_k$ be the
+set of indices with $\sigma_i\ge2^{k-L}$, so that $|I_k|\le2^{L-k}$. Let $E$ be the support projection of $\sum_{i\in I_k}\tau_i$. Then
+$\rank E\le2^{2L-k}$ and $\Tr(E\tau_O)\ge\sum_{i\in I_k}\sigma_i=\Pr(Z\ge k)$. The ideal final state $\omega^{\otimes n}$ is flat of rank $r^n$, so
+$\Tr(E\omega^{\otimes n})\le2^{2L-k}r^{-n}\le2^{2Q-k}$, using $2J\le n\log r$. Since the error is at most $\epsilon$,
+\begin{equation}\label{eq:rank-tail}
+\Pr(Z\ge k)\ \le\ \epsilon+2^{2Q-k}\qquad(k\in\mathbb R).
+\end{equation}
+
+\emph{The contradiction.} Put $u=b-2Q-3$, so that $u\ge b/3+1>0$. By the one-sided Chebyshev inequality,
+$\Pr(Z\ge b-u)\ge u^2/(\mathrm{Var}\,Z+u^2)$, while~\eqref{eq:rank-tail} with $k=b-u=2Q+3$ gives $\Pr(Z\ge b-u)\le\frac1{16}+\frac18=\frac3{16}$. Hence
+$13u^2\le3\,\mathrm{Var}\,Z$, and with $u>b/3$,
+\[
+\frac{13}9\,b^2<3\Bigl(Q+\frac2{\ln2}\Bigr)b,\qquad\text{that is}\qquad b<\frac{27}{13}\Bigl(Q+\frac2{\ln2}\Bigr)<2.08\,Q+5.993 ,
+\]
+which contradicts $b\ge3Q+6$.
+\end{proof}

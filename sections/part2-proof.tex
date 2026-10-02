@@ -1,0 +1,118 @@
+%======================================================================
+\section{Proof of Theorem~B}\label{sec:main-channel-proof}
+%======================================================================
+
+Theorem~B, in the form of Theorem~\ref{thm:main-channel}, is assembled from sequential extraction, the weighted one-round theorem, the purity
+budget and the sofic-model devices. Two remarks after the proof say what it shows.
+
+\emph{Sofic models give the closure and the services.} By Theorem~\ref{thm:main-group}(b) the chunk $E$ of $\Gamma$ that consists of $1$ and
+the labels of the gadget of $R_\Phi$ has $\log\sigma_E(r)\le C_Er\log r$. Proposition~\ref{prop:sofic-upper} therefore gives finite tracial
+channels within $K_G/r$ of $\Phi$ for every $r$, so $\Phi\in\cK_{873}$. This also follows from~\cite{DouglasMghirbiB}, since $\Gamma$ is amenable
+(Lemma~\ref{lem:structure}) and hence hyperlinear. The exact services of part~(a) are those of Proposition~\ref{prop:sofic-upper}(c), and the
+zero-purity services are those of Proposition~\ref{prop:sofic-upper}(a) with $\epsilon=1/16$. Their memory bounds follow from
+$\log\sigma_E(R)\le C_ER\log R$ for $R\ge2$ and from $\log(4K_Gn/B)\le(1+\log2K_G)\log(2n/B)$, which holds because $\log(2n/B)\ge1$.
+Corollary~\ref{cor:streaming-lamps} gives the services of part~(b). The bounds on $r_*$ were proved in Section~\ref{sec:lamp-channel}.
+
+\emph{Part (a).} Let a service have error $\epsilon\le1/16$ and $P+C\le B$, where $\log n\le B$. Theorem~\ref{thm:extraction} gives a round with
+bath dimension $2^Q$, $\ddia(\Psi_t,\Phi)\le\epsilon/(1-\epsilon)\le1/15$ and $\nu_t=\ell_t+\Delta S_t\le t_n$. Since $\epsilon+h_2(\epsilon)<1$,
+$\epsilon\log n\le\log n$ and $1\le\log n\le B$,
+\[
+t_n\le\frac{16}{15}\cdot\frac{B+1+\log n}{n}\le\frac{16B}{5n}\qquad(n\ge2).
+\]
+Let $C_R\ge1$ be the constant of Corollary~\ref{cor:amplification}(a) for $R_\Phi$ and the transport of Section~\ref{sec:lamp-channel}, and put
+$y_n=5n/(16C_RB)$, so that $C_R\nu_ty_n\le1$ and $y_n\le n$. Put $c_0=5/(16C_Ry_0)$. If $B\le c_0n$, then $y_n\ge y_0$, and the corollary gives
+\[
+Q\ \ge\ S(\rho_t)\ \ge\ \frac{y_n}{32(\log y_n)^{2\kappa}}\ \ge\ \frac{5}{512\,C_R}\cdot\frac{n}{B(\log n)^{2\kappa}} .
+\]
+For the second statement take $B=\max(1,A_0)\log n$, which lies between $\log n$ and $c_0n$ for large $n$.
+
+\emph{Part (b).} Proposition~\ref{prop:purity-budget}, with the flat probe of rank $r_*$, gives $P+C\le B:=3Q+6$. Theorem~\ref{thm:extraction} now
+gives a round with $\nu_t\le t_n\le\frac{16}{15}(3Q+7+\log n)/n$. Put $y_n=15n/(16C_R(3Q+7+\log n))\le n$. If $y_n<y_0$, then
+$3Q+7+\log n>15n/(16C_Ry_0)$, so $Q\ge c'n$ for large $n$. Otherwise Corollary~\ref{cor:amplification}(a) gives $Q\ge y_n/(32(\log n)^{2\kappa})$,
+that is,
+\[
+Q\,(3Q+7+\log n)\ \ge\ \frac{15}{512\,C_R}\cdot\frac{n}{(\log n)^{2\kappa}} .
+\]
+If $Q\le\log n+7$ the left side is at most $4(\log n+7)^2$, which is smaller than the right side for large $n$. So $Q>\log n+7$, the left side is
+at most $4Q^2$, and $Q\ge c\sqrt n/(\log n)^\kappa$. \qed
+
+\paragraph{Finite tracial approximations.} The same argument has a static reading. A finite tracial factorization of bath dimension $M$ is a
+round with the flat bath state $\tau_M$: its entropy production vanishes, and its support leakage is at most its Choi distance to $\Phi$. So
+Theorem~\ref{thm:weighted} also reads the static approximation profile of $\Phi$, and the hash models bound it from above. For channels
+$\Psi,\Psi'$ on $M_d$ let $d_J(\Psi,\Psi')=\frac12\|\mathcal J(\Psi)-\mathcal J(\Psi')\|_1$ be the distance of their normalized Choi states, so
+that $d_J\le\ddia\le d\,d_J$~\cite[Section~2]{DouglasMghirbiB}. For $u\ge0$ let $D_\Phi(u)$ be the least $M$ for which some channel $\Psi$ with a
+finite tracial factorization of bath dimension $M$ has $d_J(\Psi,\Phi)\le u$; this is the Choi profile
+of~\cite[Definition~2.1]{DouglasMghirbiB}. Let $D^\diamond_\Phi(u)$ be the same with $\ddia$ in place of $d_J$, and $D^{\mathrm{mix}}_\Phi(u)$
+the same with $\Psi$ a finite convex combination of channels with finite tracial factorizations of bath dimensions at most $M$. Each is
+$+\infty$ if no such $\Psi$ exists, each is nonincreasing in $u$, and $D^{\mathrm{mix}}_\Phi\le D_\Phi\le D^\diamond_\Phi\le D_\Phi(\,\cdot\,/d)$.
+
+\begin{corollary}[Finite tracial approximations of the lamp channel]\label{cor:profile}
+Let $\Phi$ be the channel of Theorem~\ref{thm:main-channel} on $M_{873}$, let $\kappa=6+\log107$, let $E$ be the chunk of $\Gamma$
+consisting of $1$ and the labels of $\Phi$, and let $K_G=298+\binom{r_*}2=8683$ be its constant in Proposition~\ref{prop:sofic-upper}.
+There are constants $c,C>0$ and $u_0>0$ such that for $0<u\le u_0$
+\[
+c\,\frac{u^{-1}}{(\log(1/u))^{2\kappa}}\le\log D^{\mathrm{mix}}_\Phi(u)\le\log D_\Phi(u)\le\log D^\diamond_\Phi(u)\le\log\sigma_E(K_G/u)\le C\,u^{-1}\log(1/u),
+\]
+where $2\kappa<25.49$. So the least bath dimension of a finite tracial approximation of $\Phi$ to accuracy $u$, in Choi or in diamond
+distance, is $\exp(u^{-1+o(1)})$, and $D^{\mathrm{mix}}_\Phi(0)=\infty$: $\Phi$ is a limit of channels with finite tracial factorizations
+but is not a finite convex combination of such channels, although it has a Stinespring dilation with a pure environment of dimension
+$r_*=130$.
+\end{corollary}
+
+\begin{proof}
+\emph{Upper bound.} Let $0<u\le\frac12$ and $r=K_G/u\ge2$. Since $\sigma_E(r)$ is finite by Theorem~\ref{thm:main-group}(b), there is a
+$(1-r^{-1})$-expansive $r^{-1}$-morphism $f:E\to\Sym(\Omega)$ with $|\Omega|=\sigma_E(r)$. Proposition~\ref{prop:sofic-upper} gives a channel
+$\Phi_f=(1-\vartheta)\Phi+\vartheta\,\Xi$ with a finite tracial factorization of bath dimension $\sigma_E(r)$ and $0\le\vartheta\le K_G/r=u$, so
+$\ddia(\Phi_f,\Phi)=\vartheta\,\ddia(\Xi,\Phi)\le u$ and $D^\diamond_\Phi(u)\le\sigma_E(K_G/u)$. By Theorem~\ref{thm:main-group}(b),
+$\log\sigma_E(r)\le C_Er\log r$, and $\log(K_G/u)\le(1+\log K_G)\log(1/u)$ since $\log(1/u)\ge1$; so $C=C_EK_G(1+\log K_G)$ serves. The
+inequalities between the three profiles hold because $d_J\le\ddia$ and a single factorization is a convex combination with one term.
+
+\emph{A mixture is a flat round.} Let $\Psi=\sum_{i=1}^kp_i\Psi_i$ with $d_J(\Psi,\Phi)\le u$, where
+$\Psi_i(X)=(\mathrm{id}\otimes\tau_{m_i})[U_i(X\otimes I)U_i^*]$ and $m_i\le M$. By Carath\'eodory's theorem we may take $k\le d^4$, since
+the channels on $M_d$ lie in a real affine space of dimension less than $d^4$. On $\mathbb C^d\otimes\bigoplus_i\mathbb C^{m_i}$ put
+$U=\bigoplus_iU_i$ and $\rho=\bigoplus_ip_i\tau_{m_i}$. Then the partial trace of $U(X\otimes\rho)U^*$ over $\bigoplus_i\mathbb C^{m_i}$ is
+$\Psi(X)$, so $\Psi$ is a round in the sense of Section~\ref{sec:channel-setting}, with $S(\rho)=H(p)+\sum_ip_i\log m_i\le4\log d+\log M$. Its
+entropy production vanishes: $T(\rho)=\bigoplus_ip_i\,\mathrm{Tr}_d\,U_i(\tau_d\otimes\tau_{m_i})U_i^*=\rho$, because
+$\tau_d\otimes\tau_{m_i}$ is the normalized identity and $U_i$ is unitary. Its support leakage is
+$\ell=\Tr[(I-\Pi_\Phi)(\mathcal J(\Psi)-\mathcal J(\Phi))]\le\frac12\|\mathcal J(\Psi)-\mathcal J(\Phi)\|_1\le u$, because $\mathcal J(\Phi)$
+is supported in $\Pi_\Phi$ and $\Tr[PX]\le\frac12\|X\|_1$ for a projection $P$ and a traceless Hermitian $X$. So $\nu=\ell+\Delta S\le u$, and
+$\ddia(\Psi,\Phi)\le d\,u\le\frac18$ when $u\le1/(8d)$: the round satisfies the hypotheses of Theorem~\ref{thm:weighted}.
+
+\emph{Lower bound.} Section~\ref{sec:lamp-channel} verifies the hypothesis of Corollary~\ref{cor:amplification}(a) for $R_\Phi$ with the
+present $\kappa$ and $K=C_1+64$. Let $C_R=2^{50}m^4dK^2\ge1$ and $y_0$ be the constants of that corollary, and put $y=1/(C_Ru)$. Then
+$C_R\nu y\le1$, and $y\ge y_0$ when $u\le1/(C_Ry_0)$. For $u\le\min\{1/(8d),1/(C_Ry_0)\}$ the corollary gives, since $1<y\le1/u$,
+\[
+4\log d+\log M\ \ge\ S(\rho)\ \ge\ \frac{y}{32(\log y)^{2\kappa}}\ \ge\ \frac1{32C_R}\cdot\frac{u^{-1}}{(\log(1/u))^{2\kappa}} .
+\]
+Let $u_0$ be so small that the right side is at least $8\log d$ for $u\le u_0$. Then $\log M\ge c\,u^{-1}(\log(1/u))^{-2\kappa}$ with
+$c=1/(64C_R)$, and with $c=1/(32C_R)$ for a single factorization, where $H(p)=0$. Finally $D^{\mathrm{mix}}_\Phi(0)\ge D^{\mathrm{mix}}_\Phi(u)$
+for every $u>0$, and the lower bound is unbounded as $u\to0$. The pure environment is the Stinespring dilation of Remark~\ref{rem:plus-one}.
+\end{proof}
+
+By a theorem of Haagerup and Musat~\cite[Theorem~3.6]{HaagerupMusat2015}, a channel on $M_d$ lies in $\cK_d$ exactly when it factors through an
+ultrapower of the hyperfinite $\mathrm{II}_1$ factor, and Musat and R{\o}rdam showed that such a channel may have no finite tracial
+factorization at all~\cite{MusatRordam2020}. The Houghton channel of~\cite[Theorem~D.1]{DouglasMghirbiB} is an explicit channel of this kind,
+with profile exponent between $0.069$ and $1/3$. For $\Phi$ the exponent is $1-o(1)$, nearly the most that the one-round method can certify
+(Remark~\ref{rem:sqrt-limit}), while channels in the relative interior of $\cK_d$ have profiles at most linear in
+$1/u$~\cite[Section~10]{DouglasMghirbiB}.
+
+\begin{remark}[Memory between two readings of the profile]\label{rem:sandwich}
+Take a gadget channel of a sofic group that satisfies the hypotheses of Theorem~\ref{thm:weighted}. The least memory of its services with error
+$1/16$ and purity $O(\log n)$ lies between two readings of the group at scale $n$. The lower reading is the entropy forced by as many cheaply
+commuting copies of $S_3$ as Corollary~\ref{cor:amplification} fits at relator defect about $\sqrt{\log n/n}$. The upper reading is
+$\log\sigma_E(Cn)+O(\log n)$, by Proposition~\ref{prop:sofic-upper}; it is attained already at zero purity, with exchange $(n-1)Q$. For the
+configuration lamps both readings are $n^{1+o(1)}$. The upper reading is the sofic profile, not the F{\o}lner function. The latter is doubly
+exponential for $\Gamma$ (Proposition~\ref{prop:folner-lower}), so models built from F{\o}lner sets~\cite[Proposition~3.14]{Cornulier2013} give
+memory exponential in $n$, while the hash models behind Theorem~\ref{thm:main-group}(b) give $O(n\log n)$. The grid host gives a second pair
+of readings, conditionally on the sketches of Appendix~\ref{sec:grid} (Remark~\ref{rem:grid-channel}).
+\end{remark}
+
+\begin{remark}[The rank rate is the diagonal of the trade-off]\label{rem:sqrt-limit}
+At the rank rate a device with error at most $1/16$ has purity less than $3Q+6$ (Proposition~\ref{prop:purity-budget}).
+Theorem~\ref{thm:main-channel}(a) with $B$ of order $Q$ therefore forces $Q\gtrsim\sqrt n$, and the streaming services attain this with purity
+of the same order. In general, for every channel with a flat probe, padding a rank-rate service with error at most $1/16$ by $2Q+6$ maximally mixed
+qubits turns it into a service whose purity is at most its memory. The least memory at purity at most memory is therefore at most three times
+the least memory at the rank rate, plus six. For $\Phi$ both are $n^{1/2+o(1)}$. The one-round method cannot give more than $\sqrt n$ at the
+rank rate, since condition~\eqref{eq:weighted-condition} certifies at most about $1/\nu$ copies; Theorem~\ref{thm:streaming} shows that for
+$\Phi$ nothing more is true.
+\end{remark}

@@ -12,6 +12,7 @@
 \usepackage{microtype}
 \setlength{\emergencystretch}{2em}
 \usepackage{xcolor}
+\usepackage{tikz}\usetikzlibrary{arrows.meta,calc}
 \usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
 \hypersetup{pdftitle={Amenable groups with nearly exponential sofic profile, and quantum channels that need nearly linear memory},
 pdfauthor={Seth Douglas and Nidhal Mghirbi},pdfkeywords={sofic profile, amenable groups, Houghton groups, Thompson's groups,
@@ -28,6 +29,7 @@ wreath products, quantum channels, quantum memory}}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{theoremA}{Theorem A}
 \newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
 
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Sym}{Sym}
@@ -44,7 +46,7 @@ wreath products, quantum channels, quantum memory}}
 
 \title{Amenable groups with nearly exponential sofic profile,\\ and quantum channels that need nearly linear memory}
 \author{Seth Douglas \and Nidhal Mghirbi}
-\date{September 2026 (version 1.0.2)}
+\date{October 2026 (version 1.1.0)}
 
 \begin{document}
 \maketitle
@@ -55,11 +57,26 @@ wreath products, quantum channels, quantum memory}}
 
 \input{sections/intro}
 \input{sections/criterion}
-\input{sections/ladder}
-\input{sections/group}
-\input{sections/channel}
-\input{sections/physics}
-\input{sections/open}
+
+\part{The group (Theorem A)}
+\input{sections/part1-group}
+\input{sections/part1-fillings}
+\input{sections/part1-pair-areas}
+\input{sections/part1-profile}
+\input{sections/part1-more}
+\input{sections/part1-ladder}
+
+\part{The channel (Theorem B)}
+\input{sections/part2-services}
+\input{sections/part2-one-round}
+\input{sections/part2-lamp-channel}
+\input{sections/part2-devices}
+\input{sections/part2-purity}
+\input{sections/part2-proof}
+
+\part{Physics and open problems}
+\input{sections/part3-physics}
+\input{sections/part3-open}
 
 \section*{Use of AI}
 \addcontentsline{toc}{section}{Use of AI}
@@ -69,6 +86,17 @@ checked proofs, carried out computations, searched the literature, wrote the ver
 authors directed the research, assessed and selected the results, and take full responsibility for the content. The proofs are given in
 full in the text; repeated adversarial checking and the accompanying programs support them but do not replace them. The verification
 notes state which statements are checked by machine.
+
+\appendix
+\input{sections/app-houghton}
+\input{sections/app-imported}
+\input{sections/app-one-round}
+\input{sections/app-streaming}
+\input{sections/app-lazy}
+\input{sections/app-finer}
+\input{sections/app-hyperlinear}
+\input{sections/app-grid}
+\input{sections/app-provenance}
 
 \input{sections/references}
 

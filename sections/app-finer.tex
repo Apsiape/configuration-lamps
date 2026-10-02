@@ -1,0 +1,57 @@
+%======================================================================
+\section{Finer constraints on autonomous limits}\label{sec:physics-finer}
+%======================================================================
+
+This appendix complements Section~\ref{sec:physics-autonomous}: a return inequality that autonomous limits obey, an exact finite
+factor that it excludes, and the cheapness of adjoint compositions of gadget channels.
+
+The limit $\overline\Phi$ of Proposition~\ref{prop:autonomous} is more than self-adjoint and positive. It is a compression of a conditional
+expectation, and this ties the decay of a coherence to the return probability of a state.
+
+\begin{proposition}[A return inequality]\label{prop:return}
+Let $T=E\circ E_{\mathcal N}\circ\iota$ be as in Proposition~\ref{prop:autonomous}, on $M_D$. If $T(e_{00})=e_{00}$ and $T(e_{0j})=a\,e_{0j}$ for some
+$j\ne0$ and $0\le a\le1$, then
+\[
+\langle j|T(e_{jj})|j\rangle\ \ge\ a^2+\frac{(1-a)^2}{D-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+Write $P=E_{\mathcal N}$, the orthogonal projection onto $L^2(\mathcal N)$, and identify $x\in M_D$ with $\iota(x)$; then
+$\mathrm{tr}_D(x^*T(y))=\langle x,Py\rangle$ with $\langle x,y\rangle=\tau(x^*y)$. Put $p_0=e_{00}$, $p_j=e_{jj}$ and $x=e_{0j}$. Since
+$\|Pp_0\|_2^2=\langle p_0,T(p_0)\rangle=\|p_0\|_2^2$, we have $Pp_0=p_0$, so $p_0\in\mathcal N$. Let $y=P(x)$, $X=P(p_j)$ and $B=y^*y$. As $P$ is
+$\mathcal N$-bimodular, $p_0y=P(p_0x)=y$, $yp_0=P(xp_0)=0$ and $p_0X=P(p_0p_j)=0$; so $yy^*$ is supported in $p_0$, and $B$ and $X$ in $1-p_0$. The
+Schwarz inequality for conditional expectations gives $B\le P(x^*x)=X$. Moreover $\tau(X)=\tau(p_j)=1/D$ and $\tau(B)=\|Px\|_2^2=\langle x,T(x)\rangle=a/D$,
+so $R=X-B\ge0$ has $\tau(R)=(1-a)/D$. By the Cauchy--Schwarz inequality, $\tau(B^2)=\tau((yy^*)^2)\ge\tau(yy^*)^2/\tau(p_0)=a^2/D$ and
+$\tau(R^2)\ge\tau(R)^2/\tau(1-p_0)=(1-a)^2/(D(D-1))$, and $\tau(BR)\ge0$. Hence
+\[
+\frac1D\,\langle j|T(e_{jj})|j\rangle=\langle p_j,Pp_j\rangle=\tau(X^2)=\tau(B^2)+2\tau(BR)+\tau(R^2)\ \ge\ \frac{a^2}D+\frac{(1-a)^2}{D(D-1)} .\qedhere
+\]
+\end{proof}
+
+\begin{remark}[Self-adjoint and positive is not enough]\label{rem:qutrit}
+Haagerup and Musat give self-adjoint positive maps that are not such compressions because they are not
+factorizable~\cite[Theorem~5.4]{HaagerupMusat2011}. One exact finite factor is excluded all the same. Let $a=\sqrt3/2$ and $b=\frac12$, and let
+$\Lambda$ on $M_3$ have the Kraus operators $\mathrm{diag}(1,a,a)$, $b\,e_{12}$ and $-b\,e_{21}$. With
+$\omega=e^{2\pi i/3}$ and $W_k=1\oplus\bigl(\begin{smallmatrix}a&b\omega^k\\-b\omega^{-k}&a\end{smallmatrix}\bigr)$ one has
+$\Lambda=\frac13\sum_{k=0}^2\mathrm{Ad}\,W_k$, so $\Lambda$ has a finite tracial factorization with bath dimension three. It is self-adjoint, and positive
+for the Hilbert--Schmidt inner product, with eigenvalues between $\frac12$ and $1$. But $\Lambda(e_{00})=e_{00}$, $\Lambda(e_{01})=a\,e_{01}$ and
+$\langle1|\Lambda(e_{11})|1\rangle=a^2$, which violates Proposition~\ref{prop:return}. Hence $\Lambda$ is not the long-time limit of any autonomous
+dynamics with a tracial bath.
+\end{remark}
+
+Composing a gadget channel with its adjoint erases the multiplication of the group. In a triangle block the unitarity of the gadget forces the
+coefficient of the product label to be the product of the coefficients, and this is what the one-round theorem reads. In $\Phi\Phi^*$ a triangle only
+requires a permutation $\pi_x$ of the labels that carries $1$ to $x$ and $y$ to $xy$, and no relation between the permutations $\pi_x$ for
+different $x$ is needed.
+
+\begin{proposition}[Adjoint compositions of gadgets are exact finite factors]\label{prop:compositions}
+Let $\Phi_G$ be a gadget channel with $r_*$ labels. Then $\Phi_G\Phi_G^*$ and $\Phi_G^*\Phi_G$ have finite tracial factorizations with baths of at
+most $3r_*-2$ qubits. Consequently, for every $n$, they have exact causal services with $Q\le3r_*-2$, $P=C=0$ and $J=(n-1)Q$, and so does
+$\Theta^2$ in Remark~\ref{rem:doubling}, with one more qubit.
+\end{proposition}
+
+The proof is in Appendix~\ref{app:lazy}. The exchange $(n-1)Q$ of these services is far above the rank rate, as for the services of
+Proposition~\ref{prop:sofic-upper}. At its own rank rate $\Phi\Phi^*$ is cheap too: as an exact finite factor with a bath of at most $3r_*-2$
+qubits, it has services with $P=C=0$ and memory $O(r_*+\log(n/\epsilon))$ by~\cite[Theorem~8.6]{DouglasMghirbiB}. An autonomous dynamics with a tracial bath therefore cannot be expensive through $\Phi\Phi^*$. It can be through a lazy version
+of the doubling (Section~\ref{sec:physics-lazy}).

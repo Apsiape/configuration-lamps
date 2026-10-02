@@ -1,0 +1,66 @@
+%======================================================================
+\section{The weighted one-round theorem}\label{sec:weighted-statement}
+%======================================================================
+
+The engine of Part~II reads an approximate representation of the relations directly off the memory state of one round, weighted by that
+state, and turns many cheaply commuting copies of $S_3$ into entropy of the memory. We state it here with its amplified form; the proof is in
+Appendix~\ref{sec:weighted-proof}. Transport words $u_1,\dots,u_N$ over $S^{\pm1}$ have \emph{length at most $L$} and \emph{pairwise areas at
+most $A$} if $|u_i|\le L$ for all $i$ and
+\[
+\Area_R\bigl([u_ixu_i^{-1},\,u_kyu_k^{-1}]\bigr)\le A\qquad(i\ne k,\ x,y\in\{a,b\}),
+\]
+where $\Area_R$ is the area in the free group on $S$, as in Section~\ref{sec:criterion}.
+
+\begin{theorem}[Weighted one-round theorem]\label{thm:weighted}
+Let $G$, $S$ and $R$ be as in Section~\ref{sec:channel-setting}, and suppose that $S$ contains $a$, $b$ and $j$, that $a^2$, $b^2$, $(ab)^3$ and
+$j^{-1}ab$ lie in $R$, and that $j\ne1$ in $G$. Put $m=\max\{6,\ell_1,\dots,\ell_{r_0}\}$. Let $u_1,\dots,u_N$ be transport words of length at
+most $L$ and pairwise areas at most $A$. Let $\Psi(X)=\mathrm{Tr}_M\,U(X\otimes\rho)U^*$ be one round with $\ddia(\Psi,\Phi_G)\le1/8$, support
+leakage $\ell$ relative to $\Phi_G$ and entropy production $\Delta S$, and put $\nu=\ell+\Delta S$. If
+\begin{equation}\label{eq:weighted-condition}
+2^{25}\,m^2\sqrt d\,\sqrt N\,(A+L+1)\sqrt\nu\ \le\ 1,
+\end{equation}
+then $S(\rho)\ge N/16$.
+\end{theorem}
+
+The theorem reads the round at relator defect of order $\sqrt\nu$, a single square root of the quantity that Theorem~\ref{thm:extraction}
+controls; a service with purity $O(\log n)$ is thus read at defect about $n^{-1/2}$. It does so without tracialization, working with the
+actual memory state $\rho$, which need not be flat. The general correspondence of~\cite{DouglasMghirbiB} instead replaces the round by a nearby
+finite tracial mixture, which costs a second square root and reads the profile at defect about $n^{-1/4}$. That paper carried the weighted
+route out for a single gadget, built from Houghton's group. Theorem~\ref{thm:weighted} holds for every relation set that contains the
+relations of $S_3$ and a name for $ab$.
+
+One round reveals a representation because the Choi support of $\Phi_G$ records which slots carry the same label. A round with small leakage
+must therefore put nearly the same bath operator at every slot of a given label; the anchors make these operators unitaries, and the
+triangle tests make them satisfy the relations. Small entropy production makes them nearly commute with $\sqrt\rho$, and that is what lets
+every error be measured in the norm weighted by the memory state rather than in the flat one. Nearly commuting copies of $S_3$ then cost
+entropy. Measure the $N$ three-cycles one after another on the memory. Each outcome is nearly a fair coin, because the involution of its copy
+flips it, yet a purifying reference nearly knows it, because the copy nearly commutes with $\sqrt\rho$. Each copy thus contributes about one
+bit of mutual information with the reference, and that mutual information is at most $S(\rho)$.
+
+Applied to a family of transport words that grows with a parameter, Theorem~\ref{thm:weighted} gives a lower bound on the entropy of one round
+in terms of $\nu$ alone.
+
+\begin{corollary}[Amplification]\label{cor:amplification}
+Keep the assumptions of Theorem~\ref{thm:weighted} on $G$, $S$, $R$ and the round, and let $K\ge1$ and $\kappa\ge0$.
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item Suppose that for every integer $k\ge1$ there are $2^k$ transport words of length at most $L_k$ and pairwise areas at most $A_k$, with
+$A_k+L_k+1\le Kk^\kappa$. Put $C_R=2^{50}m^4dK^2$. There is $y_0$ depending only on $\kappa$ such that
+\[
+S(\rho)\ \ge\ \frac{y}{32\,(\log y)^{2\kappa}}\qquad\text{for every }y\ge y_0\text{ with }C_R\,\nu\,y\le1 .
+\]
+\item Suppose instead that $A_k+L_k+1\le2^{K\sqrt k}$ for every $k\ge1$, and put $C'_R=2^{50}m^4d$. There is $y_1$ depending only on $K$ such that
+\[
+S(\rho)\ \ge\ \frac{y}{32}\,2^{-2K\sqrt{\log y}}\qquad\text{for every }y\ge y_1\text{ with }C'_R\,\nu\,y\le1 .
+\]
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) Let $y_0\ge4$ be such that $k=\lfloor\log y-2\kappa\log\log y\rfloor\ge1$ for $y\ge y_0$. Then $k\le\log y$ and $2^k\le y(\log y)^{-2\kappa}$, so
+$2^kk^{2\kappa}\le y$. With $N=2^k$, the left side of~\eqref{eq:weighted-condition} is at most
+$2^{25}m^2\sqrt d\,K\,(2^kk^{2\kappa})^{1/2}\sqrt\nu\le(C_R\nu y)^{1/2}\le1$. So $S(\rho)\ge2^k/16$, and $2^k>y(\log y)^{-2\kappa}/2$.
+
+(b) Let $y_1$ be such that $k=\lfloor\log y-2K\sqrt{\log y}\rfloor\ge1$ for $y\ge y_1$. Then $K\sqrt k\le K\sqrt{\log y}$, so
+$2^k(A_k+L_k+1)^2\le2^{k+2K\sqrt{\log y}}\le y$, and~\eqref{eq:weighted-condition} holds with $N=2^k$ as in part~(a). Hence
+$S(\rho)\ge2^k/16>y\,2^{-2K\sqrt{\log y}}/32$.
+\end{proof}

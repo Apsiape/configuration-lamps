@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 HERE = Path(__file__).resolve().parent
-CHECKS = ["relators1d_check.py", "relators_check.py", "ladder_check.py", "embedding3v_check.py"]
+CHECKS = ["relators1d_check.py", "relators_check.py", "ladder_check.py", "embedding3v_check.py", "choi_rank_check.py"]
 
 
 def main():

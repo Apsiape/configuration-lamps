@@ -23,6 +23,10 @@ which the proofs rest; they do not check the general arguments, which are given 
   3V exactly as finite tables of prefix replacements, checks that the tables of the proof are partitions, checks the
   identities of the proof on random configurations, and checks that the images of the five generators satisfy the 25
   relations of the certificate while some non-relations and all single-letter deletions do not.
+- `choi_rank_check.py`: the Choi rank r_* = 130 of the lamp channel (section "The channel of the configuration lamps").
+  It sorts the identity and the 276 symbols of the gadget into classes of equal group elements twice, once with the
+  faithful action on configurations and the triviality test of `relators1d_check.py`, and once with the exact images
+  in 3V of `embedding3v_check.py`, and checks that the two partitions agree.
 
 ## What is not checked by machine
 

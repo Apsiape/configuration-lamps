@@ -1,0 +1,111 @@
+%======================================================================
+\section{Tools from Houghton's group}\label{sec:houghton}
+%======================================================================
+
+Section~\ref{sec:fillings} uses three facts about $H=H_3$, and this appendix proves them. Lemma~\ref{lem:transpositions} gives short words for
+finite permutations, Lemma~\ref{lem:stabilizers} gives generators of point stabilizers with linear word length, and
+Proposition~\ref{prop:dehn} bounds the Dehn function. A comparison of conventions with~\cite{DouglasMghirbiA} comes first, because permutations
+act on the right there. All transport in Sections~\ref{sec:fillings} and~\ref{sec:pair-areas} takes place among the first points of ray~$1$, so
+we need words only for permutations supported there. For $n\ge1$ let $\Sigma_n\le H$ be the group of permutations of $Y$ supported in
+$\{(1,1),\dots,(1,n)\}$, identified with $\Sym(n)$; we write $(x\ y)$ for the transposition of the points $x$ and $y$ of the first ray.
+
+\paragraph{Conventions.} Put $\alpha=[p,q]$; a direct check shows $\alpha=(1\ 2)$. In~\cite{DouglasMghirbiA} permutations act on the right.
+Johnson's presentation of $H$~\cite{Johnson1999}, also in~\cite[Theorem~2.8]{Lee2012}, is written there in generators $a,b,\alpha$ that are the
+inverses, as maps, of our $p,q,\alpha$. The map $g\mapsto g^{-1}$ is an isomorphism from the permutations of $Y$ with the product
+of~\cite{DouglasMghirbiA} to the permutations of $Y$ under composition, and it sends $a,b,\alpha$ to $p,q,\alpha$. A word in $a,b,\alpha$
+therefore represents $1$ in the conventions of~\cite{DouglasMghirbiA} if and only if the same word in $p,q,\alpha$ represents $1$ here. Hence
+the relators of~\cite[Section~2]{DouglasMghirbiA}, read in our letters, give the presentation
+\begin{equation}\label{eq:johnson}
+P_J=\bigl\langle p,q,\alpha\bigm|\ \alpha^2,\ (\alpha p\alpha p^{-1})^3,\ [\alpha,p^2\alpha p^{-2}],\ [p,q]\alpha^{-1},\ p\alpha p^{-1}q\alpha^{-1}q^{-1}\bigr\rangle
+\end{equation}
+of $H$; in particular $H=\langle p,q\rangle$. Renaming the letters is an isomorphism of free groups that carries the relators
+of~\cite{DouglasMghirbiA} to those of $P_J$, so every area computed in~\cite{DouglasMghirbiA} for Johnson's presentation holds verbatim for $P_J$.
+
+Eliminating $\alpha$ by the relator $[p,q]\alpha^{-1}$, a Tietze transformation, gives the presentation
+\begin{equation}\label{eq:PH}
+P_H=\bigl\langle p,q\bigm|\ s^2,\ (sps\,p^{-1})^3,\ [s,p^2sp^{-2}],\ psp^{-1}qs^{-1}q^{-1}\bigr\rangle,\qquad s=[p,q],
+\end{equation}
+of $H$. Let $\delta_H$ be its Dehn function: $\delta_H(n)$ is the largest area, with respect to the four relators of $P_H$, of a word of length at most
+$n$ in $p^{\pm1},q^{\pm1}$ that represents $1$ in $H$. It is nondecreasing.
+
+\begin{lemma}[Finite permutations]\label{lem:transpositions}
+Put $\sigma_k=p^k\alpha p^{-k}$ for $k\ge0$.
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item $\sigma_k=(k+1\ \,k+2)$, and for $1\le x<y$ the word
+$\omega_{x,y}=p^{x-1}(\alpha p)^{y-x-1}(\alpha p^{-1})^{y-x-1}\alpha\,p^{1-x}$ represents $(x\ y)$. With $\alpha=pqp^{-1}q^{-1}$ it has length at most
+$10y-8x-8<10y$ in $p,q$.
+\item Every element of $\Sigma_n$ that moves $m\ge2$ points is represented by a word in $p,q$ of length less than $10(m-1)n$.
+\item Let $x_1,\dots,x_l\in\{1,\dots,n\}$ be distinct. Put $\pi_0=1$ and, for $m=1,\dots,l$, $w_m=\pi_{m-1}^{-1}(x_m)$ and
+$\pi_m=\pi_{m-1}(m\ w_m)$, where $(m\ m)=1$. Then $\pi[x_1,\dots,x_l]:=\pi_l$ sends $m$ to $x_m$ for $m\le l$, it is a product of at most $l$
+transpositions of points in $\{1,\dots,n\}$, and the product of the corresponding words $\omega$ represents it with length less than $10ln$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) Since $p^k$ maps $(1,1),(1,2)$ to $(1,k+1),(1,k+2)$, $\sigma_k$ is the stated transposition. Hence
+$(x\ y)=\sigma_{x-1}\sigma_x\cdots\sigma_{y-3}\,\sigma_{y-2}\,\sigma_{y-3}\cdots\sigma_{x-1}$, by induction on $y-x$ from
+$(x\ y)=\sigma_{x-1}(x{+}1\ \,y)\sigma_{x-1}$. In the product the powers of $p$ telescope: $\sigma_k\sigma_{k+1}=p^k\alpha p\alpha p^{-k-1}$ and
+$\sigma_{k+1}\sigma_k=p^{k+1}\alpha p^{-1}\alpha p^{-k}$, which gives $\omega_{x,y}$ after free reduction. Its length is
+$2(x-1)+10(y-x-1)+4$.
+
+(b) A permutation moving $m$ points is a product of at most $m-1$ transpositions of those points, each of length less than $10n$ by (a).
+
+(c) Since $\pi_{m-1}(l)=x_l\ne x_m$ for $l<m$, we have $w_m\ge m$, so $(m\ w_m)$ fixes $1,\dots,m-1$ and $\pi_m(l)=x_l$ for $l\le m$. Each factor
+has length less than $10n$ by~(a).
+\end{proof}
+
+That a point stabilizer of a Houghton group is isomorphic to the group is known~\cite[Example~3.6]{Cornulier2006}; part~(a) of
+Lemma~\ref{lem:stabilizers} gives such isomorphisms explicitly on generators.
+
+\begin{lemma}[Point stabilizers]\label{lem:stabilizers}
+For $k\ge1$ let $H^{(k)}$ be the pointwise stabilizer in $H$ of $(1,1),\dots,(1,k)$, put $\zeta_k=\sigma_{k-1}\cdots\sigma_1\sigma_0$ and
+$K_k=(\zeta_kp,\ \zeta_kq)$.
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item There is an isomorphism $H\to H^{(k)}$ that sends $p,q,\alpha$ to $\zeta_kp,\zeta_kq,\sigma_k$ and the transposition $(x\ y)$ to
+$(x{+}k\ \ y{+}k)$. In particular $\zeta_kp$ and $\zeta_kq$ generate $H^{(k)}$.
+\item Every element of $\Sigma_n\cap H^{(k)}$ that moves $m\ge2$ points is represented by a word of length less than $10(m-1)n$ in $\zeta_kp$ and
+$\zeta_kq$.
+\end{enumerate}
+In $p,q$ the words $\zeta_1p=[p,q]\,p$ and $\zeta_2p=p[p,q]p^{-1}[p,q]\,p$ have length at most $5$ and $11$, and likewise for $q$.
+\end{lemma}
+
+\begin{proof}
+(a) Let $\theta_k:Y\to Y\setminus\{(1,1),\dots,(1,k)\}$ send $(1,j)$ to $(1,j+k)$ and fix rays $2$ and $3$. For $g\in H$ let $g^{[k]}$ act as
+$\theta_kg\theta_k^{-1}$ on the image of $\theta_k$ and fix $(1,1),\dots,(1,k)$. Then $g^{[k]}$ is eventually a translation on each ray, and
+$g\mapsto g^{[k]}$ is an isomorphism $H\to H^{(k)}$, since an element of $H^{(k)}$ restricts to a permutation of the image of $\theta_k$. Clearly
+$(x\ y)^{[k]}=(x{+}k\ \ y{+}k)$, so $\alpha^{[k]}=\sigma_k$. The element $\zeta_k$ is the cycle $(1,1)\mapsto(1,k+1)\mapsto(1,k)\mapsto\dots\mapsto(1,2)\mapsto(1,1)$.
+Hence $\zeta_kp$ fixes $(1,j)$ for $j\le k$, maps $(1,j)$ to $(1,j+1)$ for $j>k$, maps $(2,1)$ to $(1,k+1)$, and agrees with $p$ elsewhere; that is,
+$\zeta_kp=p^{[k]}$. Likewise $\zeta_kq=q^{[k]}$.
+
+(b) An element $g\in\Sigma_n\cap H^{(k)}$ moving $m$ points is $g'^{[k]}$ for some $g'\in\Sigma_{n-k}$ moving $m$ points. Write $g'$ as in
+Lemma~\ref{lem:transpositions}(b) and substitute $\zeta_kp,\zeta_kq$ for $p,q$.
+\end{proof}
+
+Part~(a) of the next proposition is Lee's theorem~\cite[Theorem~D]{Lee2012}, and part~(b) is~\cite[Theorems~3.2 and~3.3]{DouglasMghirbiA}. Both
+pass to $P_H$ by a Tietze transformation.
+
+\begin{proposition}[Dehn function]\label{prop:dehn}
+Let $\delta_J$ be the Dehn function of $P_J$. Then $\delta_H\le\delta_J$, and:
+\begin{enumerate}[label=(\alph*),itemsep=1pt]
+\item there is an absolute constant $K$ with $\delta_H(n)\le e^{Kn}$ for $n\ge1$;
+\item there is an absolute constant $C$ with $\delta_H(n)\le Cn^{\,p_H}$ for $n\ge1$, where $p_H=\log107+4\approx10.74$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Let $w$ be a word in $p,q$ of length at most $n$ representing $1$. In the free group on $p,q,\alpha$ it is a product of at most $\delta_J(n)$
+conjugates of relators of $P_J$ and their inverses. Apply the homomorphism to the free group on $p,q$ that fixes $p,q$ and sends $\alpha$ to
+$[p,q]$. It fixes $w$, sends $[p,q]\alpha^{-1}$ to the trivial word, and sends each of the other four relators to a relator of $P_H$. Hence
+$\Area_{P_H}(w)\le\delta_J(n)$.
+
+(a) Lee proved that $H_3$ satisfies an exponential isoperimetric inequality~\cite[Theorem~D]{Lee2012}. The Dehn functions $\delta,\delta'$ of two finite
+presentations of the same group are equivalent: $\delta(n)\le C'\delta'(C'n)+C'n+C'$ for a constant $C'$~\cite{Bridson2002}. This bound
+preserves the class of functions bounded by $e^{Kn}$.
+
+(b) By~\cite[Theorem~3.3]{DouglasMghirbiA}, $\delta_J(n)\le400n^4(1+A^*(4n+2))$, where the far-commutator area satisfies
+$A^*(M)\le135M^{\log107}$~\cite[Theorem~3.2]{DouglasMghirbiA}; so $\delta_J(n)=O(n^{\log107+4})$. By the comparison of conventions at the start
+of this appendix, this holds for $P_J$ in our letters, and $\delta_H\le\delta_J$.
+\end{proof}
+
+Part~(a) rests on Lee's published exponential bound, part~(b) on our polynomial one. Both reach the lower bounds of Part~I through a single
+quantity, $\delta_H$ at scale $N$, where $N$ is the number of points that carry the configurations.

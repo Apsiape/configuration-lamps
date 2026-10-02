@@ -1,0 +1,128 @@
+%======================================================================
+\section{Causal services and gadget channels}\label{sec:channel}\label{sec:channel-setting}
+%======================================================================
+
+Part~II can be read on its own by a reader who comes from quantum information. From Part~I it needs three definitions, all in
+Section~\ref{sec:criterion}. A \emph{chunk} of a group is a finite subset containing $1$, with the partial multiplication it inherits. A
+\emph{sofic model} of the chunk at accuracy $1/r$ assigns a permutation of a finite set to each element, with products correct and distinct
+elements separated on all but a fraction $1/r$ of the points. The \emph{profile} $\sigma_E(r)$ is the least number of points of such a model.
+The configuration lamps enter mainly through two facts, quoted where they are used: their pair areas (Theorem~\ref{thm:pair-area}) and their
+profile, Theorem~A in the precise form of Theorem~\ref{thm:main-group}. Concretely, the lower bounds use one black box, the transport of
+Section~\ref{sec:lamp-channel}: for each $N$ there are $2^N$ words of length at most $63N^2$ whose copies of $S_3$ commute pairwise at area at
+most $C_1N^\kappa$, with $\kappa=6+\log107$ (the introduction says where $107$ comes from). The upper bounds use another, the hash models
+behind Theorem~A(b), which give sofic models with $\exp(O(r\log r))$ points.
+
+A finite set of relations of a group becomes a quantum channel of fixed dimension. Each relation contributes a few small unitary blocks; the
+channel evaluates the blocks in the regular representation of the group and traces out the group von Neumann algebra. Every channel on
+$\mathbb C^d$ has a Stinespring dilation, a unitary on the input and a pure environment of dimension at most $d^2$ that is discarded after
+use. Applied $n$ times with a fresh environment each time, the channel needs almost no memory, but the discarded environments carry away
+entropy that fresh pure qubits paid for. We charge for that purity, and the memory is never reset. The question is how much memory a device
+needs when its purity is far below what the Stinespring device spends.
+
+In~\cite{DouglasMghirbiB} we showed that the memory needed to apply such a channel repeatedly, releasing each output before the next input
+arrives, is bounded below by the size of approximate representations of its relations. Part~II sharpens that link, so that it loses a single
+square root, and applies it to the configuration lamps. The outcome is Theorem~B, stated precisely as Theorem~\ref{thm:main-channel}: an
+explicit channel in the closure of finite tracial channels whose repeated use with logarithmic purity needs memory $n^{1-o(1)}$, while memory
+$O(n\log n)$ suffices. The lower bounds come from the sharpened link, the weighted one-round theorem of Section~\ref{sec:weighted-statement}.
+The upper bounds come from the sofic models of $\Gamma$, which give devices directly (Proposition~\ref{prop:sofic-upper}) and, at the rank
+rate, through Theorem~\ref{thm:streaming}.
+
+We recall the framework of~\cite{DouglasMghirbiB} and keep its notation.
+
+\paragraph{Channels.} Channels act on $M_d=M_d(\mathbb C)$. The normalized Choi state of a channel $\Psi$ is
+$\mathcal J(\Psi)=(\Psi\otimes\mathrm{id})(|\Omega\rangle\langle\Omega|)$, with $|\Omega\rangle=d^{-1/2}\sum_i|ii\rangle$, and
+$\ddia(\Psi,\Psi')=\frac12\|\Psi-\Psi'\|_\diamond$ is the diamond distance. We write $\tau_M$ for the normalized trace on $M_M$. A channel $\Psi$ has a
+\emph{finite tracial factorization} with bath dimension $M$ if $\Psi(X)=(\mathrm{id}\otimes\tau_M)[U(X\otimes I_M)U^*]$ for a unitary $U$ on
+$\mathbb C^d\otimes\mathbb C^M$, and $\cK_d$ denotes the closure of the set of channels on $M_d$ with a finite tracial factorization of some bath
+dimension. It is also the closure of the convex hull of that set~\cite[Proposition~3.8(ii)]{Musat2025}, and it consists of unital channels. Channels
+with a finite tracial factorization are exactly the noisy operations of~\cite{HHO2003} from $M_d$ to $M_d$, and $\cK_d$ is their closure.
+
+\paragraph{Causal services.} A \emph{causal service} of a channel $\Phi$ on $M_d$ for $n$ rounds specifies a \emph{device}, its physical
+realization, which serves one use of the channel in each round. The device has a memory register of $Q$ qubits, started in a fixed state
+$\beta_0$. In each round it applies a fixed unitary to the input and the memory and then releases the $d$-dimensional output. After each round
+but the last, a prescribed set of memory qubits is exported for good and replaced by the same number of imported qubits in a fixed state.
+That state may be correlated within one step but is independent of everything else. An observer chooses the inputs adaptively, possibly
+entangled with references of its own. The \emph{error} of the service is the largest half trace distance between the observer's final state in
+this experiment and in the ideal experiment with $n$ independent uses of $\Phi$. Figure~\ref{fig:device} shows the device and its rounds.
+
+The resources are the memory $Q$, the exchange $J$ and the purity $P+C$. The \emph{exchange} is the total number of exported qubits;
+exporting is the only way the device can discard a qubit without handing it to the observer. The \emph{purity} is an entropy deficit in bits,
+not $\Tr\rho^2$. Here $P=Q-S(\beta_0)$ is the deficit of the initial memory, and $C$ is the sum over the imports of their number of qubits
+minus their entropy. A pure qubit is a resource, since it costs work to prepare, while a maximally mixed one is free; the Stinespring device
+of a channel with Choi rank $r_*$ spends about $\log r_*$ bits of purity in every round. Every retained qubit counts; there is no free reset,
+measurement record or postselection.
+
+\input{figures/device}
+
+\paragraph{Gadget channels.} Let $G$ be a group generated by a finite set $S$, and let $R$ be a finite set of words in $S^{\pm1}$, each of length at
+least two and each representing $1$ in $G$. Write $r_i=\sigma_{i,1}\cdots\sigma_{i,\ell_i}$ ($1\le i\le r_0$) for the words of $R$, and put
+$s=|S|$ and $\Lambda=\sum_i\ell_i$. The \emph{symbols} are the $2s$ letters $x^{\pm1}$, $x\in S$, and the proper prefixes
+$p_{i,l}=\sigma_{i,1}\cdots\sigma_{i,l}$, $2\le l\le\ell_i-1$, one for each pair $(i,l)$; we also put $p_{i,1}=\sigma_{i,1}$ and let $p_{i,\ell_i}$
+be the empty word. The \emph{triangles} are the triples $(p_{i,l-1},\sigma_{i,l},p_{i,l})$, $2\le l\le\ell_i$, and $(x,x^{-1},\varnothing)$,
+$x\in S$. For unitaries $\lambda(w)$ assigned to the symbols, with $\lambda(\varnothing)=I$, let
+\[
+U_\lambda=\mathrm{diag}\bigl(I,(\lambda(w))_{w}\bigr)\ \oplus\ \bigoplus_{(x,y,z)}\frac1{\sqrt2}\begin{pmatrix}I&\lambda(y)\\ \lambda(x)&-\lambda(x)\lambda(y)\end{pmatrix},
+\]
+where $w$ runs over the symbols and $(x,y,z)$ over the triangles. Each triangle block equals $\mathrm{diag}(I,\lambda(x))\,(H\otimes I)\,\mathrm{diag}(I,\lambda(y))$
+with $H$ the Hadamard matrix, so $U_\lambda$ is unitary for all unitary $\lambda$. A triangle is a Hadamard test of one step $xy=z$ of one
+relation. Its block is unitary whatever is put in it, and its lower right entry $-\lambda(x)\lambda(y)$ is compared, through the Choi support
+defined next, with the entry that carries the label of $z$. A device that reproduces the channel must pass every test with the operators it
+holds in memory. There are $2s+\Lambda-2r_0$ symbols and $\Lambda-r_0+s$ triangles, so the system dimension is
+\begin{equation}\label{eq:gadget-dimension}
+d=1+(2s+\Lambda-2r_0)+2(\Lambda-r_0+s)=1+4s+3\Lambda-4r_0 .
+\end{equation}
+The \emph{gadget channel} $\Phi_G$ on $M_d$ evaluates each symbol $w$ in the left regular representation, $\lambda(w)=\lambda([w])$ with $[w]\in G$ the
+element that $w$ represents, and traces out the group von Neumann algebra $L(G)$ with its canonical trace $\tau$:
+$\Phi_G(X)=(\mathrm{id}\otimes\tau)[U_\lambda(X\otimes1)U_\lambda^*]$. Since the relations hold, the lower right entry of the block of a triangle
+$(x,y,z)$ is $-\lambda([z])$.
+
+We write the gadget as $U_\lambda=\sum_{a\in\mathcal T}c_aE_a\otimes\lambda([w_a])$, where $\mathcal T$ is the set of \emph{slots}, the nonzero
+entries, $E_a$ is the matrix unit of slot $a$, and $c_a\in\{\pm1,\pm2^{-1/2}\}$. The word $w_a$ is empty, a symbol, or the concatenation $xy$ in
+the lower right corner of a triangle. The elements $[w_a]$ are the \emph{labels}. With $A_g=\sum_{[w_a]=g}c_aE_a$, the matrices $A_g$ have disjoint
+supports, $\Phi_G(X)=\sum_gA_gXA_g^*$ and $\mathcal J(\Phi_G)=\frac1d\sum_g|A_g\rangle\!\rangle\langle\!\langle A_g|$, because
+$\tau(\lambda(g)\lambda(h)^*)=\delta_{gh}$. The Choi rank $r_*$ of $\Phi_G$ is therefore the number of distinct labels. Every label is carried by an
+\emph{anchor}, a diagonal slot with coefficient $1$ whose row and column contain no other slot. The anchor of the label $1$ is the first
+diagonal entry, and every other label has a symbol entry as anchor, since the lower right entry of a triangle carries the label of a prefix
+symbol or $1$. Feeding one half of a maximally entangled state on the $r_*$ anchor positions gives a pure probe whose output is flat of rank
+$r_*$, and $\log r_*$ is the largest entropy of a complementary output of $\Phi_G$~\cite[Proposition~9.1]{DouglasMghirbiB}.
+
+\paragraph{The rank rate.} The probe fixes the least exchange that bounded memory allows. Over $n$ rounds the ideal experiment hands the
+observer $n\log r_*$ bits of entropy. The observer's final state is a marginal of a pure state whose other half consists of the final memory,
+the exported qubits and the purifiers of the initial memory and of the imports. Those are at most $2(Q+J)$ qubits in all, so a device hands
+over at most $2(Q+J)$ bits. With memory sublinear in $n$ it must export about $\frac12\log r_*$ qubits per round at least. This rate is the optimal
+exchange rate of a gadget channel in $\cK_d$~\cite[Propositions~3.1 and~9.1]{DouglasMghirbiB}, and we call it the \emph{rank rate}: a service is
+at the rank rate if $J\le\frac n2\log r_*$. For the lamp channel, Theorem~\ref{thm:streaming} attains it with memory $n^{1/2+o(1)}$.
+
+\paragraph{One round.} Let $U$ be a unitary on $\mathbb C^d\otimes\mathbb C^M$ and $\rho$ a state on $\mathbb C^M$, and put
+\[
+\Psi(X)=\mathrm{Tr}_M\,U(X\otimes\rho)U^*,\qquad T(\rho)=\mathrm{Tr}_d\,U(\tau_d\otimes\rho)U^* .
+\]
+Relative to a channel $\Phi$ with Choi support projection $\Pi_\Phi$, the \emph{support leakage} of $\Psi$ is
+$\ell=\Tr[(I-\Pi_\Phi)\mathcal J(\Psi)]$. The \emph{entropy production} of the round is $\Delta S=S(T(\rho))-S(\rho)$, which is nonnegative because
+$T$ is unital. A service produces such rounds, and the next result, from~\cite[Theorem~5.2]{DouglasMghirbiB}, finds one in which both quantities are
+small. Appendix~\ref{app:imported} reproduces its proof.
+
+\begin{theorem}[Sequential extraction]\label{thm:extraction}
+Let a causal service of a channel $\Phi$ on $M_d$ for $n$ rounds have memory $Q$, error $\epsilon<1/2$ and $P+C\le B$, and put
+\[
+t_n=\frac{B+\epsilon+h_2(\epsilon)+\epsilon\log n}{n(1-\epsilon)} .
+\]
+Then some round $t$, with its unitary $U_t$ and the memory state $\rho_t$ entering it, defines a channel $\Psi_t(X)=\mathrm{Tr}_M\,U_t(X\otimes\rho_t)U_t^*$
+with bath dimension $M=2^Q$, $\ddia(\Psi_t,\Phi)\le\epsilon/(1-\epsilon)$, and support leakage $\ell_t$ and entropy production $\Delta S_t$ satisfying
+$\ell_t+\Delta S_t\le t_n$.
+\end{theorem}
+
+The bath of this round is the memory itself, of dimension $2^Q$, so $S(\rho_t)\le Q$. Every lower bound on memory in Part~II is a lower bound
+on the entropy of a memory state that realizes one good round.
+
+\paragraph{A worked example: the gadget of $S_3$.} Take $G=S_3$ with $S=\{a,b\}$ and $R=\{a^2,\,b^2,\,(ab)^3\}$, so that $s=2$, $r_0=3$ and
+$\Lambda=2+2+6=10$. The symbols are the four letters $a^{\pm1},b^{\pm1}$ and the four proper prefixes $ab$, $aba$, $abab$, $ababa$ of
+$(ab)^3$; the words $a^2$ and $b^2$ have no proper prefix of length two or more. The triangles are the nine triples $(a,a,\varnothing)$,
+$(b,b,\varnothing)$, $(a,b,ab)$, $(ab,a,aba)$, $(aba,b,abab)$, $(abab,a,ababa)$, $(ababa,b,\varnothing)$, $(a,a^{-1},\varnothing)$ and
+$(b,b^{-1},\varnothing)$. Formula~\eqref{eq:gadget-dimension} gives $d=1+8+2\cdot9=27$. The labels are the elements of $S_3$ that the slots
+carry, namely $1$, $a$, $b$, $ab$, $aba$, $abab=ba$ and $ababa=b$; these are all six elements, so $r_*=6$. Since $S_3$ is finite, its group
+von Neumann algebra is the regular representation on $\mathbb C^6$ with the normalized trace. The channel $\Phi_{S_3}$ therefore has a finite
+tracial factorization with bath dimension $6$ by definition, and one round with a flat bath on six points reproduces it exactly. Serving $n$
+rounds costs little more. The regular action of $S_3$ on itself is a model with no bad points, and Theorem~\ref{thm:streaming} with $k=k'=6$ gives a
+service at the rank rate with purity at most $2$ and memory $O(\log n)$. The lamp channel of Section~\ref{sec:lamp-channel} adds five letters
+and twenty-six words to these three. What those words cost a device is what Theorem~B measures.

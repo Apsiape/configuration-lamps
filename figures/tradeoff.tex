@@ -1,0 +1,42 @@
+% Figure: memory against purity for the lamp channel (schematic, logarithmic axes).
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\small,>=Stealth,lbl/.style={font=\footnotesize,inner sep=1pt}]
+\colorlet{accent}{blue!50!black}
+% below the band: no service (Theorem B(a)); the band: Q.B = n^{1+o(1)}, for log n <= B <= c_0 n
+\fill[black!8] (1.0,5.65) -- (6.0,0.65) -- (6.0,0) -- (1.0,0) -- cycle;
+\fill[accent!22] (1.0,6.35) -- (6.0,1.35) -- (6.0,0.65) -- (1.0,5.65) -- cycle;
+\draw[accent] (1.0,6.35) -- (6.0,1.35);
+\draw[accent] (1.0,5.65) -- (6.0,0.65);
+\node[lbl,anchor=west] at (6.1,1.35) {$K(n/B)\log(2n/B)$: exact services};
+\node[lbl,anchor=west] at (6.1,0.65) {$c\,n/(B(\log n)^{2\kappa})$};
+\node[lbl,rotate=-45] at (2.55,4.45) {$Q\cdot B=n^{1+o(1)}$};
+\node[lbl] at (3.3,1.1) {no service (Theorem~B(a))};
+% the purity budget at the rank rate
+\draw[dashed] (2.6,2.2) -- (6.9,6.5);
+\node[lbl,anchor=west,align=left] at (6.95,6.5) {$P+C=3Q+6$: rank-rate services\\ lie to the left (purity budget)};
+% axes
+\draw[->] (0,0) -- (8.0,0);
+\node[lbl,anchor=north east] at (8.0,-0.12) {purity $B$};
+\draw[->] (0,0) -- (0,7.4);
+\node[lbl,anchor=south west] at (0.1,7.3) {memory $Q$};
+\draw (0.42,-0.12) -- (0.58,0.12) (0.52,-0.12) -- (0.68,0.12);
+\foreach \x/\l in {0/{$0$},1.0/{$\log n$},3.5/{$\sqrt n$},6.0/{$c_0n$}}{
+  \draw (\x,0.06) -- (\x,-0.06); \node[lbl,anchor=north] at (\x,-0.12) {\l};
+}
+\foreach \y/\l in {3.5/{$\sqrt n$},6.0/{$n$},6.6/{$n\log n$}}{
+  \draw (0.06,\y) -- (-0.06,\y); \node[lbl,anchor=east] at (-0.12,\y) {\l};
+}
+% the marked points
+\fill (0,6.6) circle (2pt);
+\node[lbl,anchor=west] at (0.2,6.75) {zero purity: $Q\le Kn\log n$};
+\fill (3.5,3.5) circle (2pt);
+\draw (3.5,3.5) -- (4.55,3.55);
+\node[lbl,anchor=west,align=left] at (4.6,3.55) {rank rate: $Q$ and $P+C$\\ both about $\sqrt n$};
+\end{tikzpicture}
+\caption{Memory against purity for the lamp channel, on logarithmic axes. For $\log n\le B\le c_0n$ the least memory of a service with purity at
+most $B$ lies in the band $Q\cdot B=n^{1+o(1)}$, between $c\,n/(B(\log n)^{2\kappa})$ and $K(n/B)\log(2n/B)$ (Theorem~\ref{thm:main-channel}(a)),
+and at zero purity memory $Kn\log n$ suffices. At the rank rate the purity is less than $3Q+6$ (Proposition~\ref{prop:purity-budget}), so the
+band forces memory about $\sqrt n$, and streaming services attain this with purity of the same order (Theorem~\ref{thm:main-channel}(b)).}
+\label{fig:tradeoff}
+\end{figure}
