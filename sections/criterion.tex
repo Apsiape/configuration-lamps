@@ -7,7 +7,7 @@ copies of $S_3$ to commute cheaply, every model of a fixed chunk must be large, 
 entropy. We fix the conventions used in both halves of the paper, state the principle in the form used here, with $a,b$ in place of the
 letters $u,v$ of~\cite{DouglasMghirbiA}, and note the ceiling $\exp(O(r))$ that it can never pass. The scheme, many cheaply transported
 copies of a finite group, relations whose cost is controlled by area, and a dimension bound, follows Slofstra~\cite[Sections~2--3]{Slofstra2018}.
-The criterion needs only pairwise approximate commutation of displaced copies of $S_3$.
+The pairwise criterion needs only approximate commutation of displaced copies of $S_3$; Theorem~\ref{thm:sweep} strengthens its permutation form using whole suffixes.
 
 \paragraph{Conventions.} Functions are composed from right to left, groups act on the left, $[x,y]=xyx^{-1}y^{-1}$, and $\log$ is to base
 two. For a finite set $S$ and a finite set $R$ of words in $S^{\pm1}$, $\Area_R(w)$ is the least number of conjugates of words of $R^{\pm1}$
@@ -57,9 +57,116 @@ and every unitary assignment as in Theorem~\ref{thm:criterion} has $\log D\ge\fr
 \end{corollary}
 
 In Houghton's group $H_3$ the copies of $S_3$ along a ray have commutators of at least quadratic area~\cite[Proposition~3.4]{DouglasMghirbiA},
-so transport along a ray never passes the exponent $1/3$. A group that does better must reach many sites cheaply.
+so the pairwise estimate of Corollary~\ref{cor:cyclic} never passes exponent $1/3$ along that ray. Whole suffix sweeps can improve this conclusion, as Theorem~\ref{thm:sweep} shows.
 
 One more fact of Cornulier's is used twice, in Sections~\ref{sec:more} and~\ref{sec:ladder}. The profile of a chunk is bounded exactly when the
 chunk embeds in a finite group, and otherwise it is at least $r$~\cite[Fact~3.5]{Cornulier2013}, indeed at least
 $2r$~\cite[Lemma~2.1]{DouglasMghirbiA}. A chunk with unbounded profile therefore certifies that its group is not locally embeddable into finite
 groups, not LEF~\cite[Fact~3.8]{Cornulier2013}.
+
+\subsection{Whole suffix sweeps}
+
+Pairwise commutator estimates can overcount the cost of moving one copy past an ordered suffix. The following form charges one filling
+for the whole suffix. It uses permutation rounding in Hamming distance before passing to the entropy estimate.
+
+\begin{theorem}[Sweep counting criterion]\label{thm:sweep}
+Use the group, relators, chunk and transport words of Theorem~\ref{thm:criterion}, and suppose $N\ge1$.
+For each of the six fixed normal forms
+\[
+\mathcal N=\{1,a,b,ab,ba,aba\},\qquad W_i(g)=w_i g w_i^{-1},
+\]
+assume that, for every $i$, every $h\in\mathcal N$ and every choice $g_j\in\mathcal N$ for $j>i$,
+\[
+\Area_R\left([W_i(h),W_{i+1}(g_{i+1})\cdots W_N(g_N)]\right)\le\Lambda_N.
+\]
+Then
+\begin{equation}\label{eq:sweep-criterion}
+ (\Lambda_N+40N)(2l-1)\le r/20000
+ \quad\Longrightarrow\quad \log\sigma_E(r)\ge N/16.
+\end{equation}
+If only the sweeps with $h=a,b$ are bounded by $\Lambda_N$, the same conclusion holds with $r/60000$ in the
+hypothesis in place of $r/20000$. In both versions every later factor ranges over all six normal forms.
+\end{theorem}
+
+\begin{proof}
+\emph{Relator errors.} Given a chunk model $f:E\to\Sym_n$, evaluate generator words by $\phi(s)=f(s)$ and
+$\phi(s^{-1})=f(s)^{-1}$. Merging successive prefixes of a relator of length $m$ costs at most $(m-1)/r$;
+replacing inverse letters costs at most $m/r$, since $s,s^{-1},1\in E$. Thus each relator has Hamming defect at most
+$\epsilon=(2l-1)/r$. Bi-invariance implies that a word of area $A$ has defect at most $A\epsilon$.
+The prefix of $ab$ and expansiveness give $d(\phi(ab),1)\ge1-2/r$. All transported pairs have the same square and braid
+errors and three-cycle displacement: conjugation is an exact Hamming isometry, regardless of the transport word's length.
+
+\emph{Native rounding.} Let $A,B$ be any transported pair. Replace cycles of length at least three in each permutation by fixed points,
+obtaining involutions $P,Q$ with $d(P,A),d(Q,B)\le\epsilon$. Put $R=PQ$. Then
+$d(R^3,1)\le7\epsilon$. The identity $QRQ=R^{-1}$ implies that $\mathrm{Fix}(R^3)$ is invariant under $Q,R$, and hence under $P=RQ$.
+Keep $P,Q$ on this set and make them both trivial on its invariant complement. They now give an exact permutation representation
+$u_i:S_3\to\Sym_n$. Every normal form has length at most three: its first replacement costs at most $3\epsilon$, and deleting bad
+orbits costs at most $7\epsilon$. Consequently
+\[
+ d(u_i(g),\phi(W_i(g)))\le10\epsilon\qquad(g\in\mathcal N).
+\]
+This construction allows trivial and sign orbits. In particular, the three-cycle loses at most $10\epsilon$ of its Hamming displacement.
+
+\emph{One ordered error.} Put $U_{>i}=u_{i+1}(g_{i+1})\cdots u_N(g_N)$ and let $V_{>i}$ be its raw-word counterpart.
+Replacing both occurrences of the first factor and of the suffix in the commutator gives
+\[
+ d([u_i(h),U_{>i}],1)
+ \le\bigl(\Lambda_N+20(N-i+1)\bigr)\epsilon
+ \le(\Lambda_N+40N)\epsilon.
+\]
+Let $F(g)=u_1(g_1)\cdots u_N(g_N)$, for uniform $g\in S_3^N$. Exact same-copy multiplication shows that the error
+$F(gh)-F(g)u_i(h)$ is exactly the error in commuting $u_i(h)$ past its suffix, up to unitary factors.
+For permutation matrices $\|P-Q\|_2^2=2d(P,Q)$; hence
+\[
+ T^2:=\max_{i,h}\mathbb E_g\|F(gh)-F(g)u_i(h)\|_2^2
+ \le2(\Lambda_N+40N)\epsilon.
+\]
+Here $h$ lies in factor $i$. There is no same-copy multiplication defect after rounding.
+
+\emph{Entropy from this error.} We give the sector argument to specify exactly what is used. Suppose
+$\|u_i(c)-I\|_2\ge\Delta$ for a three-cycle $c$, $T\le\Delta$ and $T^2\le5/6$.
+On $\ell^2(S_3^N)\otimes\mathbb C^n$ use the regular action $\mathsf R$ and the isometry
+\[
+ Wv=|S_3^N|^{-1/2}\sum_g|g\rangle\otimes F(g)v,
+ \qquad \Pi=WW^*,\quad\rho=\Pi/n.
+\]
+The ordered-error identity gives $\|\mathsf R(h_i)W-Wu_i(h)\|_{HS}\le\sqrt n\,T$.
+Thus, for $Z_i=2I-\mathsf R(c_i)-\mathsf R(c_i)^*$,
+$\Tr(\rho Z_i)\ge(\Delta-T)^2$. Let $\mathcal E_i$ average conjugation by the six regular operators in factor $i$.
+Its leakage outside $\Pi$ is at most $T^2$. Pinching into $\Pi$ and $I-\Pi$ gives ranks at most $n$ and $5n$, because one of the
+six states being averaged is $\rho$. Therefore
+$S(\mathcal E_i\rho)\le\log n+h_2(T^2)+T^2\log5$.
+The $\mathcal E_i$ commute. Monotonicity of relative entropy, together with
+$S(\mathcal E\sigma)-S(\sigma)=D(\sigma\|\mathcal E\sigma)$, bounds each successive entropy increment by its increment on $\rho$.
+For $\bar\rho=\mathcal E_N\cdots\mathcal E_1\rho$ this yields
+\[
+ S(\bar\rho)\le\log n+N\{h_2(T^2)+T^2\log5\}.
+\]
+On each irreducible sector of $S_3^N$, $Z_i$ is $3I$ if factor $i$ is standard and zero otherwise.
+If a sector has $k$ standard factors, its dimension is $2^k$. Since $\bar\rho$ commutes with the regular action, its entropy is
+at least the mean of $k$. The twirls preserve the expectation of each central $Z_i$, so
+$N(\Delta-T)^2\le3S(\bar\rho)$. Combining gives
+\[
+ \log n\ge N\{(\Delta-T)^2/3-h_2(T^2)-T^2\log5\}.
+\]
+No pairwise estimate entered this argument.
+
+\emph{Constants.} The stated hypothesis gives $T\le1/100$ and
+$\epsilon\le1/(800000N)$. The preceding displacement estimate gives $\Delta\ge49/100$ (a deliberately conservative
+Hilbert--Schmidt lower bound). Using $\log_2(10000)<14$ and $1/\ln2<3/2$, one has
+\[
+ h_2(1/10000)\le31/20000,\qquad
+ (1/10000)\log5\le6/20000.
+\]
+Thus the entropy per copy is at least
+$(48/100)^2/3-37/20000=1499/20000>1/16$.
+For elementary-letter sweeps, split $h$ into at most three letters and use the free commutator product identity.
+The full sweep area is at most $3\Lambda_N$, and
+$3\Lambda_N+40N\le3(\Lambda_N+40N)$, proving the $1/60000$ version.
+\end{proof}
+
+The $40N$ term retains the counting method's linear scale in $r$ even if sweep areas are very small. This is a restriction
+on lower bounds produced by the criterion, not an upper bound on any group's actual profile.
+The transported finite-group and area-to-defect strategy follows Slofstra and Slofstra--Vidick~\cite{Slofstra2018,SlofstraVidick2018};
+metric approximation growth with growing balls, as studied by Arzhantseva--Cherix and Bradford~\cite{ArzhantsevaCherix2024,Bradford2021},
+is distinct from the fixed-chunk accuracy profile used here.

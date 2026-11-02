@@ -33,3 +33,14 @@ which the proofs rest; they do not check the general arguments, which are given 
 The pair-area theorem, the local fillings, the profile bounds, the hash models, the finite presentation, the
 one-round theorem and all statements about quantum channels and physical dynamics are proved in the manuscript and
 are not checked by these scripts.
+
+## Version 1.2.0 sweep checks
+
+Run these checks without -O/-OO or PYTHONOPTIMIZE; optimized Python is rejected
+because the checks use assertions.
+
+The seven files in `sweeps/*.certificate.jsonl.gz` are finite certified computations of dyadic whole-block fillings.
+`check_certificates.py` independently checks each cell and the complete product of conjugates against the reconstructed boundary.
+Run `python -B verification/sweeps/run_limited.py 240 verification/sweeps/check_certificates.py`.
+The optional `independent_dyadic.py` regenerates the witnesses; generation overwrites only those seven files.
+The general bound, including its finite recursion range, is proved in the manuscript.

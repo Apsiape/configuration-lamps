@@ -1,17 +1,5 @@
 \begin{abstract}
-How far from finite can an amenable group be? Every finite piece of an amenable group can be imitated by permutations of a finite set, and
-Cornulier's sofic profile counts how many points such an imitation needs at accuracy $1/r$. We build a finitely presented elementary amenable
-group with a finite piece whose profile is $\exp(r^{1+o(1)})$, close to the most our counting method can ever detect.
+How far from finite can an amenable group be? Cornulier's sofic profile counts the points needed to imitate a fixed finite piece by permutations at a given accuracy. We build a finitely presented elementary amenable group with nearly exponential profile, close to the ceiling of our counting method. Its lamps are symmetric groups on three letters placed on binary configurations of three rays. The group embeds in Brin's group 3V, which therefore also has a finite piece of nearly exponential profile. A sweep form of the counting criterion charges a whole ordered suffix at once. Quadratic sweep fillings improve the lower bound for the dyadic lamplighter to exponential in the square root of the accuracy parameter, for the same finite piece.
 
-The construction is a lamplighter with its lamps on configurations rather than on points. Houghton's group moves the points of three rays,
-finitely supported affine maps act on their binary configurations, and a copy of $S_3$ sits on every configuration. Then $N$ points carry
-$2^N$ lamps, yet any two lamps can be brought together by moves that each involve at most three points. The group embeds in Brin's group
-$3V$, so $3V$ too has a finite piece of nearly exponential profile.
-
-The group also gives an explicit quantum channel on $\mathbb C^{873}$ that is cheap to use once and expensive to use many times. A device that
-applies it $n$ times, releasing each output before the next input arrives, needs about $n/B$ qubits of memory when it may spend $B$ bits of
-purity, and exact devices achieve this up to polylogarithmic factors. With exchange at the optimal rate, the least memory is about
-$\sqrt n$, attained with purity of the same order. The channel is factorizable and lies in the closure of channels with finite maximally mixed baths, yet any such bath that imitates
-it to accuracy $u$ needs dimension $\exp(u^{-1+o(1)})$, although its minimal Stinespring dilation implements it exactly with a pure environment of dimension $130$. The engine is a one-round theorem: after a single use, the memory of any such device carries an approximate representation of the
-group.
+The configuration group gives an explicit quantum channel in dimension 873 with Choi rank 130. A device that applies it repeatedly, releasing each output before the next input arrives, needs memory proportional to the number of uses divided by its purity budget, up to polylogarithmic factors; exact devices attain this tradeoff. At the optimal exchange rate the least memory is of square-root order, up to subpower factors, attained with purity of the same order. The channel is factorizable and is a limit of channels with finite maximally mixed baths, but accurate such baths require nearly exponential dimension in inverse error. A pure environment of dimension 130 implements it exactly. The engine is a one-round theorem: after one use, the device's memory carries an approximate representation of the group.
 \end{abstract}

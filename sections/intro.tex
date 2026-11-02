@@ -83,19 +83,24 @@ profile bound.
 transport & group & $\log\sigma_E(r)\ \gtrsim$ & profile finite \\
 \midrule
 along a ray & $H_3$~\cite{DouglasMghirbiA} & $r^{0.129}$ & yes \\
-by one element & dyadic $\mathcal G$ (\S\ref{sec:dyadic}) & $r^{1/3}$ & yes \\
-exponential orbits & $\mathcal L\le V$ (\S\ref{sec:thompson}) & $r/\log^2r$ & if $F$ is amenable \\
+by one element & dyadic $\mathcal G$ (\S\ref{sec:dyadic}) & $r^{1/2}$ & yes \\
+exponential orbits & $\mathcal L\le V$ (\S\ref{sec:thompson}) & $r/\log^2r$ & yes~\cite{CJM2026} \\
 configurations & $\Gamma$ (\S\S\ref{sec:group}--\ref{sec:profile}) & $r/(\log r)^{\kappa}$ & yes \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\noindent Transport by the powers of one element gives exponent $1/(p+1)$ when far commutators have area of order $k^p$. Along a ray of $H_3$
-the area is at least quadratic~\cite[Proposition~3.4]{DouglasMghirbiA}, so this transport stops at $1/3$, which the dyadic group $\mathcal G$
-attains with seventeen relations. Thompson's group $F$ transports cheaply along exponentially growing orbits, and a finitely presented
-subgroup $\mathcal L$ of Thompson's group $V$ turns this into a dichotomy: either $V$ is not sofic, or its models of a fixed chunk need
-$2^{c\,r/\log^2r}$ points. Models of $\mathcal L$ exist if $F$ is amenable, and $\mathcal L$ is hyperlinear exactly when $F$ is
-(Proposition~\ref{prop:thompson-hyperlinear}). The configuration lamps keep the exponential transport and drop the condition on $F$.
+\noindent The pairwise criterion for transport by the powers of one element gives exponent $1/(p+1)$ when far commutators have area of order $k^p$. Along a ray of $H_3$
+the area is at least quadratic~\cite[Proposition~3.4]{DouglasMghirbiA}, so the pairwise estimate stops at $1/3$.
+The sweep criterion instead charges a whole suffix at once; quadratic sweeps give the dyadic group $\mathcal G$ exponent $1/2$ with the same seventeen relations. Thompson's group $F$ transports cheaply along exponentially growing orbits, and a finitely presented
+subgroup $\mathcal L$ of Thompson's group $V$ gives
+$\log\sigma_E(r)\ge c r/\log^2 r$ for a fixed chunk.
+The recent preprint~\cite[Theorem~1.1]{CJM2026} proves that $V$ is sofic,
+so the embedding $\mathcal L\le V$ gives finite profile for this chunk.
+Proposition~\ref{prop:thompson-hyperlinear} also proves directly that
+$\mathcal L$ is hyperlinear exactly when $F$ is.
+The configuration lamps achieve a nearly linear lower exponent inside an
+elementary amenable group.
 
 \paragraph{Quantum memory.} The second half of the paper turns $\Gamma$ into a quantum channel. Picture a device that must apply the same
 channel $n$ times. Each input arrives, the device acts on it together with its memory, and the output leaves before the next input comes in.

@@ -1,35 +1,17 @@
 # Amenable groups with nearly exponential sofic profile, and quantum channels that need nearly linear memory
 
-Seth Douglas and Nidhal Mghirbi — October 2026.
+Seth Douglas and Nidhal Mghirbi — November 2026, version 1.2.0.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23050302.svg)](https://doi.org/10.5281/zenodo.23050302)
 
 [Read the manuscript](paper.pdf) · [TeX source](paper.tex) ·
 [Verification scope](verification/README.md)
 
-How far from finite can an amenable group be? Every finite piece of an amenable group can be imitated by permutations
-of a finite set, and Cornulier's sofic profile counts how many points such an imitation needs at accuracy 1/r. This
-paper builds a finitely presented elementary amenable group with a finite piece whose profile is exp(r^(1+o(1))):
-at least exp(c r/(log r)^12.75) and at most exp(C r log r), close to the most the underlying counting method can ever
-detect. The lower bound is certified by 25 explicit relations in five generators.
+## Abstract
 
-The construction is a lamplighter with its lamps on configurations rather than on points. Houghton's group moves the
-points of three rays, finitely supported affine maps act on their binary configurations, and a copy of S_3 sits on
-every configuration. N points then carry 2^N lamps, yet any two lamps can be brought together by moves that each
-involve at most three points. The group embeds in Brin's group 3V, so 3V has a finite piece whose profile is finite
-and exp(r^(1+o(1))), whatever the answer to the open question of whether 3V is sofic.
+How far from finite can an amenable group be? Cornulier's sofic profile counts the points needed to imitate a fixed finite piece by permutations at a given accuracy. We build a finitely presented elementary amenable group with nearly exponential profile, close to the ceiling of our counting method. Its lamps are symmetric groups on three letters placed on binary configurations of three rays. The group embeds in Brin's group 3V, which therefore also has a finite piece of nearly exponential profile. A sweep form of the counting criterion charges a whole ordered suffix at once. Quadratic sweep fillings improve the lower bound for the dyadic lamplighter to exponential in the square root of the accuracy parameter, for the same finite piece.
 
-The same relations define an explicit quantum channel on C^873, with Choi rank 130. Consider a device that applies it
-n times, releasing each output before the next input arrives:
-- If it may spend B bits of purity, it needs about n/B qubits of memory, and exact devices achieve this up to
-  polylogarithmic factors.
-- With logarithmic purity, it needs memory n^(1-o(1)).
-- With exchange at the optimal rate, the least memory is n^(1/2+o(1)), attained with purity of the same order.
-
-The channel is factorizable and lies in the closure of channels with finite maximally mixed baths, yet any such bath
-that imitates it to accuracy u needs dimension exp(u^(-1+o(1))), although its minimal Stinespring dilation implements
-it exactly with a pure environment of dimension 130. A local lattice process in nu dimensions whose bath starts
-maximally mixed needs time about delta^(-1/nu) to produce the channel to accuracy delta.
+The configuration group gives an explicit quantum channel in dimension 873 with Choi rank 130. A device that applies it repeatedly, releasing each output before the next input arrives, needs memory proportional to the number of uses divided by its purity budget, up to polylogarithmic factors; exact devices attain this tradeoff. At the optimal exchange rate the least memory is of square-root order, up to subpower factors, attained with purity of the same order. The channel is factorizable and is a limit of channels with finite maximally mixed baths, but accurate such baths require nearly exponential dimension in inverse error. A pure environment of dimension 130 implements it exactly. The engine is a one-round theorem: after one use, the device's memory carries an approximate representation of the group.
 
 This repository contains the preprint, its source, and finite verification scripts. The manuscript is the authority
 for exact statements and hypotheses; the scripts do not constitute formal verification or peer review.
@@ -41,11 +23,12 @@ The software and machine-readable relation lists are additionally available unde
 the **MIT License**, at your option; see [RIGHTS.md](RIGHTS.md) for the scope.
 
 Please cite Seth Douglas and Nidhal Mghirbi, *Amenable groups with nearly exponential sofic profile, and quantum
-channels that need nearly linear memory* (2026), version 1.1.2,
+channels that need nearly linear memory* (2026), version 1.2.0,
 [doi:10.5281/zenodo.23050302](https://doi.org/10.5281/zenodo.23050302) (all versions). [CITATION.cff](CITATION.cff) provides
 machine-readable citation metadata. Tagged releases archive the corresponding manuscript and verification scripts
 together.
 
+The v1.2.0 archive DOI is recorded here once Zenodo mints it.
 The DOI above is the all-versions DOI, which identifies the evolving work. The v1.1.2 archive is
 [doi:10.5281/zenodo.23111927](https://doi.org/10.5281/zenodo.23111927), the v1.1.1 archive is
 [doi:10.5281/zenodo.23108312](https://doi.org/10.5281/zenodo.23108312), the v1.1.0 archive is
