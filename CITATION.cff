@@ -3,7 +3,7 @@ message: "Please cite the manuscript; this repository supplies source and verifi
 type: software
 title: "Amenable groups with nearly exponential sofic profile, and quantum channels that need nearly linear memory"
 version: 1.2.0
-doi: 10.5281/zenodo.23050302
+doi: 10.5281/zenodo.23875973
 license:
   - CC-BY-4.0
   - MIT
@@ -24,9 +24,9 @@ preferred-citation:
       given-names: Nidhal
   year: 2026
   version: 1.2.0
-  doi: 10.5281/zenodo.23050302
+  doi: 10.5281/zenodo.23875973
   notes: "Version 1.2.0, November 2026; concept DOI identifies all versions. See RIGHTS.md for license scope."
-  url: "https://doi.org/10.5281/zenodo.23050302"
+  url: "https://doi.org/10.5281/zenodo.23875973"
 
 abstract: |
   How far from finite can an amenable group be? Cornulier's sofic profile counts the points needed to imitate a fixed finite piece by permutations at a given accuracy. We build a finitely presented elementary amenable group with nearly exponential profile, close to the ceiling of our counting method. Its lamps are symmetric groups on three letters placed on binary configurations of three rays. The group embeds in Brin's group 3V, which therefore also has a finite piece of nearly exponential profile. A sweep form of the counting criterion charges a whole ordered suffix at once. Quadratic sweep fillings improve the lower bound for the dyadic lamplighter to exponential in the square root of the accuracy parameter, for the same finite piece.
