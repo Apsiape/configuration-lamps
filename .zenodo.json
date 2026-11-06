@@ -2,7 +2,7 @@
   "title": "Amenable groups with nearly exponential sofic profile, and quantum channels that need nearly linear memory",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "creators": [
     {
       "name": "Douglas, Seth"
@@ -25,16 +25,16 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "The authors' archive content is licensed CC BY 4.0. Software and machine-readable verification artifacts are additionally available under MIT at the recipient's option; see RIGHTS.md. This is a preprint, not a claim of journal peer review. Version 1.2.0 is an unpublished draft, November 2026; no new deposit or version DOI is claimed.",
+  "notes": "The authors' archive content is licensed CC BY 4.0. Software, Lean sources and machine-readable verification artifacts are additionally available under MIT at the recipient's option; see RIGHTS.md. A preprint; it has not been peer reviewed. Version 1.3.0, November 2026, adds the Part I Lean core with the partial, existential and conditional scope in lean/README.md. No new deposit or version DOI is claimed.",
   "related_identifiers": [
     {
-      "identifier": "https://doi.org/10.5281/zenodo.23070869",
+      "identifier": "https://doi.org/10.5281/zenodo.23027624",
       "relation": "cites"
     },
     {
-      "identifier": "https://doi.org/10.5281/zenodo.23070870",
+      "identifier": "https://doi.org/10.5281/zenodo.23027626",
       "relation": "cites"
     }
   ],
-  "publication_date": "2026-11-01"
+  "publication_date": "2026-11-06"
 }

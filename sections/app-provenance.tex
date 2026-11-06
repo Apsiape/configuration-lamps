@@ -9,7 +9,7 @@ depends, and where it is used. Results of the companions mentioned only for comp
 
 \begin{table}[ht]
 \centering\small
-\begin{tabular}{@{}p{0.47\textwidth}p{0.2\textwidth}p{0.25\textwidth}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.47\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.25\textwidth}@{}}
 \toprule
 result & source & used in\\
 \midrule
@@ -43,6 +43,8 @@ weighted sector bound (proved here by sequential measurement) & \cite[Thm.~B.1]{
 \end{table}
 
 \subsection{Machine checks}\label{app:machine-checks}
+
+Appendix~\ref{app:lean} records the selected printed, partial, existential and conditional forms checked by the Part~I Lean core, separately from the finite computations below.
 
 The $25$ freely reduced words are listed in the file \texttt{verification/relators1d.txt}. The script \texttt{verification/relators1d\_check.py}
 rebuilds each word from the abbreviations and checks it, independently of Lemma~\ref{lem:validity}, in the faithful action of $\Gamma$ on

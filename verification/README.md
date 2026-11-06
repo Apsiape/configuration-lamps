@@ -5,7 +5,7 @@ library only, print each check, and exit with status 0 when every check passes. 
 reports each result; `ladder_check.py` checks with assert statements and therefore refuses to run under python -O. They check the finite objects on
 which the proofs rest; they do not check the general arguments, which are given in full in the manuscript.
 
-## What is checked by machine
+## What is checked by these scripts
 
 - `relators1d.txt`, `relators1d_check.py`: the 25 relations of the certificate of Theorem A (the table in the section
   "A certificate of 25 relations"). The script rebuilds each word from its
@@ -28,11 +28,13 @@ which the proofs rest; they do not check the general arguments, which are given 
   faithful action on configurations and the triviality test of `relators1d_check.py`, and once with the exact images
   in 3V of `embedding3v_check.py`, and checks that the two partitions agree.
 
-## What is not checked by machine
+## What is not checked by these scripts
 
 The pair-area theorem, the local fillings, the profile bounds, the hash models, the finite presentation, the
 one-round theorem and all statements about quantum channels and physical dynamics are proved in the manuscript and
 are not checked by these scripts.
+
+The separate source-only Lean core checks the printed, partial, existential and conditional forms listed in [lean/README.md](../lean/README.md) and Appendix J. It is separate from these finite regressions.
 
 ## Version 1.2.0 sweep checks
 

@@ -1,0 +1,67 @@
+paper_number	kind	label	coverage	comparison_or_disclosure	source
+(unnumbered)	theoremA	theoremA	INTRODUCTORY RESTATEMENT	Restates Theorem 3.3; see its selected rows. Finite presentation and the full group identification are not formalized.	sections/intro.tex
+(unnumbered)	theoremB	theoremB	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/intro.tex
+(unnumbered)	theoremC	theoremC	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/intro.tex
+2.1	theorem	thm:criterion	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/criterion.tex
+2.2	corollary	cor:cyclic	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/criterion.tex
+2.3	theorem	thm:sweep	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/criterion.tex
+3.1	lemma	lem:structure	SUPPORTING / PARTIAL SOURCE	Partial supporting group structure; full wreath-product identification and exact quotient/kernel bridge excluded.	sections/part1-group.tex
+3.2	lemma	lem:validity	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/part1-group.tex
+3.3	theorem	thm:main-group	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/part1-group.tex
+4.1	lemma	lem:exchange	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/part1-fillings.tex
+4.2	lemma	lem:local-filling	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/part1-fillings.tex
+5.1	theorem	thm:pair-area	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/part1-pair-areas.tex
+6.1	lemma	lem:hash	SUPPORTING / PARTIAL SOURCE	Supporting hashing constructions in Lamps.Upper and Lamps.UpperModel; no separate frozen numbered wrapper.	sections/part1-profile.tex
+6.2	lemma	lem:clock	SUPPORTING / PARTIAL SOURCE	Supporting Lamps.Clock.clock; no separate frozen numbered wrapper.	sections/part1-profile.tex
+6.3	proposition	prop:upper	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/part1-profile.tex
+6.4	remark	rem:lee	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/part1-profile.tex
+7.1	proposition	prop:fp	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-more.tex
+7.2	proposition	prop:3V	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-more.tex
+7.3	proposition	prop:folner-lower	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-more.tex
+8.1	theorem	thm:dyadic	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-ladder.tex
+8.2	theorem	thm:dyadic-sweep	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-ladder.tex
+8.3	lemma	lem:gap-coding	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-ladder.tex
+8.4	proposition	prop:thompson	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-ladder.tex
+8.5	proposition	prop:thompson-hyperlinear	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Finite presentation, 3V embedding, Folner bound or ladder result; not formalized.	sections/part1-ladder.tex
+9.1	theorem	thm:extraction	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-services.tex
+10.1	theorem	thm:weighted	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-one-round.tex
+10.2	corollary	cor:amplification	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-one-round.tex
+11.1	theorem	thm:main-channel	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-lamp-channel.tex
+12.1	proposition	prop:sofic-upper	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-devices.tex
+12.2	theorem	thm:streaming	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-devices.tex
+12.3	corollary	cor:streaming-lamps	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-devices.tex
+13.1	proposition	prop:purity-budget	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-purity.tex
+13.2	lemma	lem:surprisal	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-purity.tex
+14.1	corollary	cor:profile	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part II service, channel, streaming or purity result; not formalized.	sections/part2-proof.tex
+14.2	remark	rem:sandwich	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/part2-proof.tex
+14.3	remark	rem:sqrt-limit	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/part2-proof.tex
+15.1	proposition	prop:light-cone	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/part3-physics.tex
+15.2	corollary	cor:preparation	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/part3-physics.tex
+15.3	proposition	prop:autonomous	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/part3-physics.tex
+15.4	proposition	prop:nonlocal	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/part3-physics.tex
+15.5	remark	rem:doubling	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/part3-physics.tex
+15.6	proposition	prop:lazy	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/part3-physics.tex
+A.1	lemma	lem:transpositions	SUPPORTING / PARTIAL SOURCE	Supporting Lamps.HoughtonWords transposition lemmas; no separate frozen numbered wrapper.	sections/app-houghton.tex
+A.2	lemma	lem:stabilizers	SUPPORTING / PARTIAL SOURCE	Supporting Lamps.HoughtonWords stabilizer lemmas; no separate frozen numbered wrapper.	sections/app-houghton.tex
+A.3	proposition	prop:dehn	SUPPORTING / PARTIAL SOURCE	Supporting Houghton Dehn/area bounds; no separate Lamps frozen numbered wrapper.	sections/app-houghton.tex
+B.1	lemma	lem:imp-s3round	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/app-imported.tex
+B.2	lemma	lem:imp-sector	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	The general unitary sector statement is not a selected numbered result; only supporting analytic lemmas are present.	sections/app-imported.tex
+B.3	theorem	thm:imp-phase	SELECTED FROZEN STATEMENT	Selected frozen form; exact partial, existential or conditional scope is stated in README.md and Appendix J.	sections/app-imported.tex
+C.1	lemma	lem:weighted-extraction	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-one-round.tex
+C.2	lemma	lem:charged-area	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-one-round.tex
+C.3	lemma	lem:rounding	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-one-round.tex
+C.4	lemma	lem:projection-product	SUPPORTING / PARTIAL SOURCE	Supporting Houghton.projection_products in vendored FiniteLean; general real inner-product-space result.	sections/app-one-round.tex
+C.5	lemma	lem:transfer	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-one-round.tex
+C.6	theorem	thm:sector	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-one-round.tex
+C.7	corollary	cor:sector	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-one-round.tex
+C.8	remark	rem:plus-one	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/app-one-round.tex
+E.1	lemma	lem:commutator-form	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-lazy.tex
+E.2	lemma	lem:twisted	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-lazy.tex
+E.3	lemma	lem:block-extraction	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Weighted or channel application in Appendices C-E; not formalized (generic projection lemmas are supporting source only).	sections/app-lazy.tex
+E.4	remark	rem:lazy-exact	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/app-lazy.tex
+E.5	remark	rem:lazy-exchange	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/app-lazy.tex
+F.1	proposition	prop:return	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/app-finer.tex
+F.2	remark	rem:qutrit	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/app-finer.tex
+F.3	proposition	prop:compositions	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Part III or Appendix F physics conclusion; not formalized.	sections/app-finer.tex
+H.1	remark	rem:grid	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/app-grid.tex
+H.2	remark	rem:grid-channel	FULL PAPER RESULT OUTSIDE SELECTED SCOPE	Expository remark; no numbered statement is selected.	sections/app-grid.tex
