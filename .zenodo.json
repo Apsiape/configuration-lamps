@@ -28,6 +28,12 @@
   "notes": "The authors' archive content is licensed CC BY 4.0. Software, Lean sources and machine-readable verification artifacts are additionally available under MIT at the recipient's option; see RIGHTS.md. A preprint; it has not been peer reviewed. Version 1.3.0, November 2026, adds the Part I Lean core with the partial, existential and conditional scope in lean/README.md. No new deposit or version DOI is claimed.",
   "related_identifiers": [
     {
+      "identifier": "arXiv:2610.04271",
+      "relation": "isVariantFormOf",
+      "scheme": "arxiv",
+      "resource_type": "publication-preprint"
+    },
+    {
       "identifier": "https://doi.org/10.5281/zenodo.23027624",
       "relation": "cites"
     },

@@ -4,6 +4,8 @@ Seth Douglas and Nidhal Mghirbi — November 2026, version 1.3.0.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23050302.svg)](https://doi.org/10.5281/zenodo.23050302)
 
+arXiv: [arXiv:2610.04271](https://arxiv.org/abs/2610.04271)
+
 [Read the manuscript](paper.pdf) · [TeX source](paper.tex) ·
 [Verification scope](verification/README.md)
 
